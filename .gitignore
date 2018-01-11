@@ -99,3 +99,9 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# Mes ajouts
+# LaTeX
+*.aux
+*.log
+*.pdf
