@@ -1,6 +1,7 @@
 \documentclass{article}
 
 \usepackage[utf8]{inputenc}
+\usepackage{hyperref}
 
 \title{UE 3I013 : Projet Recherche\\
     SuperViseur\\
@@ -35,11 +36,20 @@ L'étude est effectuée sur 4 enseignants de CP, dans des classes de 22 à 26 é
 Comme vu plus haut, les données récoltées "pendant l'action", c'est à dire pendant une séance de cours de 45min environ, sont de deux natures:
 \begin{itemize}
   \item Une vidéo incluant la position du regard de l'enseignant à intervalle régulier (500ms). Le visionnement de cette vidéo a permis d'établir une timeline des événements.
-  \item Des observations de deux catégories : tout d'abord, une classification des activités de la classe au moyen du TDOP (Teaching Dimensions Observation Protocol) \cite{TDOP}. Ces activités et évènements ont plus tard été intégrées à la timeline mentionnée ci-dessus. D'autre part, une évaluation des interactions entre l'enseignant et ses élèves, en utilisant le CLASS. Ces observations ont été faites par deux observateurs placés au fond de la classe.
+  \item Des observations de deux catégories : tout d'abord, une classification des activités de la classe au moyen du TDOP (Teaching Dimensions Observation Protocol) \cite{TDOP}. Ces activités et évènements ont plus tard été intégrées à la timeline mentionnée ci-dessus. D'autre part, une évaluation de la qualité des interactions entre l'enseignant et ses élèves, en utilisant le CLASS. Ces observations ont été faites par deux observateurs placés au fond de la classe.
 \end{itemize}
 A cela s'ajoute le contenu de questionnaires préalablements distribués aux enseignants. Ceux ci avaient pour but de se renseigner sur la perception des enseignants sur leurs élèves : compétences en francais et mathématiques, age, besoins particuliers, attention, vitesse de travail et efficacité... Entre autre était utilisé un questionnaire BRIEF (Behavior Rating Inventory of Executive Functions) noté sur une échelle de 1 à 4 (1=comportement jamais observé ou non appris, 4=comportement souvent observé ou appris).\\
-De plus, après coup, les enseignants ont également participé à une séance de débriefing, afin de visionner des extraits vidéos de la séance et d'expliquer leurs ressenti durant l'expérience aux experimentateurs.
+De plus, après coup, les enseignants ont également participé à une séance de débriefing, afin de visionner des extraits vidéos de la séance et d'expliquer leurs ressentis et leurs choix durant l'expérience aux experimentateurs.
 Il est a noter qu'avant la collecte a de ces données, un protocole éthique a été soumis au CERNI (Comité Ethique pour les Recherches Non Interventionelles). Celui ci contenait, entre autres, des formulaires de consentement a destination des parents d'élèves (puisque les élèves sont nécessairement présents sur les vidéos enregistrées par le dispositif d'Eye Tracking). Les données ont ensuite été anonymisées avant d'étre retranscrit sous la forme de la timeline des évènements, qui est elle même accessible au public (la vidéo, bien entendu, ne l'est pas).
+
+\subsection{Undertracks}
+Comme vu plus haut, les données récoltées lors de cette étude sont accessible sur la plateforme \href{https://undertracks.imag.fr/}{https://undertracks.imag.fr/}.
+Cette plateforme, maintenue par le Laboratoire d'informatique de Grenoble permet a ses utilisateurs de stocker et partager à la fois données et processus de traitement de données. Ces derniers sont définis par une série d'opérateurs (des programmes pythons élémentaires, qui peuvent eux mêmes etre partagés sur Undertracks) mis bout à bout (selon une architecture pipe et filtres).\\
+Ce système, couplé au logiciel UT-Orange qui permet d'exécuter un processus sur une table de données, permet aux chercheurs d'aisément partager leur travail, et de contribuer a celui des autres en ajoutant de nouveaux processus. Les données stockées dans Undertracks peuvent également être facilement exportées au format CSV.\\
+
+\subsection{Visualisations déjà réalisées}
+Quelques visualisations de la timeline ont déjà été réalisées. Elles se situent sur le site \href{http://superviseur.lip6.fr/}{http://superviseur.lip6.fr/}.\\
+Ces visualisation permettent de voir sur quel élève se dirige le regard de l'enseignant, en fonction entre autre de l'activité pédagogique en cours (classifié selon le TDOP) et du niveau en mathématiques de l'élève.
 
 \section{Travail à réaliser}
 
