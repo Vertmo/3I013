@@ -2,6 +2,9 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
+\usepackage{graphicx}
+
+\graphicspath{{ressources/}}
 
 \title{UE 3I013 : Projet Recherche\\
     SuperViseur\\
@@ -26,7 +29,7 @@ Ce à quoi ces études ne s'intéressent pas cependant, c'est l'identification e
 Le but de l'étude menée est double : premièrement, déterminer la "quantité d'attention" attribuée aux élèves, en fonction du niveau percu de l'élève, et tenter de déterminer des groupes sur lesquels l'attention se focaliserait particulièrement. De plus, en réutilisant le CLASS vu plus haut, et au moyen d'observateurs dans la classe, l'étude analyse aussi les relations entre l'attention donnée par l'enseignant, et les interactions avec ses élèves en resultant (rétroactions).\\
 A partir de ces questions, voici les hypothèses formulées par l'étude :
 \begin{itemize}
-  \item Comme dans l'etude de Cortina~\cite{Cortina} les enseignants qui obtiendront les résultats les plus élevés au CLASS seront ceux distribuant le plus équitablement leur attention. Il est important d'ajouter que cette distribution d'attention doit étre suivie de rétroactions des enseignant : en effet ce sont ces rétroactions qui font varier l'état de la classe, et donc le CLASS. Cette hypothèse peut donc devenir : une attention distribuée plus équitablement entraine des rétroactions de meilleure qualités, ce qui a pour conséquence directe de meilleurs résultats au CLASS.
+  \item Comme dans l'étude de Cortina~\cite{Cortina} les enseignants qui obtiendront les résultats les plus élevés au CLASS seront ceux distribuant le plus équitablement leur attention. Il est important d'ajouter que cette distribution d'attention doit étre suivie de rétroactions des enseignant : en effet ce sont ces rétroactions qui font varier l'état de la classe, et donc le CLASS. Cette hypothèse peut donc devenir : une attention distribuée plus équitablement entraine des rétroactions de meilleure qualités, ce qui a pour conséquence directe de meilleurs résultats au CLASS.
   \item Il existe un groupe sur lequel l'enseignant va se concentrer tout particulièrement. Ce groupe sera composé des élèves percus par l'enseignant comme ayant des difficultés comportementales, ainsi que d'autres percus comme ayant des difficultés de compréhension.
   \item Il existe une différence entre les comportements des enseignants novices et ceux des experts. En particulier, comme vu précédemment, les novices distribueront leur attention moins équitablement, et donc d'après la première hypothèse, obtiendront des résultats CLASS plus faible.
 \end{itemize}
@@ -49,16 +52,29 @@ Ce système, couplé au logiciel UT-Orange qui permet d'exécuter un processus s
 Dans le cas de l'étude SuperViseur, Undertracks contient les trois tables suivantes :
 \begin{itemize}
   \item Une table \textit{events} qui contient les événements de la timeline, échantillonés toutes les 500ms. Entre autres, la table contient les informations sur la position du regard de l'enseignant, sa verbalisation (paroles), la verbalisation de l'élève regardé et éventuellement d'autres élèves au second plan, l'activité en cours (TDOP) et les commentaires fait par l'enseignant durant la séance de débriefing.
-  \item Une table \textit{users} qui contient les données (anonymisées) obtenues sur les élèves grace aux questionnaires distribués aux enseignants avant l'expérimentation : niveau en maths et francais, niveau de compétences diverses, besoins particuliers\ldots En plus de cela, on dispose aussi de la position géographique de l'élève dans la class.
+  \item Une table \textit{users} qui contient les données (anonymisées) obtenues sur les élèves grace aux questionnaires distribués aux enseignants avant l'expérimentation : niveau en maths et francais, niveau de compétences diverses, besoins particuliers\ldots En plus de cela, on dispose aussi de la position géographique de l'élève dans la classe.
   \item Une table \textit{context}. Cette dernière contient les définitions (ou descriptions) des "constantes" utilisées dans les autres tables.
 \end{itemize}
 Undertracks permet aussi de définir une table des actions, mais SuperViseur n'en utilise pas.
 
 \subsection{Visualisations déjà réalisées}
 Quelques visualisations de la timeline ont déjà été réalisées en utilisant des processus undertracks. Elles se situent sur le site \href{http://superviseur.lip6.fr/}{http://superviseur.lip6.fr/}.\\
-Ces visualisation permettent de voir sur quel élève se dirige le regard de l'enseignant, en fonction entre autre de l'activité pédagogique en cours (classifié selon le TDOP) et du niveau en mathématiques de l'élève.
+Ces visualisation permettent de voir sur quel élève se dirige le regard de l'enseignant, en fonction entre-autres de l'activité pédagogique en cours (classifiée selon le TDOP) et du niveau en mathématiques de l'élève.\\
 
 \section{Travail à réaliser}
+Afin de pouvoir tirer plus de conclusions des données récoltées durant l'étude, il serait intéressant de réaliser d'autres visualisations les exploitants.\\
+Ainsi, on peut imaginer plusieurs nouvelles visualisations :
+\begin{itemize}
+  \item Créer de nouvelles visualisations de type "timelines", en incluant d'autres paramètres à faire varier (niveau en Francais, différents niveaux de compétence). On pourrait également y ajouter un tableau affichant le total des temps (il peut être difficile de se faire une idée exacte en ne regardant que la timeline).
+  \item Il serait également intéressant, comme proposé initialement lors de l'etude, de travailler sur les données "géographiques" possédées sur les élèves. Une des visualisations imaginées par l'équipe en charge du projet (image ci dessous) consiste par exemple en une visualisation "circulaire" ou le centre du cercle représente l'enseignant, et le rayon entre le centre et les différents points représentants les élèves représente la distance physique entre l'enseignant et ses élèves.\\
+    \begin{center}
+      \includegraphics[height=5cm]{visu_cercle.png}
+    \end{center}
+  \item On pourrait aussi, avec une visualisation du dessus, tracer la trajectoire du regard de l'enseignant, et calculer si il se concentre en moyenne plus sur les élèves du premier rang, ou si il est plus équitablement distriué dans l'espace de la classe. Plus bas une idée de ce type de représentation telle que concue initialement par l'équipe de recherche. Cela étant dit, le problème qui risque de se poser est qu'on ne possède pas de données sur la position de l'enseignant lui même. Peut être pourrait on les entrer à nouveau en se basant sur les vidéos enregistrées ? Ce serait en tout cas un travail long et fastidieux (4h de cours * une entrée toutes les 500ms = environ 28000 entrées).\\
+    \begin{center}
+      \includegraphics[height=5cm]{visu_dessus.png}
+    \end{center}
+\end{itemize}
 
 \bibliography{bibliographie}{}
 \bibliographystyle{plain}
