@@ -3,6 +3,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
 \usepackage{graphicx}
+\usepackage[french]{babel}
 
 \graphicspath{{ressources/}}
 
@@ -26,10 +27,10 @@ L'année suivante, Cortina et son équipe~\cite{Cortina} tentent la même expér
 Ce à quoi ces études ne s'intéressent pas cependant, c'est l'identification et la composition du groupe d'élèves recevant plus d'attention. Ce groupe de référence (ou steering group), dont l'existence est connue depuis 1972 grace aux études de Lundgren~\cite{Lundgren}, est un des pricipaux sujets auquel s'intéresse, en 2016, le projet SuperViseur~\cite{SuperViseur}.
 
 \subsection{Questionnements et Hypothèses}
-Le but de l'étude menée est double : premièrement, déterminer la "quantité d'attention" attribuée aux élèves, en fonction du niveau percu de l'élève, et tenter de déterminer des groupes sur lesquels l'attention se focaliserait particulièrement. De plus, en réutilisant le CLASS vu plus haut, et au moyen d'observateurs dans la classe, l'étude analyse aussi les relations entre l'attention donnée par l'enseignant, et les interactions avec ses élèves en resultant (rétroactions).\\
+Le but de l'étude menée est double : premièrement, déterminer la "quantité d'attention" attribuée aux élèves, en fonction du niveau percu de l'élève, et tenter de déterminer des groupes sur lesquels l'attention se focaliserait particulièrement. De plus, en réutilisant le CLASS vu plus haut, et au moyen d'observateurs dans la classe, l'étude analyse aussi les relations entre la distribution de l'attention donnée par l'enseignant, et les interactions avec ses élèves en resultant (rétroactions).\\
 A partir de ces questions, voici les hypothèses formulées par l'étude :
 \begin{itemize}
-  \item Comme dans l'étude de Cortina~\cite{Cortina} les enseignants qui obtiendront les résultats les plus élevés au CLASS seront ceux distribuant le plus équitablement leur attention. Il est important d'ajouter que cette distribution d'attention doit étre suivie de rétroactions des enseignant : en effet ce sont ces rétroactions qui font varier l'état de la classe, et donc le CLASS. Cette hypothèse peut donc devenir : une attention distribuée plus équitablement entraine des rétroactions de meilleure qualités, ce qui a pour conséquence directe de meilleurs résultats au CLASS.
+  \item Comme dans l'étude de Cortina~\cite{Cortina} les enseignants qui obtiendront les résultats les plus élevés au CLASS seront ceux distribuant leur attention de la manière la plus équitable. Il est important d'ajouter que cette distribution d'attention doit étre suivie de rétroactions des enseignant : en effet ce sont ces rétroactions qui font varier l'état de la classe, et donc le CLASS. Cette hypothèse peut donc devenir : une attention distribuée plus équitablement entraine des rétroactions de meilleure qualités, ce qui a pour conséquence directe de meilleurs résultats au CLASS.
   \item Il existe un groupe sur lequel l'enseignant va se concentrer tout particulièrement. Ce groupe sera composé des élèves percus par l'enseignant comme ayant des difficultés comportementales, ainsi que d'autres percus comme ayant des difficultés de compréhension.
   \item Il existe une différence entre les comportements des enseignants novices et ceux des experts. En particulier, comme vu précédemment, les novices distribueront leur attention moins équitablement, et donc d'après la première hypothèse, obtiendront des résultats CLASS plus faible.
 \end{itemize}
@@ -38,7 +39,7 @@ A partir de ces questions, voici les hypothèses formulées par l'étude :
 L'étude est effectuée sur 4 enseignants de CP, dans des classes de 22 à 26 élèves. 2 des enseignants sont novices (moins d'un an d'expérience), et 2 sont experts (plus de 20 ans d'expérience).\\
 Comme vu plus haut, les données récoltées "pendant l'action", c'est à dire pendant une séance de cours de 45min environ, sont de deux natures:
 \begin{itemize}
-  \item Une vidéo incluant la position du regard de l'enseignant à intervalle régulier (500ms). Le visionnement de cette vidéo a permis d'établir une timeline des événements.
+  \item Une vidéo incluant la position du regard de l'enseignant à intervalles réguliers (500ms). Le visionnement de cette vidéo a permis d'établir une timeline des événements.
   \item Des observations de deux catégories : tout d'abord, une classification des activités de la classe au moyen du TDOP (Teaching Dimensions Observation Protocol)~\cite{TDOP}. Ces activités et évènements ont plus tard été intégrées à la timeline mentionnée ci-dessus. D'autre part, une évaluation de la qualité des interactions entre l'enseignant et ses élèves, en utilisant le CLASS. Ces observations ont été faites par deux observateurs placés au fond de la classe.
 \end{itemize}
 A cela s'ajoute le contenu de questionnaires préalablements distribués aux enseignants. Ceux ci avaient pour but de se renseigner sur la perception des enseignants sur leurs élèves : compétences en francais et mathématiques, age, besoins particuliers, attention, vitesse de travail et efficacité\ldots Entre autre était utilisé un questionnaire BRIEF (Behavior Rating Inventory of Executive Functions) noté sur une échelle de 1 à 4 (1=comportement jamais observé ou non appris, 4=comportement souvent observé ou appris).\\
@@ -52,21 +53,22 @@ Ce système, couplé au logiciel UT-Orange qui permet d'exécuter un processus s
 Dans le cas de l'étude SuperViseur, Undertracks contient les trois tables suivantes :
 \begin{itemize}
   \item Une table \textit{events} qui contient les événements de la timeline, échantillonés toutes les 500ms. Entre autres, la table contient les informations sur la position du regard de l'enseignant, sa verbalisation (paroles), la verbalisation de l'élève regardé et éventuellement d'autres élèves au second plan, l'activité en cours (TDOP) et les commentaires fait par l'enseignant durant la séance de débriefing.
-  \item Une table \textit{users} qui contient les données (anonymisées) obtenues sur les élèves grace aux questionnaires distribués aux enseignants avant l'expérimentation : niveau en maths et francais, niveau de compétences diverses, besoins particuliers\ldots En plus de cela, on dispose aussi de la position géographique de l'élève dans la classe.
+  \item Une table \textit{users} qui contenant les données (évidemment anonymisées) obtenues sur les élèves grace aux questionnaires distribués aux enseignants avant l'expérimentation : niveau en mathématiques et francais, niveau de compétences diverses, besoins particuliers\ldots En plus de cela, on dispose aussi de la position géographique de l'élève dans la classe.
   \item Une table \textit{context}. Cette dernière contient les définitions (ou descriptions) des "constantes" utilisées dans les autres tables.
 \end{itemize}
 Undertracks permet aussi de définir une table des actions, mais SuperViseur n'en utilise pas.
 
 \subsection{Visualisations déjà réalisées}
-Quelques visualisations de la timeline ont déjà été réalisées en utilisant des processus undertracks. Elles se situent sur le site \href{http://superviseur.lip6.fr/}{http://superviseur.lip6.fr/}.\\
-Ces visualisation permettent de voir sur quel élève se dirige le regard de l'enseignant, en fonction entre-autres de l'activité pédagogique en cours (classifiée selon le TDOP) et du niveau en mathématiques de l'élève.\\
+Plusieurs visualisations de la timeline ont déjà été réalisées en utilisant des processus Undertracks. Elles sont disponibles sur le site \href{http://superviseur.lip6.fr/}{http://superviseur.lip6.fr/}. Les processus utilisés sont également disponibles au téléchargement.\\
+Ces visualisation permettent de suivre le regard de l'enseignant, et donc son attention, en fonction entre-autres de l'activité pédagogique en cours (classifiée selon le TDOP) et du niveau en mathématiques de l'élève.\\
 
 \section{Travail à réaliser}
+\subsection{Idées de visualisations}
 Afin de pouvoir tirer plus de conclusions des données récoltées durant l'étude, il serait intéressant de réaliser d'autres visualisations les exploitants.\\
 Ainsi, on peut imaginer plusieurs nouvelles visualisations :
 \begin{itemize}
-  \item Créer de nouvelles visualisations de type "timelines", en incluant d'autres paramètres à faire varier (niveau en Francais, différents niveaux de compétence). On pourrait également y ajouter un tableau affichant le total des temps (il peut être difficile de se faire une idée exacte en ne regardant que la timeline).
-  \item Il serait également intéressant, comme proposé initialement lors de l'etude, de travailler sur les données "géographiques" possédées sur les élèves. Une des visualisations imaginées par l'équipe en charge du projet (image ci dessous) consiste par exemple en une visualisation "circulaire" ou le centre du cercle représente l'enseignant, et le rayon entre le centre et les différents points représentants les élèves représente la distance physique entre l'enseignant et ses élèves.\\
+  \item Améliorer les visualisations de type "timeline" existantes, en incluant différents paramètres à faire varier (niveau en Francais, niveaux dans les différentes compétences, éloignement (géographique) de l'enseignant, age...). On pourrait également ajouter un tableau affichant le total des temps (il peut être difficile de se faire une idée exacte en ne regardant que la timeline).
+  \item Il serait également intéressant, comme proposé initialement lors de l'etude, de travailler sur les données "géographiques" possédées sur les élèves. Une des visualisations imaginées par l'équipe en charge du projet (image ci dessous) consiste par exemple en une visualisation "circulaire" ou le centre du cercle représente l'enseignant, et le rayon entre le centre et les différents points (représentants les élèves) représente la distance physique entre l'enseignant et ses élèves.\\
     \begin{center}
       \includegraphics[height=5cm]{visu_cercle.png}
     \end{center}
@@ -75,6 +77,10 @@ Ainsi, on peut imaginer plusieurs nouvelles visualisations :
       \includegraphics[height=5cm]{visu_dessus.png}
     \end{center}
 \end{itemize}
+
+\subsection{Technologies impliquées}
+Afin de rendre les visualisations facilement visibles pour d'autres chercheurs (sans avoir nécessairement à télécharger un logiciel, ou des librairies particulières) il parait logique d'utiliser des technologies du Web. Ces dernières sont devenues, lors de ces dernières années, plus que capable de réaliser les calculs nécessaires pour produires ces visualisations en temps réelles. On pourra donc simplement réunir les visualisations sur un site Web dédié (comme c'est déjà le cas pour les visualisations de timeline) et les rendre ainsi instantanément accessibles.\\
+Les technologies du Web employées seront donc sans doute l'habituel triplet HTML5+CSS3+Javascript. Afin de pouvoir facilement tracer des graphes, on pourra utiliser la librairie Chart.js. Seulement, certaines des visualisations risquent de ne pas rentrer dans les catégories prédéfinies de Chart.js. Afin de pouvoir les représenter et les animer, on pourra par exemple utiliser la bibliothèque p5.js, permettant de dessiner aisément dans des canvas HTML5.
 
 \bibliography{bibliographie}{}
 \bibliographystyle{plain}
