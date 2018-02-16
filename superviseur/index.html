@@ -8,20 +8,16 @@
                 integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
                 crossorigin="anonymous"></script>
         <script src="semantic/semantic.min.js"></script>
-        <script src="script.js"></script>
+        <script src="js/libs/p5.min.js"></script>
+        <script src="js/script.js"></script>
     </head>
 
     <body>
-
-        <div class="ui tabular menu">
-            <div class="active item" data-tab="tab-name">Résumé</div>
-            <div class="item" data-tab="tab-name2">Représentation spatiale</div>
+        <div id="tabs" class="ui tabular menu">
+            <a id="main-tab" class="item active">Résumé</a>
+            <a id="spatial-rep-tab" class="item">Représentation spatiale</a>
         </div>
-        <div class="active ui tab" data-tab="tab-name">
-            <p>Pour le moment y'a rien</p>
-        </div>
-        <div class="ui tab" data-tab="tab-name2">
-            <p>Ici non plus</p>
-        </div>
+        <div id="container-div"></div>
+        <div id="canvas-div"></div>
     </body>
 </html>
