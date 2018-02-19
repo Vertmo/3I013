@@ -16,7 +16,14 @@ function circularSketch(sketch) {
         sketch.background(0, 0, 0)
 
         // Setting default parameters
-        parameters = { 'agencement':'num', 'duree':"30", 'niveau':'none', 'display-niveau':false, 'display-TDOP_Enseignant':false, 'display-TDOP_Eleve':false }
+        parameters = {
+            'agencement':'num',
+            'duree':"30",
+            'niveau':'none',
+            'display-niveau':false,
+            'display-TDOP_Enseignant':false,
+            'display-TDOP_Eleve':false
+        }
     }
 
     $('#circular-rep-form :input').change(function() {
