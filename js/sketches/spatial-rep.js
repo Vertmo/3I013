@@ -1,13 +1,16 @@
 /**
  * Spatial representation of the classroom during a session
+ * @module sketches/spatial-rep
+ * @author Basile Pesin
  */
 
 function spatialSketch(sketch) {
     /**
-     * Setup
+     * Setup function
      */
     sketch.setup = function() {
-        sketch.createCanvas(600, 400)
+        width = $('#spatial-sketch-holder').innerWidth()
+        sketch.createCanvas(width, width*3/4)
         sketch.background(0, 0, 0)
     }
 }
