@@ -1,9 +1,128 @@
 <div class="ui two column middle aligned very relaxed grid">
     <div class="column">
         <div id="spatial-sketch-holder"></div>
-    </div>
-    <div class="column">
-        <form class="ui form">
+        <form id="spatial-rep-form" class="ui form">
+            <div class="inline fields">
+                <label for="duree">Durée d'une séquence :</label>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input name="duree" checked="" tabindex="30" class="hidden" type="radio">
+                        <label>30"</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input name="duree" tabindex="60" class="hidden" type="radio">
+                        <label>1'</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input name="duree" tabindex="90" class="hidden" type="radio">
+                        <label>1'30</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input name="duree" tabindex="120" class="hidden" type="radio">
+                        <label>2'</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input name="duree" tabindex="180" class="hidden" type="radio">
+                        <label>3'</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input name="duree" tabindex="300" class="hidden" type="radio">
+                        <label>5'</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input name="duree" tabindex="600" class="hidden" type="radio">
+                        <label>10'</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="inline fields">
+                <label for="niveau">Niveau des élèves :</label>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input name="niveau" checked="" tabindex="none" class="hidden" type="radio">
+                        <label>Indiférencié</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input name="niveau" tabindex="francais" class="hidden" type="radio">
+                        <label>Français</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input name="niveau" tabindex="maths" class="hidden" type="radio">
+                        <label>Mathématiques</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="inline field">
+                <div class="ui toggle checkbox">
+                    <input name='display-position' tabindex="0" class="hidden" type="checkbox">
+                    <label>Position de l'enseignant</label>
+                </div>
+                <div class="ui toggle checkbox">
+                    <input name='display-proximite' tabindex="0" class="hidden" type="checkbox">
+                    <label>Niveau de proximité</label>
+                </div>
+            </div>
+
         </form>
     </div>
+    <div class="column">
+    </div>
+</div>
+
+<h2 class="ui header">Légende</h2>
+<div class="ui two column middle aligned divided grid">
+    <div class="ui column">
+        <div class="ui items">
+            <div class="item">
+                <div class="ui tiny image"><i class="huge radio icon"></i></div>
+                <div class="middle aligned content">Enseignant</div>
+            </div>
+            <div class="item">
+                <div class="ui tiny image"><i class="big circle thin icon"></i></div>
+                <div class="middle aligned content">Eleves colorés en fonction de leurs groupes (4 niveaux de compétence 
+                    <i class="brown add square icon"></i><i class="red square icon"></i><i class="orange square icon"></i><i class="yellow minus square icon"></i>)</div>
+            </div>
+            <div class="item">
+                <div class="ui tiny image"><i class="big crosshairs icon"></i></div>
+                <div class="middle aligned content">Eleves avec besoins particuliers</div>
+            </div>
+        </div>
+    </div>
+    <div class="ui column">
+        <div class="ui items">
+             <div class="item">
+                <div class="ui tiny image"><i class="big grey square icon"></i><i class="big lightgrey square icon"></i></div>
+                <div class="middle aligned content">Eleves proches (2 niveaux)</div>
+            </div>
+            <div class="item">
+                <div class="ui tiny image"><i class="huge blue circle icon"></i></div>
+                <div class="middle aligned content">Regards de l'enseignant (largeur = fréquence; chaleur= durée)<br/>
+                    <i class="red square icon"></i><i class="orange square icon"></i><i class="teal square icon"></i><i class="blue square icon"></i></div>
+            </div>
+            <div class="item">
+                <div class="ui tiny image"><i class="blue big edit icon"></i></div>
+                <div class="middle aligned content">Matériel, zone de l'élève, ardoise et tableau
+                    <i class="violet square icon"></i><i class="blue square icon"></i><i class="teal square icon"></i><i class="darkblue square icon"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="ui column"></div>
 </div>

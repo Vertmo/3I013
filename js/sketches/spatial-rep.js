@@ -12,5 +12,18 @@ function spatialSketch(sketch) {
         width = $('#spatial-sketch-holder').innerWidth()
         sketch.createCanvas(width, width*3/4)
         sketch.background(0, 0, 0)
+
+        // Setting default parameters
+        parameters = {
+            'duree':'30',
+            'niveau':'none',
+            'display-position':false,
+            'display-proximite':false
+        }
+
+        $('#spatial-rep-form :input').change(function() {
+            if($(this).attr('type')==='checkbox') parameters[$(this).attr('name')] = $(this).prop('checked')
+            else parameters[$(this).attr('name')] = $(this).attr('tabindex')
+        })
     }
 }

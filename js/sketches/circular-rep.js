@@ -18,7 +18,7 @@ function circularSketch(sketch) {
         // Setting default parameters
         parameters = {
             'agencement':'num',
-            'duree':"30",
+            'duree':'30',
             'niveau':'none',
             'display-niveau':false,
             'display-TDOP_Enseignant':false,
@@ -29,7 +29,6 @@ function circularSketch(sketch) {
     $('#circular-rep-form :input').change(function() {
         if($(this).attr('type')==='checkbox') parameters[$(this).attr('name')] = $(this).prop('checked')
         else parameters[$(this).attr('name')] = $(this).attr('tabindex')
-        console.log(parameters)
     })
 }
 
