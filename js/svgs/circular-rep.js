@@ -6,26 +6,58 @@
 
 function circularRep(holder) {
     // Basic setup
-    let width = $('#'+holder).innerWidth()
-    var draw = SVG(holder).size(width, width*3/4)
+    var width = $('#'+holder).innerWidth()
+    var draw = SVG(holder).size(width, width)
 
-    //A rectangle. Why not ?
-    var rect = draw.rect(100, 100).attr({ fill: '#f06' })
+    // Background
+    var bg = draw.group()
+    var bg_TDOP_t_s = draw.circle(width).attr({ fill: '#99ffb3' })
+    var bg_prox_2 = draw.circle(3*width/4).attr({ fill: '#d3d3d3' }).opacity(0).move(width/8, width/8)
+    var bg_prox_1 = draw.circle(width/2).attr({ fill: '#a0a0a0' }).opacity(0).move(width/4, width/4)
+    bg.add(bg_TDOP_t_s)
+    bg.add(bg_prox_2)
+    bg.add(bg_prox_1)
+
+    // Teacher
+    var teacher = draw.group()
+    var teacher_verb_circle = draw.circle(80).attr({ fill: '#f00' })
+    var teacher_circle = draw.circle(40).attr({ fill: '#fff', stroke:'#000', 'stroke-width': '10' }).move(20, 20)
+    teacher.add(teacher_verb_circle)
+    teacher.add(teacher_circle)
+    teacher.move(draw.width()/2-40, draw.height()/2-40)
 
     // Setting default parameters
     parameters = {
         'agencement':'num',
         'duree':'30',
         'niveau':'none',
-        'display-niveau':false,
+        'display-proximite':false,
         'display-TDOP_Enseignant':false,
         'display-TDOP_Eleve':false
     }
 
+    apply_parameters(parameters)
+
     $('#circular-rep-form :input').change(function() {
         if($(this).attr('type')==='checkbox') parameters[$(this).attr('name')] = $(this).prop('checked')
         else parameters[$(this).attr('name')] = $(this).attr('tabindex')
-        console.log(parameters)
+
+        // Impacting the changes
+        apply_parameters(parameters)
     })
+
+    /**
+     * Apply the parameters
+     */
+    function apply_parameters(parameters) {
+        // Proximite
+        if(parameters["display-proximite"]) {
+            bg_prox_1.animate(200).opacity(1)
+            bg_prox_2.animate(200).opacity(1)
+        } else {
+            bg_prox_1.animate(200).opacity(0)
+            bg_prox_2.animate(200).opacity(0)
+        }
+    }
 }
 
