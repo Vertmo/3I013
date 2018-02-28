@@ -25,16 +25,16 @@ $(function() {
     // When clicking on "Représentation circulaire"
     $('#circular-rep-tab').click(function() {
         load_page('pages/circular-rep.html', function() {
-            new p5(circularSketch, 'circular-sketch-holder')
             activate_semantic_forms()
+            circularRep('circular-svg-holder')
         })
     })
 
     // When clicking on "Représentaiton spatiale"
     $('#spatial-rep-tab').click(function() {
         load_page('pages/spatial-rep.html', function() {
-            new p5(spatialSketch, 'spatial-sketch-holder')
             activate_semantic_forms()
+            spatialRep('spatial-svg-holder')
         })
     })
 
