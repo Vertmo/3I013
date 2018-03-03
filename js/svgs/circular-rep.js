@@ -67,9 +67,14 @@ function circularRep(holder) {
             bg_prox_2.animate(200).opacity(0)
         }
 
-        // Niveau des eleves
-        students.forEach(s => {
+        // Changement des eleves
+        students.filter(s => (s.teacherId == currentTeacher)).forEach(s => {
+            // Niveau
             s.setCircularColorAccordingToNiveau(parameters['niveau'])
+
+            // TDOP TODO Finir ca
+            if(parameters['display-TDOP_Eleve']) s.setCircularTDOPEleve(null)
+            else s.setCircularTDOPEleve(null)
         })
     }
 }

@@ -3,7 +3,7 @@
  * @module script
  * @author Basile Pesin
  */
-var active_page;
+var activePage;
 
 // TODO Really add the students
 var students = [];
@@ -20,17 +20,17 @@ $(function() {
 
     // When clicking on "Résumé"
     $('#main-tab').click(function() {
-        load_page('pages/main.html', null)
+        loadPage('pages/main.html', null)
     })
 
     // When clicking on "Timelines"
     $('#timelines-tab').click(function() {
-        load_page('pages/timelines.html', null)
+        loadPage('pages/timelines.html', null)
     })
 
     // When clicking on "Représentation circulaire"
     $('#circular-rep-tab').click(function() {
-        load_page('pages/circular-rep.html', function() {
+        loadPage('pages/circular-rep.html', function() {
             activate_semantic_forms()
             circularRep('circular-svg-holder')
         })
@@ -38,14 +38,14 @@ $(function() {
 
     // When clicking on "Représentaiton spatiale"
     $('#spatial-rep-tab').click(function() {
-        load_page('pages/spatial-rep.html', function() {
+        loadPage('pages/spatial-rep.html', function() {
             activate_semantic_forms()
             spatialRep('spatial-svg-holder')
         })
     })
 
     // Default : main tab
-    load_page('pages/main.html', null)
+    loadPage('pages/main.html', null)
 
 })
 
@@ -54,11 +54,11 @@ $(function() {
  * @param page The path of the html file to load
  * @param func Callback function when the page is loaded
  */
-function load_page(page, func) {
+function loadPage(page, func) {
     // If the page is already loaded, why reload it ?
-    if(active_page === page) return
+    if(activePage === page) return
     $('#container-div').load(page, func)
-    active_page = page;
+    activePage = page;
 }
 
 /**
