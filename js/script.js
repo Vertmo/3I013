@@ -5,6 +5,12 @@
  */
 var active_page;
 
+// TODO Really add the students
+var students = [];
+for(var i = 0; i < 6; i++) {
+    students.push(new Student({id: i}))
+}
+
 $(function() {
     // Decorating the tabs
     $('#tabs .item').click(function() {

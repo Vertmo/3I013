@@ -4,6 +4,8 @@
  * @author Basile Pesin
  */
 
+var currentTeacher = 0
+
 function circularRep(holder) {
     // Basic setup
     var width = $('#'+holder).innerWidth()
@@ -25,6 +27,12 @@ function circularRep(holder) {
     teacher.add(teacher_verb_circle)
     teacher.add(teacher_circle)
     teacher.move(draw.width()/2-40, draw.height()/2-40)
+    
+    // Students
+    let nbStudents = students.filter(s => (s.teacherId == currentTeacher)).length
+    students.filter(s => (s.teacherId == currentTeacher)).forEach(s => {
+        s.createCircularRep(draw, width/2, nbStudents)
+    })
 
     // Setting default parameters
     parameters = {
@@ -58,6 +66,14 @@ function circularRep(holder) {
             bg_prox_1.animate(200).opacity(0)
             bg_prox_2.animate(200).opacity(0)
         }
+
+        // Niveau des eleves
+        students.forEach(s => {
+            s.setCircularColorAccordingToNiveau(parameters['niveau'])
+        })
     }
 }
 
+function displayTime(startTime, endTime) {
+    $('#circular-time-display').text(startTime + ' : ' + endTime)
+}
