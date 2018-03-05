@@ -7,14 +7,14 @@
 class Student {
     //TODO actual constructor
     constructor(data) {
-        this.teacherId = 0
+        this.teacherId = data.teacherId
         this.id = data.id
-        this.posX = 0
-        this.posY = 0
-        this.nivFrancais = 0
-        this.nivMath = 0
-        this.besoinPart = null
-        this.score = 0
+        this.classe = data.classe
+        this.nivFrancais = data.nivFrancais
+        this.nivMaths = data.nivMaths
+        this.besoinPart = data.besoinPart
+        this.posX = data.posX
+        this.posY = data.posY
 
         this.rep = null
     }
@@ -34,10 +34,15 @@ class Student {
 
         // Events TODO
         repGroup.on('mouseover', () => {
-            $('#circular-annotations-display').text('Elève numéro ' + this.id + '\n')
+            let htmlString = '<b>Elève numéro ' + this.id + '</b><br/>'
+            htmlString += 'Classe : ' + this.classe + '<br/>'
+            htmlString += 'Niveau de Francais : ' + this.nivFrancais + '<br/>'
+            htmlString += 'Niveau de Maths : ' + this.nivMaths + '<br/>'
+            if(this.besoinPart) htmlString += 'Besoins particuliers : ' + this.besoinPart
+            $('#circular-annotations-display').html(htmlString)
         })
         repGroup.on('mouseout', () => {
-            $('#circular-annotations-display').text('')
+            $('#circular-annotations-display').empty()
         })
     }
 
@@ -55,20 +60,20 @@ class Student {
                 niv = this.nivFrancais
                 break
             case 'maths':
-                niv = this.nivMath
+                niv = this.nivMaths
                 break
         }
         switch(niv) {
-            case 0:
+            case 'Faible':
                 this.rep.attr({stroke: '#ffd700'})
                 break
-            case 1:
+            case 'Passable':
                 this.rep.attr({stroke: '#fe9a76'})
                 break
-            case 2:
+            case 'Bon':
                 this.rep.attr({stroke: '#b03060'})
                 break
-            case 3:
+            case 'Très Bon':
                 this.rep.attr({stroke: '#a52a2a'})
                 break
         }

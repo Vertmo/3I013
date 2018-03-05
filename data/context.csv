@@ -1,0 +1,50 @@
+ContexteID,description
+EN1_IN,"enseignante 1, données  interjudges"
+EN2_IN,"enseignante 2, données  interjudges"
+EN3_IN,"enseignante 3, données  interjudges"
+EN4_IN,"enseignante 4, données  interjudges"
+EN1_AN,"enseignante 1, données  annotation"
+EN2_AN,"enseignante 2, données  annotation"
+EN3_AN,"enseignante 3, données  annotation"
+EN4_AN,"enseignante 4, données  annotation"
+CONF_CAP,A une confiance en soi justifiée dans les activités scolaires (se sent capable).
+CON_SOI,Manque de confiance en soi (éventuellement renonce).
+ATTENTION,Est capable d’une attention régulière.
+RAPIDE,Est rapide dans l’exécution d’une tâche.
+EFFICACE,Est efficace dans l’exécution d’une tâche.
+AUTONOMIE, Fait preuve d’autonomie face à une tâche scolaire.
+ANTICIPER,"Dans l’exécution d’une tâche, sait anticiper et organiser son travail."
+FATIGUE,Présente des signes de fatigue pendant les activités scolaires.
+CONVER_SCOLAIRE,Participe activement aux conversations scolaires.
+NIV_LANGAGE,A un bon niveau de langage par rapport au niveau moyen de la classe.
+COMP_CONSIGNES,Comprend les consignes de la classe.
+SUIT_NIVEAU_CLASSE,Suit naturellement le rythme de la classe (sans besoin particulier de soutien ou de contrainte).
+INTEGRATION,S’intègre bien parmi les enfants de la classe.
+BES_PART,Elèves à besoins particuliers
+Très bon ,25% supérieur
+Bon ,25 % intermédiaire supérieur
+Passable ,25 % intermédiaire inférieur
+Faible ,25 % inférieur
+1,"pour un comportement jamais remarqué, une capacité ou compétence non acquise "
+2,un comportement très peu remarqué
+3,un comportement assez remarqué
+4,"pour un comportement habituellement remarqué ou une capacité, une compétence acquise ;"
+0,"Je ne sais pas, impossible de se prononcer."
+?,"Je ne sais pas, impossible de se prononcer."
+C,
+C_AV,
+COURS_INT,
+EXE_INT,
+Trav_Ind,
+Video,
+TRANS,
+O,élève dans la tâche
+N,l'élève n'est pas das la tâche
+SO,Sans objet
+eleve,l'enseignant regarde l'élève
+ardoise_E_table,l'enseignant regarde l'ardoise sur la table de l'élève
+ardoise-E_levée,l'enseignant regarde l'ardoise levée par l'élève
+cahier_E,l'enseignant regarde le cahier de l'élève 
+tableau,l'enseignant regarde le tableau
+zone_E,"l'enseignant regarde tout ce qui concerne un l'élève (sa table, ses crayons,…)"
+autre,"l'enseignant regarde autre chose (ni élève, ni tableau)"

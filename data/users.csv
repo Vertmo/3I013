@@ -1,0 +1,94 @@
+User_ID,Num_eleve,prenom,Expertise,Classe,mois_Annee_NaissEl,sexe,NivFrançais,NiveauMath,CONF_CAP,CON_SOI,ATTENTION,RAPIDE,EFFICACE,AUTONOMIE,ANTICIPER,FATIGUE,CONVER_SCOLAIRE,NIV_LANGAGE,COMP_CONSIGNES,SUIT_NIVEAU_CLASSE,INTEGRATION,BES_PART,Pos_relative_X,Pos_relative_Y,ML1,Score brut Comp
+EN1,1e,F,,CP, 12/2007,F,Passable,Passable,3,1,3,2,3,3,2,2,4,4,4,4,4,,1,1,0.2114338,35
+EN1,2e,F,,CP, 05/2007,M,Très Bon,Très Bon,4,1,4,3,4,4,4,2,4,4,4,4,4,,5,1,5.9362178,42
+EN1,3e,F,,CP, 07/2007,M,Bon,Bon,3,2,4,4,4,4,4,1,4,4,4,4,4,,20,1,6.7438237,43
+EN1,4e,F,,CP, 03/2006,M,Passable,Passable,3,2,4,4,4,4,3,2,4,2,4,4,4,,24,1,4.2313611,39
+EN1,5e,F,,CP, 09/2006,M,Faible,Faible,3,3,3,4,4,3,3,4,0,0,2,1,4,arrivant polognais (en France depuis 1an ½) problème de vocabulaire et aussi en lecture,28,1,-4.2799147,28
+EN1,6e,F,,CP, 07/2007,M,Très Bon,Très Bon,4,1,4,4,4,4,4,1,4,4,4,4,4,,1,10,7.3445863,44
+EN1,7e,F,,CP, 05/2007,M,Passable,Passable,2,2,4,4,4,4,4,2,4,4,4,4,4,,5,10,5.5888061,41
+EN1,8e,F,,CP, 11/2007,F,Faible,Faible,2,3,4,3,3,2,2,4,4,4,4,2,4,,9,10,-2.4937669,31
+EN1,9e,F,,CP, 08/2007,F,Faible,Faible,1,4,2,2,2,1,1,4,4,3,2,2,4,problème dans l’organisation spatiale,20,10,-10.5877748,21
+EN1,10e,F,,CP, 09/2007,F,Très Bon,Passable,4,1,4,4,4,4,4,1,4,4,4,4,4,,24,10,7.3445863,44
+EN1,11e,F,,CP, 02/2007,F,Très Bon,Très Bon,4,1,4,4,4,4,4,1,4,4,4,4,4,,28,10,7.3445863,44
+EN1,12e,F,,CP, 02/2007,M,Bon,Très Bon,4,1,4,4,4,4,4,1,4,4,4,4,4,,1,20,7.3445863,44
+EN1,13e,F,,CP, 11/2007,M,Bon,Bon,4,1,4,4,4,4,4,1,4,4,4,4,4,,5,20,7.3445863,44
+EN1,14e,F,,CP, 08/2007,F,Bon,Bon,4,1,4,4,4,4,4,1,4,4,4,4,4,,9,20,7.3445863,44
+EN1,15e,F,,CP, 11/2007,F,Faible,Faible,3,1,4,4,4,4,4,1,4,4,4,4,4,,24,20,6.7438237,43
+EN1,16e,F,,CP, 03/2006,M,Passable,Passable,2,3,1,2,2,1,1,4,2,3,2,1,2,dyspraxique,28,20,-11.9660576,18
+EN1,17e,F,,CP, 01/2007,M,Très Bon,Très Bon,4,1,4,4,4,4,4,1,4,4,4,4,4,,8,30,7.3445863,44
+EN1,18e,F,,CP, 02/2007,F,Très Bon,Très Bon,4,1,4,4,4,4,4,1,4,4,4,4,4,,12,30,7.3445863,44
+EN1,19e,F,,CP, 03/2007,M,Passable,Passable,2,3,2,2,3,2,2,4,2,4,4,3,4,,16,30,-4.1351471,29
+EN1,20e,F,,CP, 04/2007,M,Bon,Bon,4,1,4,4,4,4,4,1,4,4,4,4,4,,20,30,7.3445863,44
+EN1,21e,F,,CP, 08/2007,M,Bon,Bon,4,1,4,4,4,4,4,1,4,4,4,4,4,,24,30,7.3445863,44
+EN1,22e,F,,CP, 10/2007,F,Faible,Faible,1,3,2,2,3,2,3,3,4,3,4,3,4,,28,30,-3.9262361,29
+EN2,1e,A,,CE2,févr-05,M,Bon,Bon,4,1,3,2,2,4,4,2,2,3,3,2,4,,1,1,-0.9323282,34
+EN2,2e,A,,CE2,juil-05,F,Bon,Passable,2,3,4,3,3,4,4,1,2,3,3,3,4,,5,1,1.9868116,37
+EN2,3e,A,,CE2,nov-05,M,Faible,Faible,2,3,3,2,1,2,2,1,4,2,1,2,4,,9,1,-8.16606,25
+EN2,4e,A,,CE2,déc-05,F,Passable,Bon,0,0,4,3,2,3,3,1,0,0,3,3,3,,20,1,-3.5974218,28
+EN2,5e,A,,CE2,avr-06,M,Très Bon,Très Bon,4,1,3,3,4,4,4,1,2,2,4,4,3,,24,1,4.4021501,39
+EN2,6e,A,,CE2,sept-04,M,Faible,Faible,1,4,1,1,2,2,2,3,3,2,2,2,2,,28,1,-10.834004,19
+EN2,7e,A,,CE2,avr-05,F,Faible,Bon,3,1,4,3,3,4,4,2,2,3,4,3,3,,5,10,2.8225362,37
+EN2,8e,A,,CE2,janv-05,M,Passable,Passable,2,3,2,3,3,2,2,0,2,2,2,3,2,,9,10,-4.1499527,28
+EN2,9e,A,,CE2,févr-05,F,Très Bon,Très Bon,4,2,4,4,4,3,4,2,4,4,4,4,3,,20,10,5.8528342,41
+EN2,10e,A,,CE2,mai-05,F,Passable,Faible,0,0,2,2,2,2,2,2,3,3,2,2,2,,24,10,-8.5987497,22
+EN2,11e,A,,CE2,mai-05,M,Bon,Très Bon,4,1,4,1,2,4,2,1,4,4,4,3,4,,28,10,0.3645645,36
+EN2,12e,A,,CE2,nov-05,F,Faible,Bon,0,2,3,3,3,4,4,4,2,3,3,3,3,,5,20,-1.830609,30
+EN2,13e,A,,CE2,nov-05,M,Très Bon,Très Bon,4,1,3,4,4,4,4,2,4,4,4,4,3,,9,20,5.8372011,41
+EN2,14e,A,,CE2,août-05,F,Passable,Faible,0,0,2,2,2,3,3,0,2,3,3,2,3,,20,20,-4.8474323,28
+EN2,15e,A,,CE2,oct-05,M,Faible,Faible,1,4,2,2,2,1,1,2,2,3,2,2,3,,24,20,-9.5723427,22
+EN2,16e,A,,CE2,janv-06,F,Bon,Bon,4,1,3,4,4,4,4,0,4,3,3,3,2,,28,20,4.4699044,39
+EN2,17e,A,,CE2,sept-05,F,Bon,Passable,2,3,3,2,3,2,0,1,3,2,2,2,3,,1,30,-7.184058,25
+EN2,18e,A,,CE2,nov-05,F,Très Bon,Très Bon,2,3,3,4,4,4,4,0,3,4,3,4,4,,5,30,4.954969,41
+EN2,19e,A,,CE2,juin-05,F,Faible,Faible,1,3,3,1,1,1,1,2,3,3,2,1,3,,9,30,-11.4186487,20
+EN2,20e,A,,CE2,juin-05,M,Bon,Très Bon,4,1,3,4,4,4,4,3,3,3,4,4,4,,20,30,4.8084278,40
+EN2,21e,A,,CE2,avr-05,F,Très Bon,Bon,0,0,3,2,3,4,4,1,2,3,4,4,4,,24,30,0.8862534,35
+EN2,22e,A,,CE2,mai-05,M,Passable,Passable,2,3,3,2,3,3,2,1,3,2,3,2,2,,1,40,-3.9043923,28
+EN2,23e,A,,CE2,avr-05,F,Très Bon,Bon,3,1,3,3,4,4,4,1,3,4,4,4,4,,5,40,5.0296583,41
+EN2,24e,A,,CE2,nov-05,M,Passable,Très Bon,4,1,3,4,2,4,3,1,4,4,4,4,4,,9,40,3.8227049,40
+EN3,1e,C,,CE1,déc-06,F,Passable,Faible,1,4,2,2,2,2,1,4,1,1,2,2,4,,1,1,-10.8785486,20
+EN3,2e,C,,CE1,avr-06,M,Très Bon,Très Bon,4,1,4,4,4,4,4,1,4,4,4,4,3,,15,1,7.2515082,43
+EN3,3e,C,,CE1,févr-06,M,Bon,Bon,4,2,3,3,3,2,3,1,4,4,3,3,3,,19,1,0.2909503,35
+EN3,4e,C,,CE1,juin-06,F,Passable,Passable,2,2,3,2,3,2,2,3,2,3,3,3,4,,1,10,-4.1707316,29
+EN3,5e,C,,CE1,déc-06,F,Faible,Faible,2,2,1,1,1,1,1,2,1,1,2,2,3,,5,10,-12.7403456,18
+EN3,6e,C,,CE1,mai-06,M,Passable,Passable,2,3,2,1,2,2,2,2,2,2,3,3,4,,15,10,-6.8176456,26
+EN3,7e,C,,CE1,nov-06,M,Très Bon,Très Bon,4,4,2,3,4,4,4,1,3,3,4,4,3,,19,10,4.1096944,39
+EN3,8e,C,,CE1,oct-06,F,Bon,Bon,2,3,3,2,3,2,3,2,3,3,3,3,4,,29,10,-2.7934617,31
+EN3,9e,C,,CE1,nov-06,F,Faible,Faible,2,3,2,2,2,2,1,3,3,2,2,2,3,,34,10,-9.2490126,22
+EN3,10e,C,,CE1,avr-06,M,Passable,Passable,2,3,2,2,3,2,2,3,2,3,2,2,2,,38,10,-7.0320723,24
+EN3,11e,C,,CE1,sept-06,F,Très Bon,Très Bon,4,1,4,4,4,4,4,1,4,4,4,4,2,,1,20,7.1584301,42
+EN3,12e,C,,CE1,août-06,F,Bon,Bon,3,2,4,4,4,3,4,1,4,4,4,4,3,,5,20,5.8063267,41
+EN3,13e,C,,CE1,févr-06,F,Très Bon,Très Bon,4,1,4,4,4,4,4,1,4,4,4,4,3,,15,20,7.2515082,43
+EN3,14e,C,,CE1,mars-06,F,Passable,Passable,2,2,3,2,3,2,3,1,3,3,3,3,2,,19,20,-2.4253628,30
+EN3,15e,C,,CE1,juin-06,F,Faible,Passable,2,2,3,2,3,2,3,1,3,3,3,3,3,,29,20,-2.3322847,31
+EN3,16e,C,,CE1,août-06,F,Faible,Faible,2,2,3,2,2,1,2,2,3,3,1,3,3,,34,20,-7.2379714,25
+EN3,17e,C,,CE1,juin-06,M,Bon,Bon,4,1,4,4,4,4,4,1,4,4,4,4,4,,1,30,7.3445863,44
+EN3,18e,C,,CE1,nov-06,M,Faible,Faible,2,2,3,2,3,2,2,2,3,3,1,3,3,,5,30,-5.4741451,27
+EN3,19e,C,,CE1,sept-06,F,Bon,Bon,4,1,4,4,4,4,4,1,4,4,4,4,3,,15,30,7.2515082,43
+EN3,20e,C,,CE1,févr-06,M,Passable,Passable,2,2,3,2,3,2,3,1,3,3,3,3,3,,19,30,-2.3322847,31
+EN3,21e,C,,CE1,oct-06,M,Faible,Faible,1,1,2,1,1,2,1,2,3,3,1,2,3,,29,30,-11.3837398,20
+EN3,22e,C,,CE1,juin-06,F,Bon,Bon,4,1,4,4,4,4,4,1,4,4,4,4,3,,34,30,7.2515082,43
+EN3,23e,C,,CE1,janv-06,M,Très Bon,Très Bon,,,,,,,,,,,,,,,40,40,,
+EN4,1e,M,,CP,déc-07,M,Passable,Faible,2,2,2,3,2,2,2,3,4,4,3,2,4,,1,1,-5.4613183,28
+EN4,2e,M,,CP,nov-07,M,Faible,Faible,2,2,1,2,1,2,2,3,2,2,1,1,4,gros problèmes d’attention-concentration,5,1,-11.9275114,20
+EN4,3e,M,,CP,juin-07,F,Faible,Faible,3,2,3,2,2,2,2,3,1,4,2,2,3,,15,1,-5.8299905,27
+EN4,4e,M,,CP,juil-07,M,Passable,Passable,2,2,3,2,2,3,2,3,2,3,2,2,3,"problèmes en motricité fine, espace",19,1,-6.1539305,26
+EN4,5e,M,,CP,janv-07,F,Faible,Passable,3,2,2,2,2,3,2,3,4,4,3,3,3,,29,1,-4.0304911,29
+EN4,6e,M,,CP,nov-07,M,Passable,Faible,2,2,3,2,2,3,2,3,1,3,2,2,3,problèmes en conscience phonologique plus spécifiquement en codage,1,10,-6.1539305,26
+EN4,7e,M,,CP,nov-07,F,Bon,Bon,3,1,2,3,3,4,3,2,2,4,4,3,4,,5,10,0.9400919,36
+EN4,8e,M,,CP,janv-07,F,Faible,Passable,3,1,2,2,3,3,2,2,4,4,2,3,4,,15,10,-3.3460459,31
+EN4,9e,M,,CP,nov-07,F,Bon,Bon,4,1,4,3,3,4,3,2,2,4,3,4,43,,1,20,6.9415472,78
+EN4,10e,M,,CP,mai-07,F,Bon,Passable,3,2,4,3,3,4,3,2,2,4,3,4,3,,5,20,2.6176597,37
+EN4,11e,M,,CP,avr-07,F,Bon,Bon,4,1,4,3,3,4,3,1,2,4,3,4,4,,15,20,3.8657555,40
+EN4,12e,M,,CP,nov-07,M,Faible,Passable,3,2,3,2,2,3,2,2,3,4,3,3,4,problèmes en conscience phonologique,29,20,-2.5231059,32
+EN4,13e,M,,CP,mars-07,F,Bon,Passable,2,1,2,3,2,3,2,2,4,4,3,2,3,,33,20,-4.1557223,29
+EN4,14e,M,,CP,avr-07,M,Passable,Faible,1,4,1,1,1,1,1,4,2,4,1,1,3,"problèmes importants de conscience phonologiques, d’attention concentration, de mémoire de travail, n’est pas actif pendant la classe",1,30,-14.5619618,16
+EN4,15e,M,,CP,juin-07,F,Bon,Bon,3,1,4,4,4,4,4,1,2,4,4,4,4,,5,30,6.7438237,43
+EN4,16e,M,,CP,nov-07,F,Très Bon,Très Bon,4,1,4,4,4,4,4,1,4,4,4,4,4,,15,30,7.3445863,44
+EN4,17e,M,,CP,nov-07,M,Très Bon,Très Bon,4,1,4,4,4,4,4,1,4,4,4,4,4,,29,30,7.3445863,44
+EN4,18e,M,,CP,mai-07,F,Très Bon,Bon,4,1,4,4,4,4,4,1,3,4,4,4,4,,33,30,7.3445863,44
+EN4,19e,M,,CP,juil-07,M,Bon,Très Bon,4,1,3,4,4,4,4,1,4,4,4,4,4,,1,40,6.4845344,43
+EN4,20e,M,,CP,nov-07,F,Très Bon,Très Bon,4,1,4,4,4,4,4,1,3,4,4,4,4,,5,40,7.3445863,44
+EN4,21e,M,,CP,févr-07,M,Bon,Bon,2,3,2,2,3,3,2,2,3,4,2,2,3,,15,40,-4.9727238,28
+EN4,22e,M,,CP,févr-07,M,Passable,Faible,2,2,2,2,2,3,2,3,3,3,2,2,2,(autisme) aidé par une AVS,29,40,-7.1070606,24
+EN4,23e,M,,CP,janv-07,F,Très Bon,Très Bon,4,1,4,4,4,4,4,1,4,4,4,4,4,,33,40,7.3445863,44
+EN4,24e,M,,CP,juil-07,F,Très Bon,Très Bon,4,1,4,4,4,4,4,1,4,4,4,4,4,,5,50,7.3445863,44

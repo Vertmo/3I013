@@ -5,11 +5,8 @@
  */
 var activePage;
 
-// TODO Really add the students
-var students = [];
-for(var i = 0; i < 6; i++) {
-    students.push(new Student({id: i}))
-}
+var students = []
+loadStudents();
 
 $(function() {
     // Decorating the tabs
@@ -31,7 +28,7 @@ $(function() {
     // When clicking on "Représentation circulaire"
     $('#circular-rep-tab').click(function() {
         loadPage('pages/circular-rep.html', function() {
-            activate_semantic_forms()
+            activateSemanticForms()
             circularRep('circular-svg-holder')
         })
     })
@@ -39,7 +36,7 @@ $(function() {
     // When clicking on "Représentaiton spatiale"
     $('#spatial-rep-tab').click(function() {
         loadPage('pages/spatial-rep.html', function() {
-            activate_semantic_forms()
+            activateSemanticForms()
             spatialRep('spatial-svg-holder')
         })
     })
@@ -64,10 +61,39 @@ function loadPage(page, func) {
 /**
  * Semantic UI forms need to be activated when the pages load
  */
-function activate_semantic_forms() {
+function activateSemanticForms() {
     // Activating the checkboxes
     $('.ui.checkbox').checkbox()
 
     // Activating the radio checkboxes
     $('.ui.radio.checkbox').checkbox()
+}
+
+/**
+ * Loads the list of students (from the CSV for now)
+ */
+function loadStudents() {
+    let fileName = '../data/users.csv'
+    $.ajax({
+        type: 'GET',
+        url: 'data/users.csv',
+        dataType: 'text',
+        success: data => {
+            let lines = data.split('\n')
+            lines = lines.slice(1, lines.length-1)
+            lines.forEach(l => {
+                let arr = l.split(',')
+                students.push(new Student({
+                    teacherId: parseInt(arr[0].slice(2)),
+                    id: parseInt(arr[1]),
+                    classe: arr[4],
+                    nivFrancais: arr[7],
+                    nivMaths: arr[8],
+                    besoinPart: arr[22],
+                    posX: parseInt(arr[23]),
+                    posY: parseInt(arr[24])
+                }))
+            })
+        }
+    })
 }

@@ -4,12 +4,16 @@
  * @author Basile Pesin
  */
 
-var currentTeacher = 0
+var currentTeacher = 1
 
 function circularRep(holder) {
     // Basic setup
     var width = $('#'+holder).innerWidth()
     var draw = SVG(holder).size(width, width)
+
+    // Time
+    var startTime = new Date(0)
+    var endTime = nextTime(startTime, 30)
 
     // Background
     var bg = draw.group()
@@ -44,20 +48,39 @@ function circularRep(holder) {
         'display-TDOP_Eleve':false
     }
 
-    apply_parameters(parameters)
 
     $('#circular-rep-form :input').change(function() {
         if($(this).attr('type')==='checkbox') parameters[$(this).attr('name')] = $(this).prop('checked')
         else parameters[$(this).attr('name')] = $(this).attr('tabindex')
 
         // Impacting the changes
-        apply_parameters(parameters)
+        applyParameters(parameters)
+    })
+
+    // Boutons precedant et suivant
+    $('#previous-button').addClass('disabled')
+    $('#previous-button').click(() => {
+        endTime = startTime
+        startTime = previousTime(startTime, parseInt(parameters['duree']))
+        if(startTime <= new Date(0)) {
+            startTime = new Date(0)
+            endTime = nextTime(startTime, parameters['duree'])
+            $('#previous-button').addClass('disabled')
+        }
+        displayTime(startTime, endTime)
+    })
+
+    $('#next-button').click(() => {
+        startTime = endTime
+        endTime = nextTime(endTime, parseInt(parameters['duree']))
+        displayTime(startTime, endTime)
+        $('#previous-button').removeClass('disabled')
     })
 
     /**
      * Apply the parameters
      */
-    function apply_parameters(parameters) {
+    function applyParameters(parameters) {
         // Proximite
         if(parameters["display-proximite"]) {
             bg_prox_1.animate(200).opacity(1)
@@ -76,9 +99,12 @@ function circularRep(holder) {
             if(parameters['display-TDOP_Eleve']) s.setCircularTDOPEleve(null)
             else s.setCircularTDOPEleve(null)
         })
-    }
-}
 
-function displayTime(startTime, endTime) {
-    $('#circular-time-display').text(startTime + ' : ' + endTime)
+        // Changement de l'interval
+        endTime = nextTime(startTime, parameters['duree'])
+        displayTime(startTime, endTime)
+    }
+
+    displayTime(startTime, endTime)
+    applyParameters(parameters)
 }
