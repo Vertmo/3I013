@@ -4,9 +4,10 @@
  * @author Basile Pesin
  */
 
-var currentTeacher = 1
 
 function circularRep(holder) {
+    var currentTeacher = 1
+
     // Basic setup
     var width = $('#'+holder).innerWidth()
     var draw = SVG(holder).size(width, width)
@@ -18,18 +19,18 @@ function circularRep(holder) {
     // Background
     var bg = draw.group()
     var bg_TDOP_t_s = draw.circle(width).attr({ fill: '#99ffb3' })
-    var bg_prox_2 = draw.circle(3*width/4).attr({ fill: '#d3d3d3' }).opacity(0).move(width/8, width/8)
-    var bg_prox_1 = draw.circle(width/2).attr({ fill: '#a0a0a0' }).opacity(0).move(width/4, width/4)
+    var bgProx2 = draw.circle(3*width/4).attr({ fill: '#d3d3d3' }).opacity(0).move(width/8, width/8)
+    var bgProx1 = draw.circle(width/2).attr({ fill: '#a0a0a0' }).opacity(0).move(width/4, width/4)
     bg.add(bg_TDOP_t_s)
-    bg.add(bg_prox_2)
-    bg.add(bg_prox_1)
+    bg.add(bgProx2)
+    bg.add(bgProx1)
 
     // Teacher
     var teacher = draw.group()
     var teacher_verb_circle = draw.circle(80).attr({ fill: '#f00' })
-    var teacher_circle = draw.circle(40).attr({ fill: '#fff', stroke:'#000', 'stroke-width': '10' }).move(20, 20)
+    var teacherCircle = draw.circle(40).attr({ fill: '#fff', stroke:'#000', 'stroke-width': '10' }).move(20, 20)
     teacher.add(teacher_verb_circle)
-    teacher.add(teacher_circle)
+    teacher.add(teacherCircle)
     teacher.move(draw.width()/2-40, draw.height()/2-40)
     
     // Students
@@ -83,11 +84,11 @@ function circularRep(holder) {
     function applyParameters(parameters) {
         // Proximite
         if(parameters["display-proximite"]) {
-            bg_prox_1.animate(200).opacity(1)
-            bg_prox_2.animate(200).opacity(1)
+            bgProx1.animate(200).opacity(1)
+            bgProx2.animate(200).opacity(1)
         } else {
-            bg_prox_1.animate(200).opacity(0)
-            bg_prox_2.animate(200).opacity(0)
+            bgProx1.animate(200).opacity(0)
+            bgProx2.animate(200).opacity(0)
         }
 
         // Changement des eleves
