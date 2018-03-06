@@ -58,7 +58,7 @@ function circularRep(holder) {
         applyParameters(parameters)
     })
 
-    // Boutons precedant et suivant
+    // Previous and next buttons
     $('#previous-button').addClass('disabled')
     $('#previous-button').click(() => {
         endTime = startTime
@@ -82,7 +82,7 @@ function circularRep(holder) {
      * Apply the parameters
      */
     function applyParameters(parameters) {
-        // Proximite
+        // Proximity
         if(parameters["display-proximite"]) {
             bgProx1.animate(200).opacity(1)
             bgProx2.animate(200).opacity(1)
@@ -91,9 +91,9 @@ function circularRep(holder) {
             bgProx2.animate(200).opacity(0)
         }
 
-        // Changement des eleves
+        // Students changes
         students.filter(s => (s.teacherId == currentTeacher)).forEach(s => {
-            // Niveau
+            // Level of skill
             s.setCircularColorAccordingToNiveau(parameters['niveau'])
 
             // TDOP TODO Finir ca
@@ -101,7 +101,7 @@ function circularRep(holder) {
             else s.setCircularTDOPEleve(null)
         })
 
-        // Changement de l'interval
+        // Time interval
         endTime = nextTime(startTime, parameters['duree'])
         displayTime(startTime, endTime)
     }

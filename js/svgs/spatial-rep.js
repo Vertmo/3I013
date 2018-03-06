@@ -16,10 +16,6 @@ function spatialRep(holder) {
     var startTime = new Date(0)
     var endTime = nextTime(startTime, 30)
 
-    //A rectangle. Why not ?
-    var startTime = new Date(0)
-    var endTime = nextTime(startTime, 30)
-
     // Teacher and it's proximity zone
     var teacher = draw.group()
     var bgProx2 = draw.rect(width*2/3, height*2/3).attr({ fill: '#d3d3d3' }).move(-width*2/6, -height*2/6).opacity(0)
@@ -54,7 +50,7 @@ function spatialRep(holder) {
         applyParameters(parameters)
     })
 
-    // Boutons precedant et suivant
+    // Previous and next buttons
     $('#previous-button').addClass('disabled')
     $('#previous-button').click(() => {
         endTime = startTime
@@ -78,7 +74,7 @@ function spatialRep(holder) {
      * Apply the parameters
      */
     function applyParameters(parameters) {
-        // Proximite
+        // Proximity
         if(parameters["display-proximite"]) {
             bgProx1.animate(200).opacity(1)
             bgProx2.animate(200).opacity(1)
@@ -87,7 +83,7 @@ function spatialRep(holder) {
             bgProx2.animate(200).opacity(0)
         }
 
-        // Changement de l'interval
+        // Time interval
         endTime = nextTime(startTime, parameters['duree'])
         displayTime(startTime, endTime)
     }
