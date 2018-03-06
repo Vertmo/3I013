@@ -4,7 +4,6 @@
  * @author Basile Pesin
  */
 
-
 function circularRep(holder) {
     var currentTeacher = 1
 
@@ -32,7 +31,7 @@ function circularRep(holder) {
     teacher.add(teacher_verb_circle)
     teacher.add(teacherCircle)
     teacher.move(draw.width()/2-40, draw.height()/2-40)
-    
+
     // Students
     let nbStudents = students.filter(s => (s.teacherId == currentTeacher)).length
     students.filter(s => (s.teacherId == currentTeacher)).forEach(s => {
