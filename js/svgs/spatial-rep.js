@@ -5,7 +5,7 @@
  */
 
 function spatialRep(holder) {
-    var currentTeacher = 4
+    var currentTeacher = 1
 
     // Basic setup
     let width = $('#'+holder).innerWidth()
@@ -86,6 +86,12 @@ function spatialRep(holder) {
         // Time interval
         endTime = nextTime(startTime, parameters['duree'])
         displayTime(startTime, endTime)
+
+        // Students changes
+        students.filter(s => (s.teacherId == currentTeacher)).forEach(s => {
+            // Level of skill
+            s.setCircularColorAccordingToNiveau(parameters['niveau'])
+        })
     }
 
     displayTime(startTime, endTime)

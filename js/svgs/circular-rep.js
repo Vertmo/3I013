@@ -90,6 +90,10 @@ function circularRep(holder) {
             bgProx2.animate(200).opacity(0)
         }
 
+        // Time interval
+        endTime = nextTime(startTime, parameters['duree'])
+        displayTime(startTime, endTime)
+
         // Students changes
         students.filter(s => (s.teacherId == currentTeacher)).forEach(s => {
             // Level of skill
@@ -99,10 +103,6 @@ function circularRep(holder) {
             if(parameters['display-TDOP_Eleve']) s.setCircularTDOPEleve(null)
             else s.setCircularTDOPEleve(null)
         })
-
-        // Time interval
-        endTime = nextTime(startTime, parameters['duree'])
-        displayTime(startTime, endTime)
     }
 
     displayTime(startTime, endTime)
