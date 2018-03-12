@@ -18,8 +18,8 @@ function spatialRep(holder) {
 
     // Teacher and it's proximity zone
     var teacher = draw.group()
-    var bgProx2 = draw.rect(width*2/3, height*2/3).attr({ fill: '#d3d3d3' }).move(-width*2/6, -height*2/6).opacity(0)
-    var bgProx1 = draw.rect(width/3, height/3).attr({ fill: '#a0a0a0' }).move(-width/6, -height/6).opacity(0)
+    var bgProx2 = draw.rect(width, height).attr({ fill: '#d3d3d3' }).move(-width/2, -height/2).opacity(0)
+    var bgProx1 = draw.rect(width/2, height/2).attr({ fill: '#a0a0a0' }).move(-width/4, -height/4).opacity(0)
     let teacherCircle = draw.circle(40).attr({ fill: '#fff', stroke:'#000', 'stroke-width': '10' }).move(-20, 0)
     teacher.add(bgProx2)
     teacher.add(bgProx1)

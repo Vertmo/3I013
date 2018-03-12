@@ -94,13 +94,13 @@ class Student {
         }
         switch(niv) {
             case 'Faible':
-                this.rep.attr({stroke: '#ffd700'})
+                this.rep.attr({stroke: '#FFFF00'})
                 break
             case 'Passable':
-                this.rep.attr({stroke: '#fe9a76'})
+                this.rep.attr({stroke: '#FF8000'})
                 break
             case 'Bon':
-                this.rep.attr({stroke: '#b03060'})
+                this.rep.attr({stroke: '#FF0000'})
                 break
             case 'Très Bon':
                 this.rep.attr({stroke: '#a52a2a'})
