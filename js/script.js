@@ -3,10 +3,12 @@
  * @module script
  * @author Basile Pesin
  */
-var activePage;
+var activePage
+var rep = null
+var repType = null
 
 var students = []
-loadStudents();
+loadStudents()
 
 $(function() {
     // Decorating the tabs
@@ -29,7 +31,9 @@ $(function() {
     $('#circular-rep-tab').click(function() {
         loadPage('pages/circular-rep.html', function() {
             activateSemanticForms()
-            circularRep('circular-svg-holder')
+            repType = 'circular'
+            rep = new CircularRep('circular-svg-holder', 1)
+            rep.applyParameters()
         })
     })
 
@@ -37,14 +41,16 @@ $(function() {
     $('#spatial-rep-tab').click(function() {
         loadPage('pages/spatial-rep.html', function() {
             activateSemanticForms()
-            spatialRep('spatial-svg-holder')
+            repType = 'spatial'
+            rep = new SpatialRep('spatial-svg-holder', 1)
+            rep.applyParameters()
         })
     })
 
     // Default : main tab
     loadPage('pages/main.html', null)
-
 })
+
 
 /**
  * Loads one of the pages (tabs)
@@ -67,6 +73,20 @@ function activateSemanticForms() {
 
     // Activating the radio checkboxes
     $('.ui.radio.checkbox').checkbox()
+
+    // Form change event listener
+    $('.rep-form :input').change(function() {
+        if(rep == null) return
+        rep.changeParameters($(this))
+
+        if($(this).attr('name')==='enseignant') {
+            if(repType==='circular') rep = new CircularRep('circular-svg-holder', $(this).attr('tabindex'), rep.parameters)
+            else if(repType==='spatial') rep = new SpatialRep('spatial-svg-holder', $(this).attr('tabindex'), rep.parameters)
+        }
+
+        // Impacting the changes
+        rep.applyParameters()
+    })
 }
 
 /**
