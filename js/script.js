@@ -5,10 +5,11 @@
  */
 var activePage
 var rep = null
-var repType = null
 
 var students = []
 loadStudents()
+var events = []
+loadEvents()
 
 $(function() {
     // Decorating the tabs
@@ -80,8 +81,8 @@ function activateSemanticForms() {
         rep.changeParameters($(this))
 
         if($(this).attr('name')==='enseignant') {
-            if(repType==='circular') rep = new CircularRep('circular-svg-holder', $(this).attr('tabindex'), rep.parameters)
-            else if(repType==='spatial') rep = new SpatialRep('spatial-svg-holder', $(this).attr('tabindex'), rep.parameters)
+            if(rep instanceof CircularRep) rep = new CircularRep('circular-svg-holder', $(this).attr('tabindex'), rep.parameters)
+            else if(rep instanceof SpatialRep) rep = new SpatialRep('spatial-svg-holder', $(this).attr('tabindex'), rep.parameters)
         }
 
         // Impacting the changes
@@ -102,16 +103,15 @@ function activateSemanticForms() {
  * Loads the list of students (from the CSV for now)
  */
 function loadStudents() {
-    let fileName = '../data/users.csv'
+    let filename = 'data/users.csv'
     $.ajax({
         type: 'GET',
-        url: 'data/users.csv',
+        url: filename,
         dataType: 'text',
         success: data => {
-            let lines = data.split('\n')
-            lines = lines.slice(1, lines.length-1)
-            lines.forEach(l => {
-                let arr = l.split(',')
+            let array = CSVToArray(data, ',')
+            array = array.slice(1, array.length-1)
+            array.forEach(arr => {
                 students.push(new Student({
                     teacherId: parseInt(arr[0].slice(2)),
                     id: parseInt(arr[1]),
@@ -122,6 +122,35 @@ function loadStudents() {
                     posX: parseInt(arr[23]),
                     posY: parseInt(arr[24])
                 }))
+            })
+        }
+    })
+}
+
+/** 
+ * Loads the list of events (from CSV for now)
+ */
+function loadEvents() {
+    let filename = 'data/events.csv'
+    $.ajax({
+        type: 'GET',
+        url: filename,
+        dataType: 'text',
+        success: data => {
+            let array = CSVToArray(data, ',')
+            //console.log(array[0])
+            //console.log(array[1])
+            array = array.slice(1, array.length-1)
+            array.forEach(arr => {
+                if(arr.length != 24) console.log(arr)
+                events.push({
+                    startTime: new Date(parseInt(arr[2])),
+                    endTime: new Date(parseInt(arr[5])),
+                    teacherId: parseInt(arr[23].slice(2)),
+                    verbalisation: arr[12],
+                    TDOP: arr[14],
+                    descTDOP: arr[17]
+                })
             })
         }
     })

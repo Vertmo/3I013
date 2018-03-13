@@ -1,7 +1,7 @@
 /**
  * Module handling time for circular et spatial rep
  * @author Basile Pesin
- * @module time
+ * @module utils/time
  */
 
 /**
