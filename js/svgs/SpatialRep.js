@@ -4,8 +4,10 @@
  * @author Basile Pesin
  */
 
-class SpatialRep {
+class SpatialRep extends Rep {
     constructor(holder, currentTeacher, parameters = null) {
+        super()
+
         // Setting default parameters
         if(parameters == null) {
             this.parameters = {
@@ -24,10 +26,6 @@ class SpatialRep {
         let height = width*3/4
         this.draw = SVG(holder).size(width, height)    
 
-        // Time
-        this.startTime = new Date(0)
-        this.endTime = nextTime(this.startTime, 30)
-
         // Teacher and it's proximity zone
         var teacher = this.draw.group()
         this.bgProx2 = this.draw.rect(width, height).attr({ fill: '#d3d3d3' }).move(-width/2, -height/2).opacity(0)
@@ -45,27 +43,6 @@ class SpatialRep {
         this.students.forEach(s => {
             s.createSpatialRep(this.draw, maxPosX, maxPosY)
         })
-
-        // Previous and next buttons
-        $('#previous-button').addClass('disabled')
-        $('#previous-button').click(() => {
-            this.endTime = this.startTime
-            this.startTime = previousTime(this.startTime, parseInt(this.parameters['duree']))
-            if(this.startTime <= new Date(0)) {
-                this.startTime = new Date(0)
-                this.endTime = nextTime(this.startTime, this.parameters['duree'])
-                $('#previous-button').addClass('disabled')
-            }
-            displayTime(this.startTime, this.endTime)
-        })
-
-        $('#next-button').click(() => {
-            this.startTime = this.endTime
-            this.endTime = nextTime(this.endTime, parseInt(this.parameters['duree']))
-            displayTime(this.startTime, this.endTime)
-            $('#previous-button').removeClass('disabled')
-        })
-        displayTime(this.startTime, this.endTime)
     }
 
     /**
@@ -75,7 +52,7 @@ class SpatialRep {
         if(form.attr('type')==='checkbox') this.parameters[form.attr('name')] = form.prop('checked')
         else this.parameters[form.attr('name')] = form.attr('tabindex')
     }
-
+    
     /**
      * Apply the parameters
      */

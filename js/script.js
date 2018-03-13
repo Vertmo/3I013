@@ -87,6 +87,15 @@ function activateSemanticForms() {
         // Impacting the changes
         rep.applyParameters()
     })
+
+    $('#previous-button').addClass('disabled')
+    $('#previous-button').click(() => {
+        rep.previousTime()
+    })
+
+    $('#next-button').click(() => {
+        rep.nextTime()
+    })
 }
 
 /**

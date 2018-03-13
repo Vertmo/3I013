@@ -4,8 +4,10 @@
  * @author Basile Pesin
  */
 
-class CircularRep {
+class CircularRep extends Rep {
     constructor(holder, currentTeacher, parameters = null) {
+        super()
+
         // Setting default parameters
         if(parameters==null) {
             this.parameters = {
@@ -24,10 +26,6 @@ class CircularRep {
         $('#'+holder).empty()
         let width = $('#'+holder).innerWidth()
         this.draw = SVG(holder).size(width, width)
-
-        // Time
-        this.startTime = new Date(0)
-        this.endTime = nextTime(this.startTime, 30)
 
         // Background
         var bg = this.draw.group()
@@ -52,27 +50,6 @@ class CircularRep {
         this.students.forEach(s => {
             s.createCircularRep(this.draw, width/2, nbStudents)
         })
-        
-        // Previous and next buttons
-        $('#previous-button').addClass('disabled')
-        $('#previous-button').click(() => {
-            this.endTime = this.startTime
-            this.startTime = previousTime(this.startTime, parseInt(this.parameters['duree']))
-            if(this.startTime <= new Date(0)) {
-                this.startTime = new Date(0)
-                this.endTime = nextTime(this.startTime, this.parameters['duree'])
-                $('#previous-button').addClass('disabled')
-            }
-            displayTime(this.startTime, this.endTime)
-        })
-
-        $('#next-button').click(() => {
-            this.startTime = this.endTime
-            this.endTime = nextTime(this.endTime, parseInt(this.parameters['duree']))
-            displayTime(this.startTime, this.endTime)
-            $('#previous-button').removeClass('disabled')
-        })
-        displayTime(this.startTime, this.endTime)
     }
     
     /**
