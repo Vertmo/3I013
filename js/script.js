@@ -138,8 +138,8 @@ function loadEvents() {
         dataType: 'text',
         success: data => {
             let array = CSVToArray(data, ',')
-            //console.log(array[0])
-            //console.log(array[1])
+            console.log(array[0])
+            console.log(array[1])
             array = array.slice(1, array.length-1)
             array.forEach(arr => {
                 if(arr.length != 24) console.log(arr)
@@ -149,7 +149,8 @@ function loadEvents() {
                     teacherId: parseInt(arr[23].slice(2)),
                     verbalisation: arr[12],
                     TDOP: arr[14],
-                    descTDOP: arr[17]
+                    descTDOP: arr[17],
+                    regarde: parseInt(arr[11])
                 })
             })
         }
