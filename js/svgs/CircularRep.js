@@ -6,10 +6,10 @@
 
 class CircularRep extends Rep {
     constructor(holder, currentTeacher, parameters = null) {
-        super()
+        super(currentTeacher, parameters)
 
         // Setting default parameters
-        if(parameters==null) {
+        if(!parameters) {
             this.parameters = {
                 'agencement':'num',
                 'duree':'30',
@@ -64,6 +64,8 @@ class CircularRep extends Rep {
      * Apply the parameters
      */
     applyParameters() {
+        super.applyParameters()
+
         // Proximity
         if(this.parameters["display-proximite"]) {
             this.bgProx1.animate(200).opacity(1)
@@ -72,10 +74,6 @@ class CircularRep extends Rep {
             this.bgProx1.animate(200).opacity(0)
             this.bgProx2.animate(200).opacity(0)
         }
-
-        // Time interval
-        this.endTime = nextTime(this.startTime, this.parameters['duree'])
-        displayTime(this.startTime, this.endTime)
 
         // Students changes
         this.students.forEach(s => {

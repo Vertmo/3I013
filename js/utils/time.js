@@ -10,8 +10,8 @@
  * @param time time to look for
  * @return data for this time
  */
-function getData(data, time) {
-    
+function filterEventsByTime(events, startTime, endTime) {
+    return events.filter(e => (e.startTime >= startTime && e.endTime <= endTime))
 }
 
 

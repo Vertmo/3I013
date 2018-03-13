@@ -5,11 +5,16 @@
  */
 
 class Rep {
-    constructor() {
+    constructor(currentTeacher, parameters) {
         // Time
         this.startTime = new Date(0)
-        this.endTime = nextTime(this.startTime, 30)
+        if(parameters) this.endTime = nextTime(this.startTime, parameters.duree)
+        else this.endTime = nextTime(this.startTime, 30)
         displayTime(this.startTime, this.endTime)
+
+        // Data
+        this.filteredEvents = events.filter(e => e.teacherId == currentTeacher)
+        this.currentEvents = filterEventsByTime(events, this.startTime, this.endTime)
     }
 
     /**
@@ -24,6 +29,7 @@ class Rep {
             $('#previous-button').addClass('disabled')
         }
         displayTime(this.startTime, this.endTime)
+        this.currentEvents = filterEventsByTime(events, this.startTime, this.endTime)
     }
 
     /**
@@ -34,6 +40,18 @@ class Rep {
         this.endTime = nextTime(this.endTime, parseInt(this.parameters['duree']))
         displayTime(this.startTime, this.endTime)
         $('#previous-button').removeClass('disabled')
+        this.currentEvents = filterEventsByTime(events, this.startTime, this.endTime)
+    }
+
+    /**
+     * Apply general parameters
+     */
+    applyParameters() {
+         // Time interval
+        this.endTime = nextTime(this.startTime, this.parameters['duree'])
+        displayTime(this.startTime, this.endTime)
+
+        this.currentEvents = filterEventsByTime(events, this.startTime, this.endTime)
     }
 
 }
