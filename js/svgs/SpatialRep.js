@@ -52,7 +52,7 @@ class SpatialRep extends Rep {
         if(form.attr('type')==='checkbox') this.parameters[form.attr('name')] = form.prop('checked')
         else this.parameters[form.attr('name')] = form.attr('tabindex')
     }
-    
+
     /**
      * Apply the parameters
      */
@@ -73,6 +73,19 @@ class SpatialRep extends Rep {
             // Level of skill
             s.setCircularColorAccordingToNiveau(this.parameters['niveau'])
         })
+
+        this.updateVerbalisation()
+    }
+
+    /**
+     * Sets content of the "Verbalisation" box
+     */
+    updateVerbalisation() {
+        let verb = ''
+        this.currentEvents.forEach(e => {
+            if(e.verbalisation && verb.indexOf(e.verbalisation) < 0) verb += ' ' + e.verbalisation
+        }) 
+        $('#verb-container').text(verb)
     }
 
 }

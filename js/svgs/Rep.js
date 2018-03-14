@@ -28,7 +28,7 @@ class Rep {
             this.endTime = nextTime(this.startTime, this.parameters['duree'])
             $('#previous-button').addClass('disabled')
         }
-        applyParameters()
+        this.applyParameters()
     }
 
     /**
@@ -38,7 +38,7 @@ class Rep {
         this.startTime = this.endTime
         this.endTime = nextTime(this.endTime, parseInt(this.parameters['duree']))
         $('#previous-button').removeClass('disabled')
-        applyParameters()
+        this.applyParameters()
     }
 
     /**
