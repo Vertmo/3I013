@@ -14,7 +14,7 @@ class Rep {
 
         // Data
         this.filteredEvents = events.filter(e => e.teacherId == currentTeacher)
-        this.currentEvents = filterEventsByTime(events, this.startTime, this.endTime)
+        this.curretEvents = filterEventsByTime(this.filteredEvents, this.startTime, this.endTime)
     }
 
     /**
@@ -28,8 +28,7 @@ class Rep {
             this.endTime = nextTime(this.startTime, this.parameters['duree'])
             $('#previous-button').addClass('disabled')
         }
-        displayTime(this.startTime, this.endTime)
-        this.currentEvents = filterEventsByTime(events, this.startTime, this.endTime)
+        applyParameters()
     }
 
     /**
@@ -38,20 +37,17 @@ class Rep {
     nextTime() {
         this.startTime = this.endTime
         this.endTime = nextTime(this.endTime, parseInt(this.parameters['duree']))
-        displayTime(this.startTime, this.endTime)
         $('#previous-button').removeClass('disabled')
-        this.currentEvents = filterEventsByTime(events, this.startTime, this.endTime)
+        applyParameters()
     }
 
     /**
      * Apply general parameters
      */
     applyParameters() {
-         // Time interval
+         // Time parameters
         this.endTime = nextTime(this.startTime, this.parameters['duree'])
         displayTime(this.startTime, this.endTime)
-
-        this.currentEvents = filterEventsByTime(events, this.startTime, this.endTime)
+        this.currentEvents = filterEventsByTime(this.filteredEvents, this.startTime, this.endTime)
     }
-
 }
