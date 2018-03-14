@@ -8,8 +8,8 @@
 \graphicspath{{ressources/}}
 
 \title{UE 3I013 : Projet Recherche\\
-    SuperViseur\\
-    Rapport}
+    Encadrante : Vanda Luengo\\
+    SuperViseur : Rapport}
 
 \author{Basile Pesin}
 
@@ -18,6 +18,26 @@
 \maketitle
 \newpage
 
+\section{Rappel des problématiques principales, hypothèses}
+
+
+\section{Choix techniques}
+Afin de pouvoir aisément présenter les résultats de l'étude à la communauté scientifique, ainsi qu'a la communauté éducative à des fins pédagogiques, il a été décidé de rendre les visualisations disponibles sous forme d'un site web. Même si cela s'éloigne légèrement du fonctionnement d'\href{https://undertracks.imag.fr}{Undertracks}, ou les opérateurs sont écrits en Python, on peu imaginer mettre à l'avenir en place un système similaire à celui \href{http://superviseur.lip6.fr}{superviseur.lip6.fr}, ou des opérateurs Python générent des morceaux de codes HTML/Javascript à "imbriquer" dans le reste du code.
+
+\subsection{Bibliothèques}
+Afin de simplifier le développement, on a utilisé plusieurs bibliothèques de fonctionnalités Javascript :
+\begin{itemize}
+    \item \href{https://jquery.com/}{jQuery} qui permet de facilement manipuler le DOM (Document Object Model) HTML. Cette bibliothèque permet également de simplifier les requètes ajax (qui permettent entre autre de charger les données de l'étude). De plus, c'est une dépendance de la bibliothèque suivante.
+    \item \href{https://semantic-ui.com/}{Semantic UI} est un framework HTML/CSS, permettant donc de créer un site web d'aspect convenable rapidement.
+    \item \href{http://svgjs.com/}{SVG.js} a été choisi pour construire les représentations spatiales et circulaires. Comme son nom l'indique, cette bibliothèque manipule des SVG (Scalable Vector Graphics). (au départ, et comme indiqué dans le document de compréhjsion, on souhaitait utiliser la biblioithèque \href{https://p5js.org/}{p5.js}, mais celle-ci était beaucoup moins pratique pour gérer le survol de souris, et qui plus est elle tendait à créer des fuites de mémoires).
+    \item \href{http://www.chartjs.org/}{Chart.js} est une bibliothèque permettant d'afficher des graphiques interactifs. On l'utilise principalement pour résumer les résultats sur la page d'accueil du site.
+\end{itemize}
+
+\section{Réponses}
+
+\section{Conclusion}
+
 \bibliography{bibliographie}{}
 \bibliographystyle{plain}
 \end{document}
+
