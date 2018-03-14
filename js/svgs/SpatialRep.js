@@ -75,6 +75,7 @@ class SpatialRep extends Rep {
         })
 
         this.updateVerbalisation()
+        this.updateTDOP()
     }
 
     /**
@@ -86,6 +87,25 @@ class SpatialRep extends Rep {
             if(e.verbalisation && verb.indexOf(e.verbalisation) < 0) verb += ' ' + e.verbalisation
         }) 
         $('#verb-container').text(verb)
+    }
+
+    /**
+     * Sets content of the "TDOP Interaction" box
+     */
+    updateTDOP() {
+        let TDOPList = []
+        let descTDOPList = []
+        this.currentEvents.forEach(e => {
+            if(e.descTDOP && descTDOPList.indexOf(e.descTDOP) < 0) {
+                TDOPList.push(e.TDOP)
+                descTDOPList.push(e.descTDOP)
+            }
+        })
+        let html = ''
+        for(let i=0; i<TDOPList.length; i++) {
+            html += TDOPList[i] + ' : ' + descTDOPList[i] + '<br/>'
+        }
+        $('#TDOP-interaction-container').html(html)
     }
 
 }
