@@ -74,6 +74,7 @@ class SpatialRep extends Rep {
             s.setColorAccordingToNiveau(this.parameters['niveau'])
         })
 
+        this.updateRegards()
         this.updateVerbalisation()
         this.updateTDOP()
     }
@@ -106,6 +107,30 @@ class SpatialRep extends Rep {
             html += TDOPList[i] + ' : ' + descTDOPList[i] + '<br/>'
         }
         $('#TDOP-interaction-container').html(html)
+    }
+
+    /**
+     * Update regards from teacher to students (lines)
+     */
+    updateRegards() {
+        let res = super.updateRegards()
+        let frequency = res[0]
+        let duration = res[1]
+
+        let maxDuration = duration.reduce((x, y) => Math.max(x, y), 0)
+        duration = duration.map(d => Math.floor(d*255/maxDuration))
+        let maxFrequency = frequency.reduce((x, y) => Math.max(x, y), 0)
+        frequency = frequency.map(f => 30+Math.ceil(f*40/maxFrequency))
+
+        for(let i=0; i<this.students.length; i++) {
+            if(!duration[i]) continue
+            this.regards.push(this.draw.circle(frequency[i])
+                .attr({ fill: 'rgb(' + duration[i] + ',0,' + (255-duration[i]).toString() + ')' })
+                .move(this.students[i].rep.x()+this.students[i].repCircle.width()/2-frequency[i]/2, this.students[i].rep.y()+this.students[i].repCircle.height()/2-frequency[i]/2))
+        }
+
+        // Move teacher and students at the front again
+        this.students.forEach(s => { s.rep.front() })
     }
 
 }
