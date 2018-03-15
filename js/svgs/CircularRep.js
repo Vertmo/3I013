@@ -37,8 +37,8 @@ class CircularRep extends Rep {
         bg.add(this.bgProx1)
 
         // Teacher
-        this.teacherVerbCircle = this.draw.circle(80).attr({ fill: '#f00' })
-        this.teacherVerbCircle.move(this.draw.width()/2-40, this.draw.height()/2-40)
+        this.teacherVerb= this.draw.circle(80).attr({ fill: '#f00' })
+        this.teacherVerb.move(this.draw.width()/2-40, this.draw.height()/2-40)
         this.teacher = this.draw.circle(40).attr({ fill: '#fff', stroke:'#000', 'stroke-width': '10' }).move(20, 20)
         this.teacher.move(this.draw.width()/2-20, this.draw.height()/2-20)
 
@@ -84,6 +84,13 @@ class CircularRep extends Rep {
             else s.setCircularTDOPElevel(null)
         })
 
+        // Verbalisation (ou pas)
+        this.teacherVerb.opacity(0)
+        this.currentEvents.forEach(e => {
+            if(e.verbalisation) this.teacherVerb.opacity(1)
+        })
+
+        // Regards
         this.updateRegards()
     }
 
@@ -109,7 +116,6 @@ class CircularRep extends Rep {
         }
 
         // Move teacher and students at the front again
-        console.log(this.teacherCircle)
         this.students.forEach(s => { s.rep.front() })
         this.teacher.front()
     }
