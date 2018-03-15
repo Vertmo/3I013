@@ -45,6 +45,7 @@ class CircularRep extends Rep {
         teacher.move(this.draw.width()/2-40, this.draw.height()/2-40)
 
         // Students
+        this.svgStudents = []
         this.students = students.filter(s => (s.teacherId == currentTeacher))
         let nbStudents = this.students.length
         this.students.forEach(s => {
@@ -78,11 +79,33 @@ class CircularRep extends Rep {
         // Students changes
         this.students.forEach(s => {
             // Level of skill
-            s.setCircularColorAccordingToNiveau(this.parameters['niveau'])
+            s.setColorAccordingToNiveau(this.parameters['niveau'])
 
             // TDOP TODO Finir ca
             if(this.parameters['display-TDOP_Eleve']) s.setCircularTDOPEleve(null)
-            else s.setCircularTDOPEleve(null)
+            else s.setCircularTDOPElevel(null)
         })
+
+        this.updateRegards()
+    }
+
+    /**
+     * Update regards from teacher to students (lines)
+     */
+    updateRegards() {
+        let res = super.updateRegards()
+        let frequency = res[0]
+        let duration = res[1]
+
+        let maxDuration = duration.reduce((x, y) => Math.max(x, y), 0)
+        duration = duration.map(d => Math.floor(d*255/maxDuration))
+        for(let i=0; i<this.students.length; i++) {
+            if(duration[i]==0) continue
+            this.regards.push(this.draw.line(this.draw.width()/2, 
+                this.draw.height()/2, 
+                this.students[i].rep.x() + this.students[i].repCircle.width()/2, 
+                this.students[i].rep.y() + this.students[i].repCircle.height()/2,
+            ).stroke({ width: 2, color: 'rgb(' + (255-duration[i]).toString() + ',' + (255-duration[i]).toString() + ',' + (255-duration[i]).toString() + ')' }))
+        }
     }
 }

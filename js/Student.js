@@ -15,8 +15,6 @@ class Student {
         this.besoinPart = data.besoinPart
         this.posX = data.posX
         this.posY = data.posY
-
-        this.rep = null
     }
 
     /**
@@ -26,16 +24,15 @@ class Student {
      * @param nbStudents number of students in this class
      */
     createCircularRep(draw, radius, nbStudents) {
-        this.rep = draw.group()
-        this.rep = draw.circle(20).attr({ fill: '#ffffff', stroke: '#000000', 'stroke-width':'3' })
-        let repGroup = draw.group().add(this.rep)
-        if(this.besoinPart) repGroup.add(draw.polygon('10,0 12,8 20,10 12,12 10,20 8,12 0,10 8,8'))
+        this.repCircle = draw.circle(20).attr({ fill: '#ffffff', stroke: '#000000', 'stroke-width':'3' })
+        this.rep = draw.group().add(this.repCircle)
+        if(this.besoinPart) this.rep.add(draw.polygon('10,0 12,8 20,10 12,12 10,20 8,12 0,10 8,8'))
         let distance = Math.sqrt(this.posY**2 + (this.posX-15)**2) * (2/3*radius)/60 + radius/3
-        repGroup.move(radius-20/2 + Math.cos(this.id/nbStudents*2*Math.PI)*distance, radius-20/2 + Math.sin(this.id/nbStudents*2*Math.PI)*distance)
+        this.rep.move(radius-20/2 + Math.cos(this.id/nbStudents*2*Math.PI)*distance, radius-20/2 + Math.sin(this.id/nbStudents*2*Math.PI)*distance)
 
         // Events TODO
-        repGroup.on('mouseover', () => { this.displayAnnotations() })
-        repGroup.on('mouseout', () => {
+        this.rep.on('mouseover', () => { this.displayAnnotations() })
+        this.rep.on('mouseout', () => {
             $('#annotations-display').empty()
         })
     }
@@ -43,21 +40,22 @@ class Student {
     /**
      * Create the SVG for the spatial rep
      * @param draw the SVG container
+     * @param maxPosX maximum x position
+     * @param maxPosY maximum y position
      */
     createSpatialRep(draw, maxPosX, maxPosY) {
         let width = draw.width()
         let height = draw.height()
-        this.rep = draw.group()
-        this.rep = draw.circle(20).attr({ fill: '#ffffff', stroke: '#000000', 'stroke-width':'3' })
-        let repGroup = draw.group().add(this.rep)
-        if(this.besoinPart) repGroup.add(draw.polygon('10,0 12,8 20,10 12,12 10,20 8,12 0,10 8,8'))
+        this.repCircle = draw.circle(20).attr({ fill: '#ffffff', stroke: '#000000', 'stroke-width':'3' })
+        this.rep = draw.group().add(this.repCircle)
+        if(this.besoinPart) this.rep.add(draw.polygon('10,0 12,8 20,10 12,12 10,20 8,12 0,10 8,8'))
         let spatialPosX = this.posX * (width-20) / maxPosX
         let spatialPosY = (this.posY - 3) * (height-100) / (maxPosY-1)
-        repGroup.move(spatialPosX-10, height-spatialPosY-100)
+        this.rep.move(spatialPosX-10, height-spatialPosY-100)
 
         // Events TODO
-        repGroup.on('mouseover', () => { this.displayAnnotations() })
-        repGroup.on('mouseout', () => {
+        this.rep.on('mouseover', () => { this.displayAnnotations() })
+        this.rep.on('mouseout', () => {
             $('#annotations-display').empty()
         })
     }
@@ -79,11 +77,11 @@ class Student {
      * Change color of the circle representing the student
      * @param niveau the type of level used
      */
-    setCircularColorAccordingToNiveau(niveau) {
-        let niv
+    setColorAccordingToNiveau(niveau) {
+        let niv = null
         switch(niveau) {
             case 'none':
-                this.rep.attr({stroke: '#000000'})
+                this.repCircle.attr({stroke: '#000000'})
                 return
             case 'francais':
                 niv = this.nivFrancais
@@ -94,16 +92,16 @@ class Student {
         }
         switch(niv) {
             case 'Faible':
-                this.rep.attr({stroke: '#FFFF00'})
+                this.repCircle.attr({stroke: '#FFFF00'})
                 break
             case 'Passable':
-                this.rep.attr({stroke: '#FF8000'})
+                this.repCircle.attr({stroke: '#FF8000'})
                 break
             case 'Bon':
-                this.rep.attr({stroke: '#FF0000'})
+                this.repCircle.attr({stroke: '#FF0000'})
                 break
             case 'Très Bon':
-                this.rep.attr({stroke: '#a52a2a'})
+                this.repCircle.attr({stroke: '#a52a2a'})
                 break
         }
     }
@@ -111,14 +109,9 @@ class Student {
     /**
      * Change color of the fill in function of current TDOP
      * @param TDOP the current TDOP of the student
+     * TODO
      */
-    setCircularTDOPEleve(TDOP) {
-        switch(TDOP) {
-            case 'b':
-                this.rep.attr({fill: '#000000'})
-                break
-            default:
-                this.rep.attr({fill: '#ffffff'})
-        }
+    setCircularTDOPElevel(TDOP) {
+
     }
 }

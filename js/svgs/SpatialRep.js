@@ -71,7 +71,7 @@ class SpatialRep extends Rep {
         // Students changes
         this.students.forEach(s => {
             // Level of skill
-            s.setCircularColorAccordingToNiveau(this.parameters['niveau'])
+            s.setColorAccordingToNiveau(this.parameters['niveau'])
         })
 
         this.updateVerbalisation()

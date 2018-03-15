@@ -15,6 +15,8 @@ class Rep {
         // Data
         this.filteredEvents = events.filter(e => e.teacherId == currentTeacher)
         this.curretEvents = filterEventsByTime(this.filteredEvents, this.startTime, this.endTime)
+
+        this.regards = []
     }
 
     /**
@@ -49,5 +51,22 @@ class Rep {
         this.endTime = nextTime(this.startTime, this.parameters['duree'])
         displayTime(this.startTime, this.endTime)
         this.currentEvents = filterEventsByTime(this.filteredEvents, this.startTime, this.endTime)
+    }
+
+    /**
+     * Update regards from teacher to students (lines)
+     */
+    updateRegards() {
+        // Removes previous
+        this.regards.forEach(r => {r.remove()})
+
+        // Computes frequency and duration of each
+        let frequency = this.students.map(s => 0)
+        let duration = this.students.map(s => 0)
+        this.currentEvents.forEach(e => {
+            if(e.regarde) duration[e.regarde - 1] += 1
+        })
+
+        return [frequency, duration]
     }
 }
