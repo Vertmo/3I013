@@ -37,12 +37,10 @@ class CircularRep extends Rep {
         bg.add(this.bgProx1)
 
         // Teacher
-        var teacher = this.draw.group()
-        var teacher_verb_circle = this.draw.circle(80).attr({ fill: '#f00' })
-        var teacherCircle = this.draw.circle(40).attr({ fill: '#fff', stroke:'#000', 'stroke-width': '10' }).move(20, 20)
-        teacher.add(teacher_verb_circle)
-        teacher.add(teacherCircle)
-        teacher.move(this.draw.width()/2-40, this.draw.height()/2-40)
+        this.teacherVerbCircle = this.draw.circle(80).attr({ fill: '#f00' })
+        this.teacherVerbCircle.move(this.draw.width()/2-40, this.draw.height()/2-40)
+        this.teacher = this.draw.circle(40).attr({ fill: '#fff', stroke:'#000', 'stroke-width': '10' }).move(20, 20)
+        this.teacher.move(this.draw.width()/2-20, this.draw.height()/2-20)
 
         // Students
         this.svgStudents = []
@@ -99,13 +97,20 @@ class CircularRep extends Rep {
 
         let maxDuration = duration.reduce((x, y) => Math.max(x, y), 0)
         duration = duration.map(d => Math.floor(d*255/maxDuration))
+        let maxFrequency = frequency.reduce((x, y) => Math.max(x, y), 0)
+        frequency = frequency.map(f => Math.ceil(f*10/maxFrequency))
         for(let i=0; i<this.students.length; i++) {
-            if(duration[i]==0) continue
+            if(!duration[i]) continue
             this.regards.push(this.draw.line(this.draw.width()/2, 
                 this.draw.height()/2, 
                 this.students[i].rep.x() + this.students[i].repCircle.width()/2, 
                 this.students[i].rep.y() + this.students[i].repCircle.height()/2,
-            ).stroke({ width: 2, color: 'rgb(' + (255-duration[i]).toString() + ',' + (255-duration[i]).toString() + ',' + (255-duration[i]).toString() + ')' }))
+            ).stroke({ width: frequency[i], color: 'rgb(' + (255-duration[i]).toString() + ',' + (255-duration[i]).toString() + ',' + (255-duration[i]).toString() + ')' }))
         }
+
+        // Move teacher and students at the front again
+        console.log(this.teacherCircle)
+        this.students.forEach(s => { s.rep.front() })
+        this.teacher.front()
     }
 }
