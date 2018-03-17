@@ -25,7 +25,12 @@ $(function() {
 
     // When clicking on "Timelines"
     $('#timelines-tab').click(function() {
-        loadPage('pages/timelines.html', null)
+        loadPage('pages/timelines.html', function() {
+            rep = [new TimelineRep('timelineHolder1', 1),
+                    new TimelineRep('timelineHolder2', 2),
+                    new TimelineRep('timelineHolder3', 3),
+                    new TimelineRep('timelineHolder4', 4)]
+        })
     })
 
     // When clicking on "Représentation circulaire"
@@ -78,6 +83,10 @@ function activateSemanticForms() {
     // Form change event listener
     $('.rep-form :input').change(function() {
         if(rep == null) return
+        if(Array.isArray(rep)) {
+            // TODO (pour les timlines)
+            return
+        }
         rep.changeParameters($(this))
 
         if($(this).attr('name')==='enseignant') {

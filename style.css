@@ -39,3 +39,9 @@
 .orange1 {
     color: #ff9933
 }
+
+/* More stuff */
+.timelineHolder {
+    width: 100%;
+    overflow: auto;
+}

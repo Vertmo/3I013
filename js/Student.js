@@ -15,6 +15,23 @@ class Student {
         this.besoinPart = data.besoinPart
         this.posX = data.posX
         this.posY = data.posY
+        this.color = getRandomColor()
+    }
+
+    /**
+     * Create timeline representation (small rectangle)
+     * @param draw the SVG container
+     * @param start start position
+     * @param length length of the rectangle
+     */
+    createTimelineRep(draw, start, length) {
+        let rect = draw.rect(length, draw.height()).attr({ fill: this.color }).move(start, 0)
+
+        // Display information on the student
+        rect.on('mouseover', () => { this.displayAnnotations() })
+        rect.on('mouseout', () => {
+            $('#annotations-display').empty()
+        })
     }
 
     /**
@@ -30,7 +47,7 @@ class Student {
         let distance = Math.sqrt(this.posY**2 + (this.posX-15)**2) * (2/3*radius)/60 + radius/3
         this.rep.move(radius-20/2 + Math.cos(this.id/nbStudents*2*Math.PI)*distance, radius-20/2 + Math.sin(this.id/nbStudents*2*Math.PI)*distance)
 
-        // Events TODO
+        // Display information on the student
         this.rep.on('mouseover', () => { this.displayAnnotations() })
         this.rep.on('mouseout', () => {
             $('#annotations-display').empty()
@@ -53,13 +70,12 @@ class Student {
         let spatialPosY = (this.posY - 3) * (height-100) / (maxPosY-1)
         this.rep.move(spatialPosX-10, height-spatialPosY-100)
 
-        // Events TODO
+        // Display information on the student
         this.rep.on('mouseover', () => { this.displayAnnotations() })
         this.rep.on('mouseout', () => {
             $('#annotations-display').empty()
         })
     }
-
 
     /**
      * Displays the informations related to this student
