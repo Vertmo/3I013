@@ -127,7 +127,7 @@ class Student {
      * @param TDOP the current TDOP of the student
      * TODO
      */
-    setCircularTDOPElevel(TDOP) {
+    setCircularTDOPEleve(TDOP) {
 
     }
 }

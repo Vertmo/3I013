@@ -81,7 +81,7 @@ class CircularRep extends Rep {
 
             // TDOP TODO Finir ca
             if(this.parameters['display-TDOP_Eleve']) s.setCircularTDOPEleve(null)
-            else s.setCircularTDOPElevel(null)
+            else s.setCircularTDOPEleve(null)
         })
 
         // Verbalisation (ou pas)
