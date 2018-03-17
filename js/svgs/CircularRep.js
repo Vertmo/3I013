@@ -29,10 +29,10 @@ class CircularRep extends Rep {
 
         // Background
         var bg = this.draw.group()
-        var bg_TDOP_t_s = this.draw.circle(width).attr({ fill: '#99ffb3' })
+        this.bgTDOP = this.draw.circle(width).attr({ fill: '#99ffb3' })
         this.bgProx2 = this.draw.circle(3*width/4).attr({ fill: '#d3d3d3' }).opacity(0).move(width/8, width/8)
         this.bgProx1 = this.draw.circle(width/2).attr({ fill: '#a0a0a0' }).opacity(0).move(width/4, width/4)
-        bg.add(bg_TDOP_t_s)
+        bg.add(this.bgTDOP)
         bg.add(this.bgProx2)
         bg.add(this.bgProx1)
 
@@ -90,8 +90,47 @@ class CircularRep extends Rep {
             if(e.verbalisation) this.teacherVerb.opacity(1)
         })
 
+        // TDOP
+        this.updateTDOP()
+
         // Regards
         this.updateRegards()
+    }
+
+    /**
+     * Updates the background color according to TDOP
+     */
+    updateTDOP() {
+        let TDOPTypes = [null, 'TRANS', 'EXE_INT', 'C_AV', 'Trav-IND', 'C-EV', 'Prés-E']
+        let countTDOPS = TDOPTypes.map(t => this.currentEvents.filter(x => x.TDOP===t).length)
+        let max = 0
+        for(let i=1; i<TDOPTypes.length; i++) {
+            if(countTDOPS[i] > countTDOPS[max]) max = i;
+        }
+        this.bgTDOP.opacity(1)
+        switch(TDOPTypes[max]) {
+            case 'TRANS':
+                this.bgTDOP.attr({fill: '#2ECCFA'})
+                break
+            case 'EXE_INT':
+                this.bgTDOP.attr({fill: '#58FAF4'})
+                break
+            case 'C_AV':
+                this.bgTDOP.attr({fill: '#2EFE9A'})
+                break
+            case 'Trav-IND':
+                this.bgTDOP.attr({fill: '#00FF40'})
+                break
+            case 'C-EV':
+                this.bgTDOP.attr({fill: '#9AFE2E'})
+                break
+            case 'Prés-E':
+                this.bgTDOP.attr({fill: '#F7FE2E'})
+                break
+            case null:
+                this.bgTDOP.opacity(0)
+                break
+        }
     }
 
     /**
