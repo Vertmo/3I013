@@ -20,12 +20,12 @@ $(function() {
 
     // When clicking on "Résumé"
     $('#main-tab').click(function() {
-        loadPage('pages/main.html', null)
+        loadPage('pages/main.html', () => {activateSemanticForms(); loadCharts()})
     })
 
     // When clicking on "Timelines"
     $('#timelines-tab').click(function() {
-        loadPage('pages/timelines.html', function() {
+        loadPage('pages/timelines.html', () => {
             rep = [new TimelineRep('timelineHolder1', 1),
                     new TimelineRep('timelineHolder2', 2),
                     new TimelineRep('timelineHolder3', 3),
@@ -34,7 +34,7 @@ $(function() {
     })
 
     // When clicking on "Représentation circulaire"
-    $('#circular-rep-tab').click(function() {
+    $('#circular-rep-tab').click(() => {
         loadPage('pages/circular-rep.html', function() {
             activateSemanticForms()
             repType = 'circular'
@@ -44,7 +44,7 @@ $(function() {
     })
 
     // When clicking on "Représentaiton spatiale"
-    $('#spatial-rep-tab').click(function() {
+    $('#spatial-rep-tab').click(() => {
         loadPage('pages/spatial-rep.html', function() {
             activateSemanticForms()
             repType = 'spatial'
@@ -54,7 +54,7 @@ $(function() {
     })
 
     // Default : main tab
-    loadPage('pages/main.html', null)
+    loadPage('pages/main.html', () => {activateSemanticForms(); loadCharts()})
 })
 
 
