@@ -4,43 +4,65 @@
  * @author Basile Pesin
  */
 
-function loadCharts() {
+/**
+ * Loads the charts on the main page
+ * @param order Order in which to sort the students
+ */
+
+var timeByStudentChart
+
+function loadCharts(order) {
     let maxNbStudents = students.reduce((a, s) => Math.max(a, s.id), 0)
+    let labels
     let values = [[],[],[],[]]
-    for(let i=0; i<4; i++) {
-        let range = Array.apply(null, Array(maxNbStudents)).map((_, i) => (i+1))
-        values[i] = range.map(j => events.reduce((a, s) => s.teacherId==(i+1) && s.regarde==j ? a+1 : a, 0))
-        let maxValue = values[i].reduce((a, v) => Math.max(a, v), 0)
-        values[i] = values[i].map(v => v/maxValue)
+    if(order === 'num') {
+        labels = Array.apply(null, Array(maxNbStudents)).map((_, i) => (i+1) + "e")
+        for(let i=0; i<4; i++) {
+            let range = Array.apply(null, Array(maxNbStudents)).map((_, i) => (i+1))
+            values[i] = range.map(j => events.reduce((a, s) => s.teacherId==(i+1) && s.regarde==j ? a+1 : a, 0))
+            let maxValue = values[i].reduce((a, v) => Math.max(a, v), 0)
+            values[i] = values[i].map(v => v/maxValue)
+        }
+    } else {
+        labels = Array.apply(null, Array(maxNbStudents)).map((_, i) => [[],[],[],[]])
+        for(let i=0; i<4; i++) {
+            let sortedStudents = students.filter(s => s.teacherId==(i+1)).sort((s1, s2) => niveauValue(s1[order]) > niveauValue(s2[order]))
+            console.log(sortedStudents)
+            for(let j=0; j<sortedStudents.length; j++) labels[j][i] = sortedStudents[j].id + 'e'
+            values[i] = sortedStudents.map(s => events.reduce((a, e) => e.teacherId==(i+1) && e.regarde==s.id ? a+1 : a, 0))
+            let maxValue = values[i].reduce((a, v) => Math.max(a, v), 0)
+            values[i] = values[i].map(v => v/maxValue)
+        }
+        console.log(labels)
     }
-    console.log(values)
     let ctx = $('#timeByStudentChart')
-    let timeByStudentChart = new Chart(ctx, {
+    if(timeByStudentChart) timeByStudentChart.destroy()
+    timeByStudentChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: Array.apply(null, Array(maxNbStudents)).map((_, i) => (i+1) + "e"),
+            labels: labels,
             datasets: [{
                 label:'EN1',
                 data: values[0],
-                backgroundColor: 'rgba(255, 0, 0, 0.2)',
+                backgroundColor: 'rgba(255, 0, 0, 0.4)',
                 borderColor: 'rgba(255, 0, 0, 1)'
             },
             {
                 label:'EN2',
                 data: values[1],
-                backgroundColor: 'rgba(55, 255, 30, 0.2)',
+                backgroundColor: 'rgba(55, 255, 30, 0.4)',
                 borderColor: 'rgba(55, 255, 30, 1)'
             },
             {
                 label:'EN3',
                 data: values[2],
-                backgroundColor: 'rgba(0, 0, 255, 0.2)',
+                backgroundColor: 'rgba(0, 0, 255, 0.4)',
                 borderColor: 'rgba(0, 0, 255, 1)'
             },
             {
                 label:'EN4',
                 data: values[3],
-                backgroundColor: 'rgba(255, 255, 0, 0.2)',
+                backgroundColor: 'rgba(255, 255, 0, 0.4)',
                 borderColor: 'rgba(255, 255, 0, 1)'
             }]
         },
@@ -54,4 +76,16 @@ function loadCharts() {
             }
         }
     })
+}
+
+/**
+ * Versions numérique des niveaux (textuels) des élèves
+ * @param string le niveau (textuel)
+ * @return la valeur numérique
+ */
+function niveauValue(string) {
+    if(string==='Faible') return 0
+    if(string==='Passable') return 1
+    if(string==='Bon') return 2
+    return 3
 }

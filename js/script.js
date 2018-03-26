@@ -20,7 +20,7 @@ $(function() {
 
     // When clicking on "Résumé"
     $('#main-tab').click(function() {
-        loadPage('pages/main.html', () => {activateSemanticForms(); loadCharts()})
+        loadPage('pages/main.html', () => {activateSemanticForms(); loadCharts('num')})
     })
 
     // When clicking on "Timelines"
@@ -54,7 +54,7 @@ $(function() {
     })
 
     // Default : main tab
-    loadPage('pages/main.html', () => {activateSemanticForms(); loadCharts()})
+    loadPage('pages/main.html', () => {activateSemanticForms(); loadCharts('num')})
 })
 
 
@@ -88,7 +88,7 @@ function activateSemanticForms() {
             return
         }
         rep.changeParameters($(this))
-
+        
         if($(this).attr('name')==='enseignant') {
             if(rep instanceof CircularRep) rep = new CircularRep('circular-svg-holder', $(this).attr('tabindex'), rep.parameters)
             else if(rep instanceof SpatialRep) rep = new SpatialRep('spatial-svg-holder', $(this).attr('tabindex'), rep.parameters)
@@ -96,6 +96,13 @@ function activateSemanticForms() {
 
         // Impacting the changes
         rep.applyParameters()
+    })
+
+    // Main page form change event listener
+    $('#main-page-form :input').change(function() {
+        if($(this).attr('name')==='chart-ordre') {
+            loadCharts($(this).attr('tabindex'))
+        }
     })
 
     $('#previous-button').addClass('disabled')
