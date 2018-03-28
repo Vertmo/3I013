@@ -101,36 +101,49 @@ class CircularRep extends Rep {
      * Updates the background color according to TDOP
      */
     updateTDOP() {
-        let TDOPTypes = [null, 'TRANS', 'EXE_INT', 'C_AV', 'Trav-IND', 'C-EV', 'Prés-E']
-        let countTDOPS = TDOPTypes.map(t => this.currentEvents.filter(x => x.TDOP===t).length)
+        let TDOPTypes = [null, 'TRANS', 'EXE_INT', 'C_AV', 'Trav-IND', 'C-EV', 'Prés-E', 'D-GR']
+        let countTDOPs = TDOPTypes.map(t => this.currentEvents.filter(x => x.TDOP.startsWith(t)).length)
         let max = 0
         for(let i=1; i<TDOPTypes.length; i++) {
-            if(countTDOPS[i] > countTDOPS[max]) max = i;
+            if(countTDOPs[i] > countTDOPs[max]) max = i;
         }
         this.bgTDOP.opacity(1)
+
+        // Changes the color of the background circle according to TDOP
         switch(TDOPTypes[max]) {
             case 'TRANS':
-                this.bgTDOP.attr({fill: '#2ECCFA'})
+                this.bgTDOP.attr({fill: '#cdf2fe'})
                 break
             case 'EXE_INT':
-                this.bgTDOP.attr({fill: '#58FAF4'})
+                this.bgTDOP.attr({fill: '#9cfcf8'})
                 break
             case 'C_AV':
-                this.bgTDOP.attr({fill: '#2EFE9A'})
+                this.bgTDOP.attr({fill: '#81fec1'})
                 break
             case 'Trav-IND':
-                this.bgTDOP.attr({fill: '#00FF40'})
+                this.bgTDOP.attr({fill: '#1aff53'})
                 break
             case 'C-EV':
-                this.bgTDOP.attr({fill: '#9AFE2E'})
+                this.bgTDOP.attr({fill: '#b5fd68'})
                 break
             case 'Prés-E':
-                this.bgTDOP.attr({fill: '#F7FE2E'})
+                this.bgTDOP.attr({fill: '#fafe80'})
+                break
+            case 'D-GR':
+                this.bgTDOP.attr({fill: '#ccccff'})
                 break
             case null:
                 this.bgTDOP.opacity(0)
                 break
         }
+
+        // Display information on the TDOP
+        this.bgTDOP.on('mouseover', () => { 
+            $('#annotations-display').html('TDOP majoritaire : ' + TDOPTypes[max])
+        })
+        this.bgTDOP.on('mouseout', () => {
+            $('#annotations-display').empty()
+        })
     }
 
     /**
