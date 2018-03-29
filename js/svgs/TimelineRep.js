@@ -5,10 +5,11 @@
  */
 
 class TimelineRep extends Rep {
-    constructor(holder, currentTeacher, parameters = null) {
+    constructor(holder, currentTeacher, parameters = {studentGrouping:'none'}) {
         super(currentTeacher, parameters)
 
         // Basic Setup
+        $('#'+holder).empty()
         this.draw = SVG(holder).size(this.filteredEvents.length*4, 30)
 
         // Students
@@ -19,7 +20,7 @@ class TimelineRep extends Rep {
         let i = 0
         this.timeline.forEach(e => {
             if(isNaN(e[0].regarde)) this.draw.rect(e.length*4, this.draw.height()).attr({ fill: '#FFFFFF' }).move(i*4)
-            else this.students[e[0].regarde-1].createTimelineRep(this.draw, i*4, e.length*4)
+            else this.students[e[0].regarde-1].createTimelineRep(this.draw, i*4, e.length*4, parameters["studentGrouping"])
             i += e.length
         })
     }

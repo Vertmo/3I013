@@ -20,16 +20,14 @@ $(function() {
 
     // When clicking on "Résumé"
     $('#main-tab').click(function() {
-        loadPage('pages/main.html', () => {activateSemanticForms(); loadCharts('num')})
+        loadPage('pages/main.html', () => {activateSemanticForms(); loadCharts('num'); displayGinis()})
     })
 
     // When clicking on "Timelines"
     $('#timelines-tab').click(function() {
         loadPage('pages/timelines.html', () => {
-            rep = [new TimelineRep('timelineHolder1', 1),
-                    new TimelineRep('timelineHolder2', 2),
-                    new TimelineRep('timelineHolder3', 3),
-                    new TimelineRep('timelineHolder4', 4)]
+            activateSemanticForms()
+            rep = createTimelines('none')
         })
     })
 
@@ -54,7 +52,7 @@ $(function() {
     })
 
     // Default : main tab
-    loadPage('pages/main.html', () => {activateSemanticForms(); loadCharts('num')})
+    loadPage('pages/main.html', () => {activateSemanticForms(); loadCharts('num'); displayGinis()})
 })
 
 
@@ -83,12 +81,8 @@ function activateSemanticForms() {
     // Form change event listener
     $('.rep-form :input').change(function() {
         if(rep == null) return
-        if(Array.isArray(rep)) {
-            // TODO (pour les timlines)
-            return
-        }
         rep.changeParameters($(this))
-        
+
         if($(this).attr('name')==='enseignant') {
             if(rep instanceof CircularRep) rep = new CircularRep('circular-svg-holder', $(this).attr('tabindex'), rep.parameters)
             else if(rep instanceof SpatialRep) rep = new SpatialRep('spatial-svg-holder', $(this).attr('tabindex'), rep.parameters)
@@ -103,6 +97,10 @@ function activateSemanticForms() {
         if($(this).attr('name')==='chart-ordre') {
             loadCharts($(this).attr('tabindex'))
         }
+    })
+
+    $('#timelines-form :input').change(function() {
+        rep = createTimelines($(this).attr('tabindex'))
     })
 
     $('#previous-button').addClass('disabled')
@@ -168,4 +166,16 @@ function loadEvents() {
             })
         }
     })
+}
+
+/**
+ * Create the timelines, depending on parameters
+ * @param type type of the timelines
+ * @return array containing the timelines
+ */
+function createTimelines(studentGrouping) {
+    return [new TimelineRep('timelineHolder1', 1, {studentGrouping:studentGrouping}),
+        new TimelineRep('timelineHolder2', 2, {studentGrouping:studentGrouping}),
+        new TimelineRep('timelineHolder3', 3, {studentGrouping:studentGrouping}),
+        new TimelineRep('timelineHolder4', 4, {studentGrouping:studentGrouping})]
 }

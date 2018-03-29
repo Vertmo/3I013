@@ -27,13 +27,11 @@ function loadCharts(order) {
         labels = Array.apply(null, Array(maxNbStudents)).map((_, i) => [[],[],[],[]])
         for(let i=0; i<4; i++) {
             let sortedStudents = students.filter(s => s.teacherId==(i+1)).sort((s1, s2) => niveauValue(s1[order]) > niveauValue(s2[order]))
-            console.log(sortedStudents)
             for(let j=0; j<sortedStudents.length; j++) labels[j][i] = sortedStudents[j].id + 'e'
             values[i] = sortedStudents.map(s => events.reduce((a, e) => e.teacherId==(i+1) && e.regarde==s.id ? a+1 : a, 0))
             let maxValue = values[i].reduce((a, v) => Math.max(a, v), 0)
             values[i] = values[i].map(v => v/maxValue)
         }
-        console.log(labels)
     }
     let ctx = $('#timeByStudentChart')
     if(timeByStudentChart) timeByStudentChart.destroy()
@@ -88,4 +86,34 @@ function niveauValue(string) {
     if(string==='Passable') return 1
     if(string==='Bon') return 2
     return 3
+}
+
+/**
+ * Displays all the Gini coefficients
+ */
+function displayGinis() {
+    $('#gini1').html(calculateGini(1))
+    $('#gini2').html(calculateGini(2))
+    $('#gini3').html(calculateGini(3))
+    $('#gini4').html(calculateGini(4))
+}
+
+/**
+ * Calculates the Gini coefficient of a teacher
+ * @param teacherId the id of the teacher we're calculating the Gini coefficient of
+ * @return the Gini coefficient
+ */
+function calculateGini(teacherId) {
+    let filteredStudents = students.filter(s => s.teacherId == teacherId)
+    let filteredEvents = events.filter(e => e.teacherId == teacherId)
+    let values = filteredStudents.map(s => 0)
+    filteredEvents.forEach(e => {
+        if(!isNaN(e.regarde)) values[e.regarde-1] += 1
+    })
+    values = values.sort((x, y) => x > y)
+    let n = values.length
+    let somme = 0
+    for(let i=1; i<=n; i++) somme += (n + 1 - i)*values[i-1]
+    let g = (1/n)*(n+1-2*(somme)/(values.reduce((x, y) => x + y, 0)))
+    return g
 }

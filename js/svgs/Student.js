@@ -24,8 +24,30 @@ class Student {
      * @param start start position
      * @param length length of the rectangle
      */
-    createTimelineRep(draw, start, length) {
-        let rect = draw.rect(length, draw.height()).attr({ fill: this.color }).move(start, 0)
+    createTimelineRep(draw, start, length, grouping) {
+        let rect
+        if(grouping == 'none') {
+            rect = draw.rect(length, draw.height()).attr({ fill: this.color }).move(start, 0)
+        } else {
+            let niveau
+            if(grouping == "francais") niveau = this.nivFrancais
+            else niveau = this.nivMaths
+            
+            switch(niveau) {
+                case "Faible":
+                    rect = draw.rect(length, draw.height()).attr({ fill: '#FF0000' }).move(start, 0)
+                    break;
+                case "Passable":
+                    rect = draw.rect(length, draw.height()).attr({ fill: '#FF8000' }).move(start, 0)
+                    break;
+                case "Bon":
+                    rect = draw.rect(length, draw.height()).attr({ fill: '#FFFF00' }).move(start, 0)
+                    break;
+                case "Très Bon":
+                    rect = draw.rect(length, draw.height()).attr({ fill: '#00FF00' }).move(start, 0)
+                    break;
+            }
+        }
 
         // Display information on the student
         rect.on('mouseover', () => { this.displayAnnotations() })
