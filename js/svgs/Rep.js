@@ -47,10 +47,22 @@ class Rep {
      * Apply general parameters
      */
     applyParameters() {
-         // Time parameters
-        this.endTime = nextTime(this.startTime, this.parameters['duree'])
-        displayTime(this.startTime, this.endTime)
-        this.currentEvents = filterEventsByTime(this.filteredEvents, this.startTime, this.endTime)
+        // Time parameters
+        if(this.parameters['duree'] == 'all') {
+            this.startTime = new Date(0)
+            this.endTime = new Date(3600*1000)
+            displayTime(this.startTime, this.endTime)
+            this.currentEvents = filterEventsByTime(this.filteredEvents, this.startTime, this.endTime)
+
+            $('#previous-button').addClass('disabled')
+            $('#next-button').addClass('disabled')
+        } else {
+            this.endTime = nextTime(this.startTime, this.parameters['duree'])
+            displayTime(this.startTime, this.endTime)
+            this.currentEvents = filterEventsByTime(this.filteredEvents, this.startTime, this.endTime)
+
+            $('#next-button').removeClass('disabled')
+        }
     }
 
     /**

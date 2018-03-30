@@ -31,7 +31,7 @@
             </div>
 
             <div class="inline fields">
-                <label for="duree">Durée d'une séquence :</label>
+                <label for="duree">Durée séq :</label>
                 <div class="field">
                     <div class="ui radio checkbox">
                         <input name="duree" checked="" tabindex="30" class="hidden" type="radio">
@@ -72,6 +72,12 @@
                     <div class="ui radio checkbox">
                         <input name="duree" tabindex="600" class="hidden" type="radio">
                         <label>10'</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input name="duree" tabindex="all" class="hidden" type="radio">
+                        <label>Tout</label>
                     </div>
                 </div>
             </div>
@@ -119,7 +125,7 @@
                     <i class="huge violet lightbulb icon"></i>
                 </div>
                 <div class="eleven wide column">
-                    <div id="TDOP-interaction-container" class="ui segment" style="height: 120px"></div>
+                    <div id="TDOP-interaction-container" class="ui segment" style="height: 120px; overflow: auto"></div>
                 </div>
             </div>
             <!--<div class="two column row">
