@@ -88,9 +88,9 @@ class Student {
         this.repCircle = draw.circle(20).attr({ fill: '#ffffff', stroke: '#000000', 'stroke-width':'3' })
         this.rep = draw.group().add(this.repCircle)
         if(this.besoinPart) this.rep.add(draw.polygon('10,0 12,8 20,10 12,12 10,20 8,12 0,10 8,8'))
-        let spatialPosX = this.posX * (width-20) / maxPosX
-        let spatialPosY = (this.posY - 3) * (height-100) / (maxPosY-1)
-        this.rep.move(spatialPosX-10, height-spatialPosY-100)
+        let spatialPosX = this.posX * (width-20) / maxPosX - 10
+        let spatialPosY = height - (this.posY - 3) * (height-100) / (maxPosY-1) - 100
+        this.rep.move(spatialPosX, spatialPosY)
 
         // Display information on the student
         this.rep.on('mouseover', () => { this.displayAnnotations() })

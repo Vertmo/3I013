@@ -4,13 +4,12 @@
  * @author Basile Pesin
  */
 
+var timeByStudentChart
+
 /**
  * Loads the charts on the main page
  * @param order Order in which to sort the students
  */
-
-var timeByStudentChart
-
 function loadCharts(order) {
     let maxNbStudents = students.reduce((a, s) => Math.max(a, s.id), 0)
     let labels

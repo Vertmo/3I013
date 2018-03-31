@@ -3,7 +3,8 @@
  */
 
 /**
- * Generate a random color
+ * Generates a random color
+ * @return color as a hex string
  */
 function getRandomColor() {
     var letters = '0123456789ABCDEF';

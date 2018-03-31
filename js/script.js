@@ -146,6 +146,7 @@ function loadStudents() {
  */
 function loadEvents() {
     let filename = 'data/events.csv'
+    //let filename = 'data/eventswithcoords.csv'
     $.ajax({
         type: 'GET',
         url: filename,
@@ -161,7 +162,9 @@ function loadEvents() {
                     verbalisation: arr[12],
                     TDOP: arr[14],
                     descTDOP: arr[17],
-                    regarde: parseInt(arr[11])
+                    regarde: parseInt(arr[11]),
+                    posX: parseFloat(arr[24]),
+                    posY: parseFloat(arr[25])
                 })
             })
         }

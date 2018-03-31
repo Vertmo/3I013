@@ -27,14 +27,14 @@ class SpatialRep extends Rep {
         this.draw = SVG(holder).size(width, height)    
 
         // Teacher and it's proximity zone
-        var teacher = this.draw.group()
+        this.teacher = this.draw.group()
         this.bgProx2 = this.draw.rect(width, height).attr({ fill: '#d3d3d3' }).move(-width/2, -height/2).opacity(0)
         this.bgProx1 = this.draw.rect(width/2, height/2).attr({ fill: '#a0a0a0' }).move(-width/4, -height/4).opacity(0)
         let teacherCircle = this.draw.circle(40).attr({ fill: '#fff', stroke:'#000', 'stroke-width': '10' }).move(-20, 0)
-        teacher.add(this.bgProx2)
-        teacher.add(this.bgProx1)
-        teacher.add(teacherCircle)
-        teacher.move(width/2, height-50)
+        this.teacher.add(this.bgProx2)
+        this.teacher.add(this.bgProx1)
+        this.teacher.add(teacherCircle)
+        this.teacher.move(width/2, height-50)
 
         // Students
         this.students = students.filter(s => (s.teacherId == currentTeacher))
@@ -77,6 +77,7 @@ class SpatialRep extends Rep {
         this.updateRegards()
         this.updateVerbalisation()
         this.updateTDOP()
+        this.updateTeacherPos()
     }
 
     /**
@@ -131,6 +132,22 @@ class SpatialRep extends Rep {
 
         // Move teacher and students at the front again
         this.students.forEach(s => { s.rep.front() })
+    }
+
+    /**
+     * Moves the teacher position
+     */
+    updateTeacherPos() {
+        if(this.parameters['display-position'] && !isNaN(this.filteredEvents[0]['posX'])) {
+            let moyX = this.currentEvents.reduce((a, e) => a + e['posX'], 0)/this.currentEvents.length
+            let moyY = this.currentEvents.reduce((a, e) => a + e['posY'], 0)/this.currentEvents.length
+
+            let width = this.draw.width()
+            let height = this.draw.height()
+            let spatialPosX = moyX * (width-20) / 40 - 10
+            let spatialPosY = height - (moyY - 3) * (height-100) / 40 - 100
+            this.teacher.move(spatialPosX, spatialPosY)
+        }
     }
 
 }
