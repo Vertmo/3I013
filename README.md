@@ -9,10 +9,10 @@ Le dossier `/pages` contient les différentes pages du site (bien sur le fichier
 Le dossier `/docs` contient :
 * **bibliographie.bib** : La bibliographie qui sera commune a tous les futurs documents rédigés en LaTeX au cours du projet
 * **comprehension.tex** : Le document résumant ma compréhension du problème, premier rendu demandé par l'UE
-
-C'est tout (pour le moment) ! A venir : la réalisation du projet en elle-même, et le rapport qui va avec. Peut être d'autre chose.
+* **rapport.tex** : Le rapport à rendre à la fin du projet (en cours de réalisation)
 
 ## Deploiement ##
-Le repo ne contient que les sources du projet. Il est donc nécessaire de les compiler pour pouvoir utiliser les programmes et lire les PDFs produits confortablement.
-* Compiler *comprehension.tex* en pdf : `pdflatex comprehension` puis `bibtex comprehension` puis `pdflatex comprehension` puis encore `pdflatex comprehension`. Malheureusement l'utilisation de bibtex rends cette procédure un peu longue.
-* Le site peut être visité sur [https://vertmo.github.io/SuperViseur/](https://vertmo.github.io/SuperViseur/). (il s'agit de la dernière version de la branche master).
+Le repo ne contient que les sources du projet. Il est donc nécessaire de compiler les fichiers *.tex* pour pouvoir lire les PDFs produits confortablement. Compiler *comprehension.tex* en pdf : `pdflatex comprehension` puis `bibtex comprehension` puis `pdflatex comprehension` puis encore `pdflatex comprehension`. Malheureusement l'utilisation de bibtex rends cette procédure un peu longue.
+
+
+Le site peut être visité sur [https://vertmo.github.io/SuperViseur/](https://vertmo.github.io/SuperViseur/). (il s'agit de la dernière version de la branche master).
