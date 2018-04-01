@@ -91,10 +91,10 @@ function niveauValue(string) {
  * Displays all the Gini coefficients
  */
 function displayGinis() {
-    $('#gini1').html(calculateGini(1))
-    $('#gini2').html(calculateGini(2))
-    $('#gini3').html(calculateGini(3))
-    $('#gini4').html(calculateGini(4))
+    $('#gini1').html(calculateGini(1).toFixed(3))
+    $('#gini2').html(calculateGini(2).toFixed(3))
+    $('#gini3').html(calculateGini(3).toFixed(3))
+    $('#gini4').html(calculateGini(4).toFixed(3))
 }
 
 /**

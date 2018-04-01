@@ -18,11 +18,13 @@
 \maketitle
 \newpage
 
-\section{Rappel des problématiques principales, hypothèses}
-
+\section{Rappel des problématiques et hypothèses principales}
+Comme vu dans le document de compréhension, l'objectif de cette étude est de relever les comportements mis en oeuvres par les enseignants en face de leur classe, et plus particulièrement de déterminer les caractéristiques du "groupe de référence", c'est a dire le sous-ensemble d'élèves qui bénéficie du plus d'attention de la part de l'enseignant. Dans cette optique, on tentera aussi de vérifier des différences comportementales entre enseignant novices et expérimentés.\\
+Les résultats obtenus, au dela de leur intéret théorique, pourront également être utilisées à des fins de formations. Les visualisations réalisées doivent donc être facilement manipulables et interprétables par des personnes n'étant pas membre de la communauté scientifique. On portera donc un soin particulier à l'ergonomie du site construit.
 
 \section{Choix techniques}
-Afin de pouvoir aisément présenter les résultats de l'étude à la communauté scientifique, ainsi qu'a la communauté éducative à des fins pédagogiques, il a été décidé de rendre les visualisations disponibles sous forme d'un site web. Même si cela s'éloigne légèrement du fonctionnement d'\href{https://undertracks.imag.fr}{Undertracks}, ou les opérateurs sont écrits en Python, on peu imaginer mettre à l'avenir en place un système similaire à celui \href{http://superviseur.lip6.fr}{superviseur.lip6.fr}, ou des opérateurs Python générent des morceaux de codes HTML/Javascript à "imbriquer" dans le reste du code.
+Afin de pouvoir aisément présenter les résultats de l'étude à la communauté scientifique, ainsi qu'a la communauté éducative à des fins pédagogiques, il a été décidé de rendre les visualisations disponibles sous forme d'un site web. Même si cela s'éloigne légèrement du fonctionnement d'\href{https://undertracks.imag.fr}{Undertracks}, ou les opérateurs sont écrits en Python, on peu imaginer mettre à l'avenir en place un système similaire à celui \href{http://superviseur.lip6.fr}{superviseur.lip6.fr}, ou des opérateurs Python générent des morceaux de codes HTML/Javascript à "imbriquer" dans le reste du code.\\
+Le résultat du travail est visible \href{https://vertmo.github.io/SuperViseur/}{ici}. L'intégralité du code source est également disponible sur \href{https://github.com/Vertmo/SuperViseur}{GitHub}.
 
 \subsection{Bibliothèques}
 Afin de simplifier le développement, on a utilisé plusieurs bibliothèques de fonctionnalités Javascript :
@@ -41,13 +43,17 @@ Dans le cadre de ce projet, on utilisera principalement la table des utilisateur
 
 \subsubsection{Anonymisation des données}
 Le projet SuperViseur impliquant la récolte de données sur des élèves de primaire (CP, CE1, CE2) il est très important de correctement anonymiser les données avant de les rendre publiques. Cela signifie, entre autres, que les vidéos enregistrés par le système d'eye tracking ne sont pas accessibles au public, et que les prénoms des élèves ont évidemment été supprimés de la table des utilisateurs avant même la mise en ligne sur UnderTracks. Le problème est que ces prénoms se trouvent aussi dans la verbalisation de l'enseignant (qui s'adresse à ses élèves par leurs prénoms). Même si cela ne permet pas directement d'identifier quel élève porte quel prénom, on peut, en mettant en relation les élèves regardés et ceux nommés par l'enseignant, parvenir à identifier les élèves.\\
-On a donc réalisé un petit script permettant de remplacer les prénoms des élèves par leurs numéros dans la verbalisation de l'enseignant. En plus d'anonymiser les données, cela a l'avantage de permettre de mieux visualiser les relations entre les élèves nommés et les élèves regardés.
+On a donc réalisé un petit script (en python) permettant de remplacer les prénoms des élèves par leurs numéros dans la verbalisation de l'enseignant. En plus d'anonymiser les données, cela a l'avantage de permettre de mieux visualiser les relations entre les élèves nommés et les élèves regardés. Bien entendu, ce script contenant lui même une table des correspondances prénoms / numéros des élèves, il n'est pas inclut dans le dépot.
 
 \subsubsection{Position de l'enseignant}
 Une information utile dans le cadre de nos visualisations spatiales est la position de l'enseignant dans la classe. En effet, on peut faire l'hypothèse que le regard de l'enseignant se pose plus souvent sur les élèves proches de lui. Le problème est que cette information n'est pas présente dans la transcription des données actuellement disponible (mais elle le sera à l'avenir).\\
 Afin de pouvoir malgré tout tester cette fonctionnalité de nos visualisations, on a donc crée une version "factice" de cette donnée, en ajoutant à la table des évènements deux colonnes posX et posY indiquant respetivement la position en X et en Y de l'enseignant (pour les questions de direction des axes, d'origine et d'echelle, on a gardé la convention utilisée pour noter la position des élèves). Dans nos données factices, l'enseignant suit donc une marche aléatoire en deux dimensions : $(posX, posY) \in [0, 40]^2$.
 
-\section{Réponses}
+\section{Observations}
+% Organiser tout ca !
+On rappelle que les enseignants les plus expérimentés sont les enseignants 1 et 4 (plus de 20 ans d'expérience) tandis que les enseignants 2 et 3 ont moins d'une année d'expérience.\\
+On remarque déjà que l'attention des enseignants débutants est plus "fragmentée" : en effet la durée moyenne de leurs regards est plus courte (0.58 et 0.66s, contre 0.72 et 0.88s pour les enseignants expérimentés).\\
+Les coefficients GINI en revanche ne permettent pas de différencier les enseignants novices et experimentés : tous les coefficients sont situés entre 0.24 et 0.35. L'enseignant ayant le coefficient le plus faible (0.24), et donc qui partage son attention de la façon la plus équitable est expérimenté (l'enseignant 4), mais l'enseignant 1 qui est lui aussi expérimenté a le coefficient le plus fort (0.349).
 
 \section{Conclusion}
 
