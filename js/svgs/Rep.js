@@ -20,14 +20,22 @@ class Rep {
     }
 
     /**
+     * Set time (using the range slider)
+     * @param val time selected
+     */
+    setStartTime(val) {
+        this.startTime = new Date(val*1000)
+        this.applyParameters()
+    }
+
+    /**
      * On clicking the previous time button
      */
     previousTime() {
-        this.endTime = this.startTime
+        //this.endTime = this.startTime
         this.startTime = previousTime(this.startTime, parseInt(this.parameters['duree']))
         if(this.startTime <= new Date(0)) {
             this.startTime = new Date(0)
-            this.endTime = nextTime(this.startTime, this.parameters['duree'])
             $('#previous-button').addClass('disabled')
         }
         this.applyParameters()
@@ -38,7 +46,6 @@ class Rep {
      */
     nextTime() {
         this.startTime = this.endTime
-        this.endTime = nextTime(this.endTime, parseInt(this.parameters['duree']))
         $('#previous-button').removeClass('disabled')
         this.applyParameters()
     }

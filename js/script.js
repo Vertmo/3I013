@@ -78,6 +78,20 @@ function activateSemanticForms() {
     // Activating the radio checkboxes
     $('.ui.radio.checkbox').checkbox()
 
+    // Activate the time ranges
+    $('.ui.range').range({
+        min:0,
+        max:3600,
+        start:0,
+        step: 30,
+        onChange: (val) => { if(rep) rep.setStartTime(val) }
+    })
+
+    // Time range change listenrt
+    $('.ui.range').change(function() {
+        console.log('Bouh')
+    })
+
     // Form change event listener
     $('.rep-form :input').change(function() {
         if(rep == null) return
@@ -86,6 +100,17 @@ function activateSemanticForms() {
         if($(this).attr('name')==='enseignant') {
             if(rep instanceof CircularRep) rep = new CircularRep('circular-svg-holder', $(this).attr('tabindex'), rep.parameters)
             else if(rep instanceof SpatialRep) rep = new SpatialRep('spatial-svg-holder', $(this).attr('tabindex'), rep.parameters)
+        }
+
+        // Changement de la durée : changer le slider
+        if($(this).attr('name')==='duree') {
+            $('.ui.range').range({
+                min:0,
+                max:3600,
+                start:0,
+                step: parseInt($(this).attr('tabindex')),
+                onChange: (val) => { if(rep) rep.setStartTime(val) }
+            })
         }
 
         // Impacting the changes
