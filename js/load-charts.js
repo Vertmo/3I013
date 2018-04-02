@@ -23,11 +23,14 @@ function loadCharts(order) {
             values[i] = values[i].map(v => v/maxValue)
         }
     } else {
-        labels = Array.apply(null, Array(maxNbStudents)).map((_, i) => [[],[],[],[]])
+        labels = ['Faible', 'Passable', 'Bon', 'Très Bon']
         for(let i=0; i<4; i++) {
-            let sortedStudents = students.filter(s => s.teacherId==(i+1)).sort((s1, s2) => niveauValue(s1[order]) > niveauValue(s2[order]))
-            for(let j=0; j<sortedStudents.length; j++) labels[j][i] = sortedStudents[j].id + 'e'
-            values[i] = sortedStudents.map(s => events.reduce((a, e) => e.teacherId==(i+1) && e.regarde==s.id ? a+1 : a, 0))
+            values[i] = [0, 0, 0, 0]
+            let filteredStudents = students.filter(s => s.teacherId==(i+1))
+            events.filter(e => e.teacherId==(i+1) && !isNaN(e.regarde)).forEach(e => {
+                let student = $.grep(filteredStudents, (s => s.id == e.regarde))
+                values[i][labels.indexOf(student[0][order])] += 1
+            })
             let maxValue = values[i].reduce((a, v) => Math.max(a, v), 0)
             values[i] = values[i].map(v => v/maxValue)
         }
