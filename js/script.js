@@ -84,7 +84,7 @@ function activateSemanticForms() {
         max:3600,
         start:0,
         step: 30,
-        onChange: (val) => { if(rep) rep.setStartTime(val) }
+        onChange: (val) => { if(rep && !(rep instanceof Array)) rep.setStartTime(val) }
     })
 
     // Time range change listenrt
