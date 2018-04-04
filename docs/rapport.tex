@@ -59,17 +59,32 @@ Pour ce projet, on a réalisé quatre types de visualisations différentes, chac
     \item Représentation spatiale
 \end{itemize}
 
+\section{Tests utilisateurs}
+
+\subsection{Questionnaire}
+Lors du test, les utilisateurs ont eu à répondre à une série de questions portant sur les données et leurs visualisations. Ils ont également noté le temps qui leur était nécessaire pour trouver la réponse a ces questions. Parmi les questions posées étaient :
+\begin{itemize}
+    \item Quel est le premier élève que regarde l'enseignant 4 durant le cours ?
+    \item Qui sont les enseignants novices et qui sont les enseignants experts ?
+    \item Quel est l'enseignant qui distribue le plus son attention (coefficient GINI le moins élevé) ?
+    \item Combien y'a t-il d'élèves ayant des besoins particuliers dans la classe de l'enseignant 1 ?
+    \item Quel est l'élève le plus regardé par l'enseignant 3 ? 
+    \item Quels catégories d'enseignants (novices ou experts) regardent le plus les élèves ayant des difficultés en Francais (niveau faible ou passable) ?
+    \item L'enseignant 2 regarde-t-il plus souvent les élèves ayant un niveau en maths passable ou très bon ?
+    \item Quelle était le TDOP à l'ouverture du cours de l'enseignant 1 ?
+    \item Quel est l'enseignant qui a les regards les plus longs ?
+\end{itemize}
+
 \section{Observations}
 % TODO Organiser tout ca !
 On rappelle que les enseignants les plus expérimentés sont les enseignants 1 et 4 (plus de 20 ans d'expérience) tandis que les enseignants 2 et 3 ont tous les deux moins d'une année d'expérience.\\
 Les enseignants regardent plus fréquemment les élèves situés aux premiers rangs de la classe. On observe d'ailleurs que la disposition des élèves dans la salle ne semble pas dépendre de leur niveau, et n'est donc pas la raison des différences d'attention entre les niveaux. L'enseignant 4 (qui est expérimenté) est cependant une exception a ce principe, puisuq'il semble placer les élèves les plus en difficultés aux premiers rangs et ceux ayant le meilleur niveau au fond de la salle.\\
-On remarque déjà que l'attention des enseignants débutants est plus "fragmentée" : en effet la durée moyenne de leurs regards est plus courte (0.58 et 0.66s, contre 0.72 et 0.88s pour les enseignants expérimentés).\\
+On remarque que l'attention des enseignants débutants est plus "fragmentée" : en effet la durée moyenne de leurs regards est plus courte (0.58 et 0.66s, contre 0.72 et 0.88s pour les enseignants expérimentés).\\
 Les coefficients GINI en revanche ne permettent pas de différencier les enseignants novices et experimentés : tous les coefficients sont situés entre 0.24 et 0.35. L'enseignant ayant le coefficient le plus faible (0.24), et donc qui partage son attention de la façon la plus équitable est expérimenté (l'enseignant 4), mais l'enseignant 1 qui est lui aussi expérimenté a le coefficient le plus fort (0.349).\\
-Tous les enseignants apportent plus d'attention aux élèves de niveau "Faible" ou "Passable", mais cela est plus marqué chez les enseignants les plus expérimentés.
+Tous les enseignants apportent plus d'attention aux élèves de niveau "Faible" ou "Passable", mais cette tendance est plus marquée chez les enseignants les plus expérimentés.
 
 \section{Conclusion}
 
 \bibliography{bibliographie}{}
 \bibliographystyle{plain}
 \end{document}
-

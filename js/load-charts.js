@@ -26,11 +26,18 @@ function loadCharts(order) {
         labels = ['Faible', 'Passable', 'Bon', 'Très Bon']
         for(let i=0; i<4; i++) {
             values[i] = [0, 0, 0, 0]
+            // Seulement les etudiants de l'enseignant i+1
             let filteredStudents = students.filter(s => s.teacherId==(i+1))
+            // On compte les regards sur chaque categorie d'eleve
             events.filter(e => e.teacherId==(i+1) && !isNaN(e.regarde)).forEach(e => {
                 let student = $.grep(filteredStudents, (s => s.id == e.regarde))
                 values[i][labels.indexOf(student[0][order])] += 1
             })
+            // On normalise les valeurs par rapport au nombre d'eleves de chaque categorie
+            for(let j=0; j<4; j++) {
+                values[i][j] = values[i][j]/filteredStudents.filter(s => s[order] == labels[j]).length
+            }
+            // On normalise par rapport a la valeur max
             let maxValue = values[i].reduce((a, v) => Math.max(a, v), 0)
             values[i] = values[i].map(v => v/maxValue)
         }
