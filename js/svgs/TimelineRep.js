@@ -29,10 +29,11 @@ class TimelineRep extends Rep {
 
     /**
      * Partition the timeline by students watched
+     * @param events the list of events
      * @return list of lists, each list with regards to a single student
      */
-    partitionByRegarde(xs) {
-        return xs.reduce((acc, v) => {
+    partitionByRegarde(events) {
+        return events.reduce((acc, v) => {
             if(!acc) return [[v]]
             if(acc[acc.length-1][0].regarde == v.regarde) {
                 acc[acc.length-1].push(v)

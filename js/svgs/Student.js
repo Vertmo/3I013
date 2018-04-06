@@ -5,7 +5,6 @@
  */
 
 class Student {
-    //TODO actual constructor
     constructor(data) {
         this.teacherId = data.teacherId
         this.id = data.id
@@ -66,7 +65,7 @@ class Student {
         this.repCircle = draw.circle(20).attr({ fill: '#ffffff', stroke: '#000000', 'stroke-width':'3' })
         this.rep = draw.group().add(this.repCircle)
         if(this.besoinPart) this.rep.add(draw.polygon('10,0 12,8 20,10 12,12 10,20 8,12 0,10 8,8'))
-        let distance = Math.sqrt(this.posY**2 + (this.posX-15)**2) * (2/3*radius)/60 + radius/3
+        let distance = Math.sqrt(this.posY**2 + (this.posX-20)**2) * (2/3*radius)/60 + radius/3
         this.rep.move(radius-20/2 + Math.cos(this.id/nbStudents*2*Math.PI)*distance, radius-20/2 + Math.sin(this.id/nbStudents*2*Math.PI)*distance)
 
         // Display information on the student

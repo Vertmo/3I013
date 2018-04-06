@@ -47,6 +47,7 @@ class SpatialRep extends Rep {
 
     /**
      * On form change
+     * @param form the settings form
      */
     changeParameters(form) {
         if(form.attr('type')==='checkbox') this.parameters[form.attr('name')] = form.prop('checked')
@@ -56,7 +57,7 @@ class SpatialRep extends Rep {
     /**
      * Apply the parameters
      */
-    applyParameters(parameters) {
+    applyParameters() {
         super.applyParameters()
 
         // Proximity

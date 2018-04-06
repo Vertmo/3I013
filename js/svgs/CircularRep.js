@@ -53,6 +53,7 @@ class CircularRep extends Rep {
     
     /**
      * On form change
+     * @param form the settings form
      */
     changeParameters(form) {
         if(form.attr('type')==='checkbox') this.parameters[form.attr('name')] = form.prop('checked')
@@ -90,11 +91,9 @@ class CircularRep extends Rep {
             if(e.verbalisation) this.teacherVerb.opacity(1)
         })
 
-        // TDOP
-        this.updateTDOP()
-
-        // Regards
+        this.updateTeacherPos()
         this.updateRegards()
+        this.updateTDOP()
     }
 
     /**
@@ -170,5 +169,23 @@ class CircularRep extends Rep {
         // Move teacher and students at the front again
         this.students.forEach(s => { s.rep.front() })
         this.teacher.front()
+    }
+
+    /**
+     * Moves the students pos around the teacher
+     */
+    updateTeacherPos() {
+        if(this.parameters['display-position'] && !isNaN(this.filteredEvents[0]['posX'])) {
+            let moyX = this.currentEvents.reduce((a, e) => a + e['posX'], 0)/this.currentEvents.length
+            let moyY = this.currentEvents.reduce((a, e) => a + e['posY'], 0)/this.currentEvents.length
+
+            this.students.forEach(s => {
+                let radius = this.draw.width()/2
+                let nbStudents = this.students.length
+                let distance = Math.sqrt((s.posY-moyY)**2 + (s.posX-moyX)**2) * (2/3*radius)/60 + radius/3
+                s.rep.x(radius-20/2 + Math.cos(s.id/nbStudents*2*Math.PI)*distance)
+                s.rep.y(radius-20/2 + Math.sin(s.id/nbStudents*2*Math.PI)*distance)
+            })
+        }
     }
 }
