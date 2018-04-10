@@ -22,6 +22,26 @@ function loadCharts(order) {
             let maxValue = values[i].reduce((a, v) => Math.max(a, v), 0)
             values[i] = values[i].map(v => v/maxValue)
         }
+    } else if(order === "temps") {
+        labels = Array.apply(null, Array(maxNbStudents)).map((_, i) => [])
+        for(let i=0; i<4; i++) {
+            let range = Array.apply(null, Array(maxNbStudents)).map((_, i) => (i+1))
+            students.filter(s => s.teacherId==(i+1)).forEach(s => labels[s.id-1].push(s.id+"e"))
+            values[i] = range.map(j => events.reduce((a, s) => s.teacherId==(i+1) && s.regarde==j ? a+1 : a, 0))
+            let maxValue = values[i].reduce((a, v) => Math.max(a, v), 0)
+            values[i] = values[i].map(v => v/maxValue)
+
+            // On réorganise
+            let labvals = []
+            for(let j=0; j<values[i].length; j++) {
+                labvals.push({'label': labels[j][i], 'value': values[i][j]})
+            }
+            labvals.sort((lv1, lv2) => lv1['value'] < lv2['value'])
+            for(let j=0; j<labvals.length; j++) {
+                labels[j][i] = labvals[j]['label'] || ''
+                values[i][j] = labvals[j]['value']
+            }
+        }
     } else {
         labels = ['Faible', 'Passable', 'Bon', 'Très Bon']
         for(let i=0; i<4; i++) {
