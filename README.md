@@ -16,3 +16,13 @@ Le repo ne contient que les sources du projet. Il est donc nécessaire de compil
 
 
 Le site peut être visité sur [https://vertmo.github.io/SuperViseur/](https://vertmo.github.io/SuperViseur/). (il s'agit de la dernière version de la branche master).
+
+## Licence ##
+Ce projet est sous licence GNU GPL3.0 - détails dans [LICENSE.md](LICENSE.md)
+
+## Reconnaissance ##
+Les bibliothèques de fonctionnalités suivantes ont été utilisées :
+* [https://jquery.com/](jQuery)
+* [https://semantic-ui.com/](Semantic UI) et [https://tyleryasaka.github.io/semantic-ui-range/](semantic-ui-range)
+* [http://svgjs.com/](SVG.js)
+* [http://www.chartjs.org/](Chart.js)

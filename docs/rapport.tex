@@ -49,10 +49,11 @@ Le résultat du travail est visible \href{https://vertmo.github.io/SuperViseur/}
 Afin de simplifier le développement, on a utilisé plusieurs bibliothèques de fonctionnalités JavaScript:
 \begin{itemize}
     \item \href{https://jquery.com/}{jQuery} qui permet de facilement manipuler le DOM (Document Object Model) HTML. Cette bibliothèque permet également de simplifier les requètes ajax (qui permettent entre autre de charger les données de l'étude). De plus, c'est une dépendance de la bibliothèque suivante.
-    \item \href{https://semantic-ui.com/}{Semantic UI} est un framework HTML/CSS, permettant donc de créer un site web d'aspect convenable rapidement.
+    \item \href{https://semantic-ui.com/}{Semantic UI} est un framework HTML/CSS, permettant donc de créer un site web d'aspect convenable rapidement. On a également ajouté un composant \href{https://tyleryasaka.github.io/semantic-ui-range/}{semantic-ui-range}, permettant de créer des "sliders", utilisés pour ce déplacer dans le temps sur les représentations circulaire et spatiale.
     \item \href{http://svgjs.com/}{SVG.js} a été choisi pour construire les représentations spatiales et circulaires. Comme son nom l'indique, cette bibliothèque manipule des SVG (Scalable Vector Graphics). (au départ, et comme indiqué dans le document de compréhjsion, on souhaitait utiliser la biblioithèque \href{https://p5js.org/}{p5.js}, mais celle-ci était beaucoup moins pratique pour gérer le survol de souris, et qui plus est elle tendait à créer des fuites de mémoires).
     \item \href{http://www.chartjs.org/}{Chart.js} est une bibliothèque permettant d'afficher des graphiques interactifs. On l'utilise principalement pour résumer les résultats sur la page d'accueil du site.
 \end{itemize}
+Toutes les bibliothèques sont bien entendu accompagnées de leur copyright notice, et sont également listées dans le README.md du projet.
 
 \subsection{Données}
 \subsubsection{Tables}
@@ -71,11 +72,11 @@ Afin de pouvoir malgré tout tester cette fonctionnalité de nos visualisations,
 \section{Visualisations}
 Pour ce projet, on a réalisé quatre types de visualisations différentes, chacune mettant en valeur certaines informations. Chaque visualisation est présentée sur une des pages du site.
 \begin{itemize}
-    \item \textbf{Résumé:} La première page visible sur le site présente des résultats globaux sur la distribution des regards des quatre enseignants. On présente donc ces résultats individuellement (par élève), ainsi qu'organisé par niveau en français et en mathématiques. Cette page présente également les scores GINI des 4 enseignants. 
+    \item \textbf{Résumé:} La première page visible sur le site présente des résultats globaux sur la distribution des regards des quatre enseignants. On présente donc ces résultats individuellement (par élève), classés soit par numéro des élèves, soit par nombre de regards (ordre décroissant). On peut aussi afficher les temps de regard en fonction des niveaux en français et en mathématiques. Cette page présente également les scores GINI des 4 enseignants. 
         \begin{center}
             \includegraphics[height=4cm]{resume.png}
         \end{center}
-        C'est cette page qui permet le mieux de visualiser la différence entre les enseignants (et en particulier entre les enseignants novices et les enseignants expérimentés).\\
+        C'est cette page qui permet le mieux de visualiser la différence entre les enseignants (et en particulier entre les enseignants novices et les enseignants expérimentés) puisqu'elle présente les résultats des 4 enseignants côte à côte.\\
     \item \textbf{Timelines:} Cette page reproduit les fonctionnalités du site \href{http://superviseur.lip6.fr/}{SuperViseur} original. On peut y voir les regards de l'enseignant en fonction du temps, soit par élève, soit groupé par niveau en français ou en mathématiques. On peut dans tous les cas bénéficier de plus d'informations sur un élève en passant le curseur au dessus des parties de la timelines lui correspondant. 
         \begin{center}
             \includegraphics[height=5cm]{timelines.png}
@@ -99,28 +100,21 @@ Afin de valider l'ergonomie du site réalisé, on a organisé une séance de tes
 \subsection{Protocole de test}
 Lors du test, les utilisateurs ont eu à accomplir une série de taches en utilisant le site SuperViseur. Comme ce site présente principalement des visualisations, ces taches consistaient principalement à trouver des informations en ce servant des différentes visualisations présentes sur le site.
 \begin{itemize}
-    \item Quel est le premier élève que regarde l'enseignant 4 durant le cours?
-    \item Qui sont les enseignants novices et qui sont les enseignants experts?
-    \item Quel est l'enseignant qui distribue le plus son attention (coefficient GINI le moins élevé)?
-    \item Combien y'a t-il d'élèves ayant des besoins particuliers dans la classe de l'enseignant 1?
-    \item Quel est l'élève le plus regardé par l'enseignant 3? 
-    \item Quels catégories d'enseignants (novices ou experts) regardent le plus les élèves ayant des difficultés en Francais (niveau faible ou passable)?
-    \item L'enseignant 2 regarde-t-il plus souvent les élèves ayant un niveau en maths passable ou très bon?
-    \item Quelle était le TDOP à l'ouverture du cours de l'enseignant 1?
-    \item Quel est l'enseignant qui a les regards les plus longs?
+    \item TODO: A remplir
 \end{itemize}
 
 \subsection{Résultats}
+TODO: A remplir (quand j'aurai les résultats)
 
 \section{Observations}
 On rappelle que les enseignants les plus expérimentés sont les enseignants 1 et 4 (plus de 20 ans d'expérience) tandis que les enseignants 2 et 3 ont tous les deux moins d'une année d'expérience. Comme on va le voir, les différences entre les enseignants novices et expérimentés sont, comme on en avait fait l'hypothèse, nombreux.
 \subsection{Représentations spatiales}
-D'un point de vue des représentations spatiales, on s'aperçoir que les enseignants regardent plus fréquemment les élèves situés aux premiers rangs de la classe. On observe d'ailleurs que la disposition des élèves dans la salle ne semble pas dépendre de leur niveau, et n'est donc pas la raison des différences d'attention entre les niveaux. L'enseignant 4 (qui est expérimenté) est cependant une exception a ce principe, puisuq'il semble placer les élèves les plus en difficultés aux premiers rangs et ceux ayant le meilleur niveau au fond de la salle.\\
+D'un point de vue des représentations spatiales, on s'aperçoir que les enseignants regardent plus fréquemment les élèves situés aux premiers rangs de la classe. On observe d'ailleurs que la disposition des élèves dans la salle ne semble pas dépendre de leur niveau, et n'est donc pas la raison des différences d'attention entre les niveaux. L'enseignant 4 (qui est expérimenté) est cependant une exception a ce principe, puisqu'il semble placer les élèves les plus en difficultés aux premiers rangs et ceux ayant le meilleur niveau au fond de la salle.\\
 Malheureusement, comme on l'a vu plus haut, on ne possède pas les données nécessaires pour étudier le déplacement de l'enseignant dans la classe.
 
 \subsection{Différences entre novices et expérimentés}
 On remarque que l'attention des enseignants débutants est plus "fragmentée": en effet la durée moyenne de leurs regards est plus courte (0.58 et 0.66s, contre 0.72 et 0.88s pour les enseignants expérimentés). Cela peut être interprété comme une plus grande difficulté à évaluer l'état de la classe, et donc à une plus grande charge cognitive.\\
-Tous les enseignants apportent plus d'attention aux élèves de niveau "Faible" ou "Passable", mais cette tendance est plus marquée chez les enseignants les plus expérimentés.
+Tous les enseignants apportent plus d'attention aux élèves de niveau "Faible" ou "Passable", mais cette tendance est plus marquée chez les enseignants les plus expérimentés.\\
 Les coefficients GINI en revanche ne permettent pas de différencier les enseignants novices et experimentés: tous les coefficients sont situés entre 0.24 et 0.35. L'enseignant ayant le coefficient le plus faible (0.24), et donc qui partage son attention de la façon la plus équitable est expérimenté (l'enseignant 4), mais l'enseignant 1 qui est lui aussi expérimenté a le coefficient le plus fort (0.349).\\
 
 \subsection{Groupes de référence}
@@ -131,6 +125,7 @@ La taille du groupe de référence ne semble donc pas dépendre du niveau d'exp�
 \end{center}
 
 \section{Conclusion}
+TODO : A remplir (à la fin)
 
 \bibliography{bibliographie}{}
 \bibliographystyle{plain}
