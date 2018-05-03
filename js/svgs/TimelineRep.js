@@ -1,9 +1,12 @@
 /**
- * Timeline representation
- * @module sketches/SpatialRep
+ * Timeline representation module
+ * @module sketches/TimelineRep
  * @author Basile Pesin
  */
 
+/**
+ * Timeline representation
+ */
 class TimelineRep extends Rep {
     constructor(holder, currentTeacher, parameters = {studentGrouping:'none'}) {
         super(currentTeacher, parameters)

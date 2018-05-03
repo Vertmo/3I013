@@ -1,9 +1,12 @@
 /**
- * Circular representation of the classroom during a session
+ * CircularRep module
  * @module sketches/CircularRep
  * @author Basile Pesin
  */
 
+/**
+ * Circular representation of the classroom during a session
+ */
 class CircularRep extends Rep {
     constructor(holder, currentTeacher, parameters = null) {
         super(currentTeacher, parameters)
@@ -79,10 +82,6 @@ class CircularRep extends Rep {
         this.students.forEach(s => {
             // Level of skill
             s.setColorAccordingToNiveau(this.parameters['niveau'])
-
-            // TDOP TODO Finir ca
-            if(this.parameters['display-TDOP_Eleve']) s.setCircularTDOPEleve(null)
-            else s.setCircularTDOPEleve(null)
         })
 
         // Verbalisation (ou pas)

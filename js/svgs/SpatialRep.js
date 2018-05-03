@@ -1,9 +1,12 @@
 /**
- * Spatial representation of the classroom during a session
+ * SpatialRep module
  * @module sketches/SpatialRep
  * @author Basile Pesin
  */
 
+/**
+ * Spatial Representation of the classroom during a session
+ */
 class SpatialRep extends Rep {
     constructor(holder, currentTeacher, parameters = null) {
         super(currentTeacher, parameters)
@@ -47,7 +50,7 @@ class SpatialRep extends Rep {
 
     /**
      * On form change
-     * @param form the settings form
+     * @param form settings form
      */
     changeParameters(form) {
         if(form.attr('type')==='checkbox') this.parameters[form.attr('name')] = form.prop('checked')

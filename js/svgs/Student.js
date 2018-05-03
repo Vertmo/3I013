@@ -1,9 +1,12 @@
 /**
- * Student class
+ * Student module
  * @module Student
  * @author Basile Pesin
  */
 
+/**
+ * Student representation
+ */
 class Student {
     constructor(data) {
         this.teacherId = data.teacherId
@@ -141,14 +144,5 @@ class Student {
                 this.repCircle.attr({stroke: '#a52a2a'})
                 break
         }
-    }
-
-    /**
-     * Change color of the fill in function of current TDOP
-     * @param TDOP the current TDOP of the student
-     * TODO
-     */
-    setCircularTDOPEleve(TDOP) {
-
     }
 }

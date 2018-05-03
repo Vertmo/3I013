@@ -1,9 +1,12 @@
 /**
- * Representation of the classroom during a session
+ * Rep module
  * @module sketches/Rep
  * @author Basile Pesin
  */
 
+/**
+ * Representation of the classroom during a session
+ */
 class Rep {
     constructor(currentTeacher, parameters) {
         // Time

@@ -30,16 +30,22 @@
 \tableofcontents
 \newpage
 
-\section{Rappel des problématiques et hypothèses principales}
+\section{Introduction}
+Lors de ce projet, on a travaillé à la réalisation de visualisations pour les données du projet SuperViseur, qui s'interesse au comportement des enseignants durant leurs cours (en particulier au suivi de leur regard), et à leur charge cognitive.\\
+Le projet SuperViseur s'inscrit dans la continuité d'autres recherches cherchant à investiguer les schémas cognitifs des enseignants durant leurs cours, tels que l'étude de Van Den Bogert~\cite{VanDenBogert} qui travaille sur un cours filmé, ou celle de Cortina~\cite{Cortina} qui travaille dans le contexte d'une vraie salle de classe. Contrairement à ces études, celle ci s'interesse plus en détail aux caractéristiques des élèves ciblés par l'enseignant.\\
+Dans le cadre du projet SuperViseur, les données ont été récoltées au cours des séances de cours de quatre enseignants de primaire (CP, CE1 ou CE2) au moyen d'un dispositif d'eye-tracking (vidéos ensuite retranscrites en timeline des évènements), ainsi que grace à des observateurs extérieurs. Afin de pouvoir être facilement réutilisables, ces données ont été uploadées dans la plateforme \href{https://undertracks.imag.fr/}{UnderTracks}, développée par le Laboratoire informatique de Grenoble et permettant de stocker données et processus de traitements~\cite{CPDEP}.
+
+\section{Problématiques principales}
 
 \subsection{Groupes de références}
-Comme vu dans le document de compréhension, l'objectif de cette étude~\cite{SuperViseur} est de relever les comportements mis en oeuvres par les enseignants en face de leur classe, et plus particulièrement de déterminer les caractéristiques du "groupe de référence", c'est a dire le sous-ensemble d'élèves qui bénéficie du plus d'attention de la part des enseignants, et sur lesquels ceux ci s'appuient pour prendre des décisions. On cherchera entre autres à relever la taille de ce groupe de référence.
+Comme vu dans le document de compréhension, l'objectif de cette étude~\cite{SuperViseur} est de relever les comportements mis en oeuvres par les enseignants en face de leur classe, et plus particulièrement de déterminer les caractéristiques du "groupe de référence"~\cite{Cortina}, c'est a dire le sous-ensemble d'élèves qui bénéficie du plus d'attention de la part des enseignants, et sur lesquels ceux ci s'appuient pour prendre des décisions. On cherchera entre autres à relever la taille de ce groupe de référence.
 
-\subsection{Différences entre novices et expérimentés}
-On tentera aussi de vérifier les différences comportementales (qu'on suppose importantes) entre enseignant novices (2 et 3) et expérimentés (1 et 4). Entre autres on voudra vérifier que les enseignants expérimentés ont moins de difficulté à évaluer l'état de la classe et à y réagir. Pour que les différences entre enseignants soient facilement visibles, il faudra clairement juxtaposer et mettre en parallèle les visualisations concernant les différents enseignants (tout en évitant de surcharger l'utilisateur d'informations).
+\subsection{Différences entre enseignants novices et expérimentés}
+On tentera aussi de vérifier les différences comportementales (qu'on suppose importantes) entre enseignant novices (2 et 3) et expérimentés (1 et 4). Entre autres on voudra vérifier que les enseignants expérimentés ont moins de difficulté à évaluer l'état de la classe et à y réagir, c'est à dire que leur charge cognitive soit plus faible. Pour que les différences entre enseignants soient facilement visibles, il faudra clairement juxtaposer et mettre en parallèle les visualisations concernant les différents enseignants (tout en évitant de surcharger l'utilisateur d'informations).
 
-\subsection{Objectifs de formation}
-Puisque ces visualisations mettent en valeur les (on espère bons) comportements d'enseignants expérimentés, ou pourra utiliser les résultats obtenus, au dela de leur intérêt théorique, à des fins de formations. Les visualisations réalisées doivent donc être facilement manipulables et interprétables par des personnes n'étant pas membre de la communauté scientifique. On portera donc un soin particulier à l'ergonomie du site construit.
+\subsection{Objectifs de recherche et formation}
+Grace a ces visualisations, les chercheurs seront également en mesure d'analyser et de relever des schémas de comportements récurrents chez les enseignants, et d'analyser leur effet sur la classe (y compris d'autres enseignants que les quatre sur lesquels l'étude a été réalisée, puisqu'on peut importer d'autres données pour peu qu'elles soient formatés similairements).\\
+Puisque ces visualisations mettent en valeur les (on espère bons) comportements d'enseignants expérimentés, ou pourra également utiliser les résultats obtenus, au dela de leur intérêt théorique, à des fins de formations. Les visualisations réalisées doivent donc être facilement manipulables et interprétables par des personnes n'étant pas membre de la communauté scientifique. On portera donc un soin particulier à l'ergonomie du site construit.
 
 \section{Choix techniques}
 Afin de pouvoir aisément présenter les résultats de l'étude à la communauté scientifique, ainsi qu'a la communauté éducative à des fins pédagogiques, il a été décidé de rendre les visualisations disponibles sous forme d'un site web. Même si cela s'éloigne légèrement du fonctionnement d'\href{https://undertracks.imag.fr}{Undertracks}, ou les opérateurs sont écrits en Python, on pourrait imaginer mettre à l'avenir en place un système similaire à celui \href{http://superviseur.lip6.fr}{superviseur.lip6.fr}, ou des opérateurs Python générent des morceaux de codes HTML/Javascript à "imbriquer" dans le reste du code.\\
@@ -56,9 +62,10 @@ Afin de simplifier le développement, on a utilisé plusieurs bibliothèques de 
 Toutes les bibliothèques sont bien entendu accompagnées de leur copyright notice, et sont également listées dans le README.md du projet.
 
 \subsection{Données}
+On possède pour ce projet une grande quantité de données: évidemment la position du regard de l'enseignant au cours du temps, mais également la verbalisation de l'enseignant, des informations sur ces élèves tels que les niveaux (perçus par l'enseignant) en mathématiques et en français, la position des élèves dans l'espace de la classe, l'activité pédagogique (TDOP~\cite{TDOP}) en cours\ldots
 \subsubsection{Tables}
-Comme expliqué dans le document de compréhension, les données à traiter pour ce projet se présentent sous la forme de trois fichier csv exportés depuis la plateforme \href{https://undertracks.imag.fr/}{UnderTracks}: \textit{users.csv} qui contient la liste des élèves, \textit{events.csv} qui contient la timeline des évènements, et \textit{context.csv}, qui contient la description des constantes et acronymes utilisés.\\
-Ces 3 fichiers sont placés dans le dossier \textit{/data} du projet. On aurait préféré pouvoir charger les données directement depuis la plateforme UnderTracks (via une REST API par exemple) afin de ne pas avoir à stocker les fichiers dans le dépot, mais cela n'est malheureusement pas encore possible.\\
+Comme expliqué dans l'introduction, les données à traiter pour ce projet ont été retranscrites en timeline des évènements qui se présentent sous la forme de trois fichier csv exportés depuis la plateforme \href{https://undertracks.imag.fr/}{UnderTracks}: \textit{users.csv} qui contient la liste des élèves, \textit{events.csv} qui contient la timeline des évènements, et \textit{context.csv}, qui contient la description des constantes et acronymes utilisés.\\
+Ces 3 fichiers sont placés dans le dossier \textit{/data} du projet. On aurait préféré pouvoir charger les données directement depuis la plateforme UnderTracks (via une REST API par exemple) afin de ne pas avoir à stocker les fichiers dans le dépot, mais une telle API n'est malheureusement pas encore disponible sur UnderTracks.\\
 Dans le cadre de ce projet, on utilisera principalement la table des utilisateurs et celle des évènements. On charge ces deux tables en même temps que le site au moyen de requètes Ajax, et on garde les informations chargées en mémoire. Dans le cas des utilisateurs ayant une connexion lente, le chargement de ces tables (en particulier la tables des évènements, qui compte plus de 25000 lignes, ou 6.7Mo de données) peut présenter un léger ralentissement. Heureusement, le fait qu'on ne charge ces données qu'une fois par visite de la page ainsi que le cache du navigateur permettent de réduire le nombre de chargements et donc ce problème.
 
 \subsubsection{Anonymisation des données}
@@ -91,17 +98,22 @@ Pour ce projet, on a réalisé quatre types de visualisations différentes, chac
         \begin{center}
             \includegraphics[height=7cm]{rep_spatiale.png}
         \end{center}
-        En plus des informations affichées sur la visualisation précédente, on affiche aussi sur cette page la verbalisation de l'enseignant, ainsi que le(s) TDOP~\cite{TDOP} durant la période visualisée (code et description de l'action).
+        En plus des informations affichées sur la visualisation précédente, on affiche aussi sur cette page la verbalisation de l'enseignant, ainsi que le(s) TDOP durant la période visualisée (code et description de l'action).
 \end{itemize}
 
 \section{Tests utilisateurs}
-Afin de valider l'ergonomie du site réalisé, on a organisé une séance de tests utilisateurs.
+Comme on l'a vu, en plus de son intérêt pour les chercheurs, le site SuperViseur a aussi vocation à etre utilisé pour former de futurs enseignants. Le site doit donc pouvoir être utilisable par un public plus large et parfois moins habitué à l'utilisation de l'outil informatique. Afin de vérifier l'ergonomie et l'usabilité du site réalisé, on a donc organisé une séance de tests utilisateurs.
 
 \subsection{Protocole de test}
-Lors du test, les utilisateurs ont eu à accomplir une série de taches en utilisant le site SuperViseur. Comme ce site présente principalement des visualisations, ces taches consistaient principalement à trouver des informations en ce servant des différentes visualisations présentes sur le site.
-\begin{itemize}
-    \item TODO: A remplir
-\end{itemize}
+Lors du test, après une courte introduction au projet SuperViseur, les utilisateurs ont eu à accomplir une série de taches en utilisant le site SuperViseur. Comme ce site présente principalement des visualisations, ces taches consistaient principalement à trouver des informations en ce servant des différentes visualisations présentes sur le site. Ci dessous, la liste des 5 taches à réaliser:
+\begin{enumerate}
+    \item Vous souhaitez trouver les premiers élèves regardés par chacun des enseignants, et leurs niveaux respectifs en Français. Vous remarquez quelque chose (quoi ?) et vous souhaitez comparer cela avec la distribution globale de l'attention en fonction du niveau en Francais.
+    \item Identifier les enseignants experts et novices. Lesquels ont l'attention la plus fragmenté ? Lesquels distribuent le plus également leur attention ? (coefficient GINI le moins élevé)
+    \item Trouver les élèves ayant des besoins particuliers, et ces besoins. Sont ils plus regardés que les autres ?
+    \item Observer le TDOP au début du cours de l'enseignant 1. Observer les TDOPs durant le reste du cours. Est-ce un cours de Français ou de Maths ?
+    \item Observer le déplacement de l'enseignant 4. A coté de quel élève se trouve-t-il à 21min?
+\end{enumerate}
+Apres la fin des taches, on a organisé avec les participants un petit debriefing, afin de recueillir leur ressenti général, s'informer sur les difficultés perçus lors du test\ldots
 
 \subsection{Résultats}
 TODO: A remplir (quand j'aurai les résultats)
@@ -112,10 +124,10 @@ On rappelle que les enseignants les plus expérimentés sont les enseignants 1 e
 D'un point de vue des représentations spatiales, on s'aperçoir que les enseignants regardent plus fréquemment les élèves situés aux premiers rangs de la classe. On observe d'ailleurs que la disposition des élèves dans la salle ne semble pas dépendre de leur niveau, et n'est donc pas la raison des différences d'attention entre les niveaux. L'enseignant 4 (qui est expérimenté) est cependant une exception a ce principe, puisqu'il semble placer les élèves les plus en difficultés aux premiers rangs et ceux ayant le meilleur niveau au fond de la salle.\\
 Malheureusement, comme on l'a vu plus haut, on ne possède pas les données nécessaires pour étudier le déplacement de l'enseignant dans la classe.
 
-\subsection{Différences entre novices et expérimentés}
+\subsection{Différences entre enseignants novices et expérimentés}
 On remarque que l'attention des enseignants débutants est plus "fragmentée": en effet la durée moyenne de leurs regards est plus courte (0.58 et 0.66s, contre 0.72 et 0.88s pour les enseignants expérimentés). Cela peut être interprété comme une plus grande difficulté à évaluer l'état de la classe, et donc à une plus grande charge cognitive.\\
 Tous les enseignants apportent plus d'attention aux élèves de niveau "Faible" ou "Passable", mais cette tendance est plus marquée chez les enseignants les plus expérimentés.\\
-Les coefficients GINI en revanche ne permettent pas de différencier les enseignants novices et experimentés: tous les coefficients sont situés entre 0.24 et 0.35. L'enseignant ayant le coefficient le plus faible (0.24), et donc qui partage son attention de la façon la plus équitable est expérimenté (l'enseignant 4), mais l'enseignant 1 qui est lui aussi expérimenté a le coefficient le plus fort (0.349).\\
+Les coefficients GINI (qui mesurent l'équité de la répartition de l'attention d'un enseignant entre les élèves) en revanche ne permettent pas de différencier les enseignants novices et experimentés: tous les coefficients sont situés entre 0.24 et 0.35. L'enseignant ayant le coefficient le plus faible (0.24), et donc qui partage son attention de la façon la plus équitable est expérimenté (l'enseignant 4), mais l'enseignant 1 qui est lui aussi expérimenté a le coefficient le plus fort (0.349).\\
 
 \subsection{Groupes de référence}
 On constate que les groupes de références sont de taille assez variable. Pour les enseignants 1 et 3, ils ne comptent qu'un seul élève (respectivement l'élève 16 et l'élève 9) qui est considérablement plus regardé que l'élève en deuxième position. L'enseignant 2 lui consacre la plus grande partie de son attention sur les élèves 10, 6 et 15. Enfin, l'enseignant 4 (qui comme on l'a vu à un coefficient GINI très élevé regarde majoritairement les élèves 1, 14, 4, 13 et 12).\\
