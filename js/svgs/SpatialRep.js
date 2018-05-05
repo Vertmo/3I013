@@ -16,8 +16,8 @@ class SpatialRep extends Rep {
             this.parameters = {
                 'duree':'30',
                 'niveau':'none',
-                'display-position':false,
-                'display-proximite':false
+                'display-position':true,
+                'display-proximite':true
             }
         } else {
             this.parameters = parameters

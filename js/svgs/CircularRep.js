@@ -17,7 +17,8 @@ class CircularRep extends Rep {
                 'agencement':'num',
                 'duree':'30',
                 'niveau':'none',
-                'display-proximite':false,
+                'display-proximite':true,
+                'display-position':true,
                 'display-TDOP_Enseignant':false,
                 'display-TDOP_Eleve':false
             }

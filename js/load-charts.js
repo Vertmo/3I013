@@ -36,7 +36,7 @@ function loadCharts(order) {
             for(let j=0; j<values[i].length; j++) {
                 labvals.push({'label': labels[j][i], 'value': values[i][j]})
             }
-            labvals.sort((lv1, lv2) => lv1['value'] < lv2['value'])
+            labvals.sort((lv1, lv2) => lv2['value'] - lv1['value'])
             for(let j=0; j<labvals.length; j++) {
                 labels[j][i] = labvals[j]['label'] || ''
                 values[i][j] = labvals[j]['value']
@@ -69,25 +69,25 @@ function loadCharts(order) {
         data: {
             labels: labels,
             datasets: [{
-                label:'EN1',
+                label:'Ens1',
                 data: values[0],
                 backgroundColor: 'rgba(255, 0, 0, 0.4)',
                 borderColor: 'rgba(255, 0, 0, 1)'
             },
             {
-                label:'EN2',
+                label:'Ens2',
                 data: values[1],
                 backgroundColor: 'rgba(55, 255, 30, 0.4)',
                 borderColor: 'rgba(55, 255, 30, 1)'
             },
             {
-                label:'EN3',
+                label:'Ens3',
                 data: values[2],
                 backgroundColor: 'rgba(0, 0, 255, 0.4)',
                 borderColor: 'rgba(0, 0, 255, 1)'
             },
             {
-                label:'EN4',
+                label:'Ens4',
                 data: values[3],
                 backgroundColor: 'rgba(255, 255, 0, 0.4)',
                 borderColor: 'rgba(255, 255, 0, 1)'

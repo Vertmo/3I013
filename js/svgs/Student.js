@@ -132,16 +132,16 @@ class Student {
         }
         switch(niv) {
             case 'Faible':
-                this.repCircle.attr({stroke: '#FFFF00'})
-                break
-            case 'Passable':
-                this.repCircle.attr({stroke: '#FF8000'})
-                break
-            case 'Bon':
                 this.repCircle.attr({stroke: '#FF0000'})
                 break
+            case 'Passable':
+                this.repCircle.attr({stroke: '#FF6600'})
+                break
+            case 'Bon':
+                this.repCircle.attr({stroke: '#FFFF00'})
+                break
             case 'Très Bon':
-                this.repCircle.attr({stroke: '#a52a2a'})
+                this.repCircle.attr({stroke: '#00FF00'})
                 break
         }
     }

@@ -21,7 +21,7 @@ class TimelineRep extends Rep {
         // Drawing the timeline
         this.timeline = this.partitionByRegarde(this.filteredEvents)
         let moyenne = this.timeline.reduce((a, x) => a + x.length, 0)/this.timeline.length/2
-        $('#tl-dureemoy' + currentTeacher).html('Duréer moyenne d\'un regard : ' + moyenne.toFixed(2) + 's')
+        $('#tl-dureemoy' + currentTeacher).html('Durée moyenne d\'un regard : ' + moyenne.toFixed(2) + 's')
         let i = 0
         this.timeline.forEach(e => {
             if(isNaN(e[0].regarde)) this.draw.rect(e.length*4, this.draw.height()).attr({ fill: '#FFFFFF' }).move(i*4)

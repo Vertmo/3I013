@@ -69,7 +69,7 @@ Ces 3 fichiers sont placés dans le dossier \textit{/data} du projet. On aurait 
 Dans le cadre de ce projet, on utilisera principalement la table des utilisateurs et celle des évènements. On charge ces deux tables en même temps que le site au moyen de requètes Ajax, et on garde les informations chargées en mémoire. Dans le cas des utilisateurs ayant une connexion lente, le chargement de ces tables (en particulier la tables des évènements, qui compte plus de 25000 lignes, ou 6.7Mo de données) peut présenter un léger ralentissement. Heureusement, le fait qu'on ne charge ces données qu'une fois par visite de la page ainsi que le cache du navigateur permettent de réduire le nombre de chargements et donc ce problème.
 
 \subsubsection{Anonymisation des données}
-Le projet SuperViseur impliquant la récolte de données sur des élèves de primaire (CP, CE1, CE2) il est très important de correctement anonymiser les données avant de les rendre publiques. Cela signifie, entre autres, que les vidéos enregistrés par le système d'eye tracking ne sont pas accessibles au public, et que les prénoms des élèves ont évidemment été supprimés de la table des utilisateurs avant même la mise en ligne sur UnderTracks. Le problème est que ces prénoms se trouvent aussi dans la verbalisation de l'enseignant (qui s'adresse à ses élèves par leurs prénoms). Même si cela ne permet pas directement d'identifier quel élève porte quel prénom, on peut, en mettant en relation les élèves regardés et ceux nommés par l'enseignant, parvenir à identifier les élèves.\\
+Le projet SuperViseur impliquant la récolte de données sur des élèves de primaire (CP, CE1, CE2) il est très important de correctement anonymiser les données avant de les rendre publiques. Cela signifie, entre autres, que les vidéos enregistrés par le système d'eye tracking ne sont pas accessibles au public, et que les prénoms des élèves ont évidemment été supprimés de la table des utilisateurs avant même la mise en ligne sur UnderTracks. Le problème est que ces prénoms se trouvent aussi dans la verbalisation de l'enseignant (qui s'adresse à ses élèves par leurs prénoms). Même si cela ne permet pas directement d'identifier quel élève porte quel prénom, on pourrait, en mettant en relation les élèves regardés et ceux nommés par l'enseignant, parvenir à identifier les élèves: l'anonymisation est donc loin d'ètre parfaite.\\
 On a donc réalisé un petit script (en python) permettant de remplacer les prénoms des élèves par leurs numéros dans la verbalisation de l'enseignant. En plus d'anonymiser les données, cela a l'avantage de permettre de mieux visualiser les relations entre les élèves nommés et les élèves regardés. Bien entendu, ce script contenant lui même une table des correspondances prénoms / numéros des élèves, il n'est pas inclut dans le dépot.
 
 \subsubsection{Position de l'enseignant}
@@ -79,30 +79,30 @@ Afin de pouvoir malgré tout tester cette fonctionnalité de nos visualisations,
 \section{Visualisations}
 Pour ce projet, on a réalisé quatre types de visualisations différentes, chacune mettant en valeur certaines informations. Chaque visualisation est présentée sur une des pages du site.
 \begin{itemize}
-    \item \textbf{Résumé:} La première page visible sur le site présente des résultats globaux sur la distribution des regards des quatre enseignants. On présente donc ces résultats individuellement (par élève), classés soit par numéro des élèves, soit par nombre de regards (ordre décroissant). On peut aussi afficher les temps de regard en fonction des niveaux en français et en mathématiques. Cette page présente également les scores GINI des 4 enseignants. 
+    \item \textbf{Résumé:} La première page visible sur le site présente et synthétise des résultats globaux sur la distribution des regards des quatre enseignants. On présente donc ces résultats individuellement (par élève), classés soit par numéro des élèves, soit par nombre de regards (ordre décroissant). On peut aussi afficher les temps de regard en fonction des niveaux en français et en mathématiques. Cette page présente également les scores GINI (qui mesurent l'équité de la répartition de l'attention d'un enseignant entre les élèves) des 4 enseignants. 
         \begin{center}
             \includegraphics[height=4cm]{resume.png}
         \end{center}
-        C'est cette page qui permet le mieux de visualiser la différence entre les enseignants (et en particulier entre les enseignants novices et les enseignants expérimentés) puisqu'elle présente les résultats des 4 enseignants côte à côte.\\
+        C'est cette page qui permet le mieux de visualiser la différence entre les enseignants (et en particulier entre les enseignants novices et les enseignants expérimentés) puisqu'elle présente les résultats des 4 enseignants côte à côte. L'utilisateur peut également choisir de cacher certains résultats, pour par exemple se concentrer sur un enseignant en particulier.\\
     \item \textbf{Timelines:} Cette page reproduit les fonctionnalités du site \href{http://superviseur.lip6.fr/}{SuperViseur} original. On peut y voir les regards de l'enseignant en fonction du temps, soit par élève, soit groupé par niveau en français ou en mathématiques. On peut dans tous les cas bénéficier de plus d'informations sur un élève en passant le curseur au dessus des parties de la timelines lui correspondant. 
         \begin{center}
             \includegraphics[height=5cm]{timelines.png}
         \end{center}
         Il est a noter que cette page prends malheureusement un peu de temps à charger, à cause principalement du grand nombre de rectangles à dessiner pour représenter les timelines.\\
-    \item \textbf{Représentation circulaire:} Cette représentation est la première s'intéressant à la position spatiale des étudiants et de l'enseignant lors de la séance. Une fois l'option "Position de l'enseignant" activée, la distance entre les points représentant les élèves et le centre (représentant l'enseignant) correspond à la distance dans la salle de classe (quand les vrais données seront en place en tout cas, puisque comme mentionné plus haut, on utilise pour le moment des données factices pour la position).
-        \begin{center}
-            \includegraphics[height=7cm]{rep_circulaire.png}
-        \end{center}
-        Une fois de plus, les étudiants peuvent être triés par niveau en français ou en mathématiques (ce qui se matérialise par la couleur des cercles les représentants). On peut se déplacer temporellement dans la période du cours en utilisant un slider, et avec différents intervalles de temps, allant de 30 secondes à 10 minutes. On peut également afficher un résumé pour l'intégralité de la séance.\\
     \item \textbf{Représentation spatiale:} Plus encore que la représentation circulaire, la représentation spatiale s'intéresse au déplacement de l'enseignant dans la classe. Cette visualisation rends compte de la position des élèves grace aux données de position contenues dans le fichier \textit{users.csv}. Une fois l'option "Position de l'enseignant activée" on peut aussi suivre le déplacement de l'enseignant (on utilise pour le moment les données factices).
         \begin{center}
             \includegraphics[height=7cm]{rep_spatiale.png}
         \end{center}
         En plus des informations affichées sur la visualisation précédente, on affiche aussi sur cette page la verbalisation de l'enseignant, ainsi que le(s) TDOP durant la période visualisée (code et description de l'action).
+    \item \textbf{Représentation circulaire:} Cette représentation est la première s'intéressant à la position spatiale des étudiants et de l'enseignant lors de la séance. Une fois l'option "Position de l'enseignant" activée, la distance entre les points représentant les élèves et le centre (représentant l'enseignant) correspond à la distance dans la salle de classe (quand les vrais données seront en place en tout cas, puisque comme mentionné plus haut, on utilise pour le moment des données factices pour la position).
+        \begin{center}
+            \includegraphics[height=7cm]{rep_circulaire.png}
+        \end{center}
+        Une fois de plus, les étudiants peuvent être triés par niveau en français ou en mathématiques (ce qui se matérialise par la couleur des cercles les représentants). On peut se déplacer temporellement dans la période du cours en utilisant un slider, et avec différents intervalles de temps, allant de 30 secondes à 10 minutes. On peut également afficher un résumé pour l'intégralité de la séance.\\
 \end{itemize}
 
 \section{Tests utilisateurs}
-Comme on l'a vu, en plus de son intérêt pour les chercheurs, le site SuperViseur a aussi vocation à etre utilisé pour former de futurs enseignants. Le site doit donc pouvoir être utilisable par un public plus large et parfois moins habitué à l'utilisation de l'outil informatique. Afin de vérifier l'ergonomie et l'usabilité du site réalisé, on a donc organisé une séance de tests utilisateurs.
+Comme on l'a vu, en plus de son intérêt pour les chercheurs, le site SuperViseur a aussi vocation à etre utilisé pour former de futurs enseignants. Le site doit donc pouvoir être utilisable par un public plus large et parfois moins habitué à l'utilisation de l'outil informatique. Afin de vérifier l'ergonomie et l'usabilité du site réalisé, on a donc organisé une séance de tests utilisateurs. Malheureusement, du au peu de temps disponible pour organiser ces tests, on n'a pu inviter que des volontaires faisant partie de l'équipe MoCah du lip6, tres représentatifs du public de chercheurs, mais peu représentatifs du public d'enseignants en formation du site (deux des volontaires étaient tous de mêmes enseignants en lycée et collège). Malgré tout, ces 10 utilisateurs ont tout de même pu soulever une grande quantité de problèmes.
 
 \subsection{Protocole de test}
 Lors du test, après une courte introduction au projet SuperViseur, les utilisateurs ont eu à accomplir une série de taches en utilisant le site SuperViseur. Comme ce site présente principalement des visualisations, ces taches consistaient principalement à trouver des informations en ce servant des différentes visualisations présentes sur le site. Ci dessous, la liste des 5 taches à réaliser:
@@ -113,10 +113,15 @@ Lors du test, après une courte introduction au projet SuperViseur, les utilisat
     \item Observer le TDOP au début du cours de l'enseignant 1. Observer les TDOPs durant le reste du cours. Est-ce un cours de Français ou de Maths ?
     \item Observer le déplacement de l'enseignant 4. A coté de quel élève se trouve-t-il à 21min?
 \end{enumerate}
-Apres la fin des taches, on a organisé avec les participants un petit debriefing, afin de recueillir leur ressenti général, s'informer sur les difficultés perçus lors du test\ldots
+Apres la fin des taches, on a organisé avec les participants un petit debriefing, afin de recueillir leur ressenti général et s'informer sur les difficultés perçus lors du test.
 
 \subsection{Résultats}
-TODO: A remplir (quand j'aurai les résultats)
+Trois principales types de difficultés ont été repérées :
+\begin{itemize}
+    \item Manque de cohérence d'une visualisation à l'autre: par exemple, les palettes de couleurs indiquant le niveau des éléves n'étaient pas les mêmes sur les timelines et sur les représentations spatiales / circulaires. Ce type de problème est très simple à régler.
+    \item Interface parfois trop complexe: entre autre, ne nombre de paramètres modifiables pour les représentations spatiales et circulaires a été percu comme trop important, et certains des paramètres étaient difficilement compréhensibles. La solution est d'activer constamment certains de ces paramètres (position de l'enseignant en particulier) et de retirer l'option de les désactiver (ces paramètres étaient de tout façon essentiels à la visualisation, et pouvoir les désactiver était assez peu utile). Afin de rendre les paramètres restants mieux compréhensibles, on pourrait par exemple mieux leur lier la description de leurs effets (c'est à dire des éléments de la légende).
+    \item Manque de contexte: le test étant commencé par une introduction au projet, les volontaires ont eu assez peu de difficulté à comprendre l'intention blobale du site. Cependant, pour une personne utilisant le site en autonomie, il serait bon d'ajouter une page d'introduction présentant le projet, la façon dont les données ont été acquises, ainsi que des liens pointants vers les ressources et références utiles.
+\end{itemize}
 
 \section{Observations}
 On rappelle que les enseignants les plus expérimentés sont les enseignants 1 et 4 (plus de 20 ans d'expérience) tandis que les enseignants 2 et 3 ont tous les deux moins d'une année d'expérience. Comme on va le voir, les différences entre les enseignants novices et expérimentés sont, comme on en avait fait l'hypothèse, nombreux.
@@ -125,19 +130,29 @@ D'un point de vue des représentations spatiales, on s'aperçoir que les enseign
 Malheureusement, comme on l'a vu plus haut, on ne possède pas les données nécessaires pour étudier le déplacement de l'enseignant dans la classe.
 
 \subsection{Différences entre enseignants novices et expérimentés}
-On remarque que l'attention des enseignants débutants est plus "fragmentée": en effet la durée moyenne de leurs regards est plus courte (0.58 et 0.66s, contre 0.72 et 0.88s pour les enseignants expérimentés). Cela peut être interprété comme une plus grande difficulté à évaluer l'état de la classe, et donc à une plus grande charge cognitive.\\
-Tous les enseignants apportent plus d'attention aux élèves de niveau "Faible" ou "Passable", mais cette tendance est plus marquée chez les enseignants les plus expérimentés.\\
-Les coefficients GINI (qui mesurent l'équité de la répartition de l'attention d'un enseignant entre les élèves) en revanche ne permettent pas de différencier les enseignants novices et experimentés: tous les coefficients sont situés entre 0.24 et 0.35. L'enseignant ayant le coefficient le plus faible (0.24), et donc qui partage son attention de la façon la plus équitable est expérimenté (l'enseignant 4), mais l'enseignant 1 qui est lui aussi expérimenté a le coefficient le plus fort (0.349).\\
+On remarque que l'attention des enseignants débutants est plus fragmentée (c'est a dire que leur regard à plus tendance à papillonner d'un élève à l'autre): en effet la durée moyenne de leurs regards est plus courte (0.58 et 0.66s, contre 0.72 et 0.88s pour les enseignants expérimentés). Cela peut être interprété comme une plus grande difficulté à évaluer l'état de la classe, et donc à une plus grande charge cognitive.\\
+Tous les enseignants apportent plus d'attention aux élèves de niveau \textit{Faible} ou \textit{Passable}, mais cette tendance est plus marquée chez les enseignants les plus expérimentés.\\
+\begin{center}
+    \includegraphics[height=3cm]{niv_francais.png}
+\end{center}
+Les coefficients GINI en revanche ne permettent pas de différencier les enseignants novices et experimentés: tous les coefficients sont situés entre 0.24 et 0.35. L'enseignant ayant le coefficient le plus faible (0.24), et donc qui partage son attention de la façon la plus équitable est expérimenté (l'enseignant 4), mais l'enseignant 1 qui est lui aussi expérimenté a le coefficient le plus fort (0.349).\\
 
 \subsection{Groupes de référence}
-On constate que les groupes de références sont de taille assez variable. Pour les enseignants 1 et 3, ils ne comptent qu'un seul élève (respectivement l'élève 16 et l'élève 9) qui est considérablement plus regardé que l'élève en deuxième position. L'enseignant 2 lui consacre la plus grande partie de son attention sur les élèves 10, 6 et 15. Enfin, l'enseignant 4 (qui comme on l'a vu à un coefficient GINI très élevé regarde majoritairement les élèves 1, 14, 4, 13 et 12).\\
-La taille du groupe de référence ne semble donc pas dépendre du niveau d'expérience de l'enseignant. On observe aussi que les élèves faisant partie des groupes de références sont tous en difficulté ne mathématiques (niveau "Faible" ou "Passable") ou ont des besoins particuliers. Cela est bien sur en adéquation avec nos observations précédentes.
+On constate que les groupes de références sont de taille assez variable. Pour les enseignants 1 et 3, ils ne comptent qu'un seul élève (respectivement l'élève 16 et l'élève 9) qui est considérablement plus regardé que l'élève en deuxième position. L'enseignant 2 lui consacre la plus grande partie de son attention sur les élèves 10, 6 et 15. Enfin, l'enseignant 4 (qui comme on l'a vu à un coefficient GINI très élevé) regarde majoritairement les élèves 1, 14, 4, 13 et 12.\\
+La taille du groupe de référence est donc très variable, mais ne semble donc pas dépendre du niveau d'expérience de l'enseignant. On observe aussi que les élèves faisant partie des groupes de références sont tous en difficulté ne mathématiques (niveau \textit{Faible} ou \textit{Passable}) ou ont des besoins particuliers. Cela est bien sur en adéquation avec nos observations précédentes.
 \begin{center}
     \includegraphics[height=4cm]{ordre_decroissant.png}
 \end{center}
 
 \section{Conclusion}
-TODO : A remplir (à la fin)
+Au cours de ce projet, on a pu travailler sur répondre à plusieurs question relatifs aux comportements des enseignants lors de leurs cours, nombres de questions subsistent encore: par exemple, analyser les comportements répétés ou cycliques des enseignants, au moyen des représentations de type Timeline. De plus, comme on l'a vu, on pourrait tenter de mieux intégrer le site SuperViseur avec la plateforme UndertTracks, afin de pouvoir facilement ajouter les données récoltées lors d'études similaires sur d'autres enseignants. On pourrait aussi mettre en relation les comportements des enseignants avec le climat de la classe, tel que mesuré par le CLASS~\cite{CLASS}.\\
+Afin de rendre le partage et la modification du code facilement possible, l'intégralité du code est disponible sur \href{https://github.com/Vertmo/SuperViseur}{GitHub} sous licence GPL-3.0.L'objectif est donc que les chercheurs puissent étendre ces visualisations afin de répondre aux types de questions posées ci-dessus. De plus, je continuerai sans-doute moi même à travailler sur ce projet pour y apporter quelques améliorations.\\
+Reste également la question de l'utilisation de la plateforme SuperViseur dans le cadre de la formation de futurs enseignants. En effet, même si ce site permet déjà d'observer des différences entre enseignants novices et experts, et donc des bons comportements, ce contenu ne se suffit pas et doit donc être mis dans un contexte pédagogique plus complet afin d'être efficace. On pourrait par exemple utiliser les visualisations en temps qu'illustration d'un cours plus théorique portant sur la gestion de classe, 
+
+\section{Remerciements}
+Je tiens à remercier toutes les personnes ayant contribué à ce projet, avec en premier lieu Vanda Luengo, pour son temps, son encadrement et ses précieux conseils qui m'ont aidé à amener le projet à son état actuel.\\
+Je remercie également Fabrice Kordon pour avoir organisé cette UE, qui m'a permis de mieux connaitre le milieu de la recherche, et d'y prendre gout.\\
+Enfin, je remercie tous les volontaires ayant participé aux tests utilisateurs, qui m'ont aidé de déceler les problèmes présents dans la première itération du site.
 
 \bibliography{bibliographie}{}
 \bibliographystyle{plain}
