@@ -138,7 +138,7 @@ class CircularRep extends Rep {
 
         // Display information on the TDOP
         this.bgTDOP.on('mouseover', () => { 
-            $('#annotations-display').html('TDOP majoritaire : ' + TDOPTypes[max])
+            $('#annotations-display').html('<b>TDOP majoritaire :</b> ' + TDOPTypes[max] + "<br/><b>Tous les TDOPs :</b><br/>" + super.getTDOPs())
         })
         this.bgTDOP.on('mouseout', () => {
             $('#annotations-display').empty()

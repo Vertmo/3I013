@@ -105,4 +105,23 @@ class Rep {
 
         return [frequency, duration]
     }
+
+    /**
+     * Get current TDOPs formatted as String
+     */
+    getTDOPs() {
+        let TDOPList = []
+        let descTDOPList = []
+        this.currentEvents.forEach(e => {
+            if(e.descTDOP && descTDOPList.indexOf(e.descTDOP) < 0) {
+                TDOPList.push(e.TDOP)
+                descTDOPList.push(e.descTDOP)
+            }
+        })
+        let html = ''
+        for(let i=0; i<TDOPList.length; i++) {
+            html += TDOPList[i] + ' : ' + descTDOPList[i] + '<br/>'
+        }
+        return html
+    }
 }

@@ -43,5 +43,5 @@ function nextTime(time, interval) {
 function displayTime(startTime, endTime) {
     let startTimeString = startTime.toUTCString().split(' ')[4]
     let endTimeString = endTime.toUTCString().split(' ')[4]
-    $('#time-display').text(startTimeString + ' : ' + endTimeString)
+    $('#time-display').text("Séquence : " + startTimeString + ' à ' + endTimeString)
 }
