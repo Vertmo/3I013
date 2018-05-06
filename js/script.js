@@ -18,7 +18,12 @@ $(function() {
         $(this).addClass('active')
     })
 
-    // When clicking on "Résumé"
+    // When clicking on "Introduction"
+    $('#introduction-tab').click(function() {
+        loadPage('pages/introduction.html', () => createCardEvents())
+    })
+
+    // When clicking on "Synthèse"
     $('#main-tab').click(function() {
         loadPage('pages/main.html', () => {activateSemanticForms(); loadCharts('num'); displayGinis()})
     })
@@ -51,8 +56,8 @@ $(function() {
         })
     })
 
-    // Default : main tab
-    loadPage('pages/main.html', () => {activateSemanticForms(); loadCharts('num'); displayGinis()})
+    // Default : introduction tab
+    loadPage('pages/introduction.html', () => createCardEvents())
 })
 
 
@@ -66,6 +71,16 @@ function loadPage(page, func) {
     if(activePage === page) return
     $('#container-div').load(page, func)
     activePage = page;
+}
+
+/**
+ * Redirect events form cards on the introduction page to the tabs
+ */
+function createCardEvents() {
+    $('#main-card').click(() => $('#main-tab').trigger('click'))
+    $('#timelines-card').click(() => $('#timelines-tab').trigger('click'))
+    $('#spatial-rep-card').click(() => $('#spatial-rep-tab').trigger('click'))
+    $('#circular-rep-card').click(() => $('#circular-rep-tab').trigger('click'))
 }
 
 /**
