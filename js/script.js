@@ -185,8 +185,8 @@ function loadStudents() {
  * Loads the list of events (from CSV for now)
  */
 function loadEvents() {
-    //let filename = 'data/events.csv'
-    let filename = 'data/eventscoords.csv'
+    let filename = 'data/events.csv'
+    //let filename = 'data/eventscoords.csv'
     $.ajax({
         type: 'GET',
         url: filename,
